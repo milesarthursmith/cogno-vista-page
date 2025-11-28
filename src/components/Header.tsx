@@ -5,7 +5,7 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-medium text-xl font-mono">Boring Stuff</span>
+            <span className="font-medium text-xl font-mono">boring stuff</span>
           </div>
           
           <nav className="hidden md:flex items-center gap-8">
