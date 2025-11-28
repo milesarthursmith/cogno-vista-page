@@ -5,16 +5,14 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-medium text-xl">Lariat AI</span>
+            <span className="font-serif font-medium text-xl">Humanise Consulting</span>
           </div>
           
           <nav className="hidden md:flex items-center gap-8">
             <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Services
             </a>
-            <a href="#about" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              About
-            </a>
+            
             <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
