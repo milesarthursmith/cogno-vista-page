@@ -6,7 +6,7 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" />
-            <span className="font-medium text-xl font-mono">boring stuff</span>
+            <span className="font-medium text-xl font-mono">humanstuff.ai</span>
           </div>
           
           <nav className="hidden md:flex items-center gap-8">
