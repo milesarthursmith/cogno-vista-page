@@ -12,7 +12,7 @@ const Contact = () => {
             <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
               Ready to take the busywork off your GTM team's plate?
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground font-serif">
               Let's identify one workflow we can automate in the next 30 days.
             </p>
           </div>
@@ -20,14 +20,14 @@ const Contact = () => {
           <div className="rounded-xl border border-border bg-card p-8">
             <form className="space-y-6">
               <div>
-                <label className="mb-2 block text-sm font-medium">Name</label>
+                <label className="mb-2 block text-sm font-medium font-mono">Name</label>
                 <Input 
                   className="rounded-lg bg-background border-border h-11"
                   placeholder="Your name"
                 />
               </div>
               <div>
-                <label className="mb-2 block text-sm font-medium">Email</label>
+                <label className="mb-2 block text-sm font-medium font-mono">Email</label>
                 <Input 
                   type="email"
                   className="rounded-lg bg-background border-border h-11"
@@ -35,14 +35,14 @@ const Contact = () => {
                 />
               </div>
               <div>
-                <label className="mb-2 block text-sm font-medium">Company</label>
+                <label className="mb-2 block text-sm font-medium font-mono">Company</label>
                 <Input 
                   className="rounded-lg bg-background border-border h-11"
                   placeholder="Your company (optional)"
                 />
               </div>
               <div>
-                <label className="mb-2 block text-sm font-medium">Message</label>
+                <label className="mb-2 block text-sm font-medium font-mono">Message</label>
                 <Textarea 
                   className="rounded-lg bg-background border-border min-h-32 resize-none"
                   placeholder="Tell us about your workflow challenges..."

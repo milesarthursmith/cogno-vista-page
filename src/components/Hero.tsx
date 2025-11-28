@@ -9,7 +9,7 @@ const Hero = () => {
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Automate the boring stuff and unlock new possibilities. <span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
             </h1>
             
-            <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-mono">From sales, marketing and ops - we design and build AI agents, automations and workflows that take repetitive work off your team.</p>
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-serif">From sales, marketing and ops - we design and build AI agents, automations and workflows that take repetitive work off your team.</p>
             
             <div className="flex flex-col sm:flex-row gap-4">
               <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono">

@@ -27,7 +27,7 @@ const HowItWorks = () => {
         <div className="max-w-5xl mx-auto">
           <div className="mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">How We Do It</h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground font-serif">
               A structured approach from discovery to scale
             </p>
           </div>
@@ -44,12 +44,12 @@ const HowItWorks = () => {
                     <step.icon className="h-5 w-5 text-foreground" />
                     <h3 className="text-xl font-serif font-medium">{step.title}</h3>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                  <p className="text-muted-foreground leading-relaxed font-serif">{step.description}</p>
                 </div>
               </div>)}
           </div>
 
-          <p className="text-muted-foreground mt-12">
+          <p className="text-muted-foreground mt-12 font-serif">
             This approach works for <span className="text-foreground">SMB and mid-market companies</span> as well as specific programs inside larger enterprises.
           </p>
         </div>
