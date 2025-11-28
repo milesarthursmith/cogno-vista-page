@@ -5,7 +5,7 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="font-serif font-medium text-xl">Humanise Consulting</span>
+            <span className="font-serif font-medium text-xl">Humanize</span>
           </div>
           
           <nav className="hidden md:flex items-center gap-8">

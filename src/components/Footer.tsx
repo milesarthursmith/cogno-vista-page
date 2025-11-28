@@ -1,12 +1,10 @@
 import { Linkedin, Twitter, Github } from "lucide-react";
-
 const Footer = () => {
-  return (
-    <footer className="border-t border-border bg-background py-16">
+  return <footer className="border-t border-border bg-background py-16">
       <div className="container mx-auto px-6">
         <div className="grid gap-12 md:grid-cols-4 max-w-7xl mx-auto">
           <div>
-            <span className="font-serif font-medium text-xl">Lariat AI</span>
+            <span className="font-serif font-medium text-xl">Humanize AI</span>
             <p className="text-sm text-muted-foreground leading-relaxed mt-4">
               AI consulting for practical, production-ready systems.
             </p>
@@ -33,22 +31,13 @@ const Footer = () => {
           <div>
             <h4 className="mb-4 font-medium">Follow Us</h4>
             <div className="flex gap-3">
-              <a 
-                href="#" 
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
-              >
+              <a href="#" className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors">
                 <Linkedin className="h-4 w-4" />
               </a>
-              <a 
-                href="#" 
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
-              >
+              <a href="#" className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors">
                 <Twitter className="h-4 w-4" />
               </a>
-              <a 
-                href="#" 
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
-              >
+              <a href="#" className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors">
                 <Github className="h-4 w-4" />
               </a>
             </div>
@@ -59,8 +48,6 @@ const Footer = () => {
           <p>&copy; 2025 Lariat AI. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
