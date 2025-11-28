@@ -1,63 +1,66 @@
 import { Card } from "@/components/ui/card";
-import { Brain, BarChart3, Zap } from "lucide-react";
-import automationImage from "@/assets/automation-visual.jpg";
-import analyticsImage from "@/assets/analytics-visual.jpg";
-import strategyImage from "@/assets/strategy-visual.jpg";
+import { Brain, BarChart3, Zap, Shield, Workflow, Cpu } from "lucide-react";
 
 const services = [
   {
     icon: Brain,
     title: "AI Strategy & Planning",
-    description: "Develop comprehensive AI roadmaps tailored to your business objectives and technical capabilities.",
-    image: strategyImage
+    description: "Develop comprehensive AI roadmaps tailored to your business objectives and technical capabilities."
   },
   {
     icon: BarChart3,
     title: "Data & Analytics",
-    description: "Harness the power of your data with advanced analytics and machine learning models.",
-    image: analyticsImage
+    description: "Harness the power of your data with advanced analytics and machine learning models."
   },
   {
     icon: Zap,
     title: "Process Automation",
-    description: "Streamline operations with intelligent automation solutions that scale with your business.",
-    image: automationImage
+    description: "Streamline operations with intelligent automation solutions that scale with your business."
+  },
+  {
+    icon: Shield,
+    title: "Risk Management",
+    description: "AI-powered risk assessment and compliance monitoring for secure decision-making."
+  },
+  {
+    icon: Workflow,
+    title: "Workflow Integration",
+    description: "Seamlessly integrate AI into your existing workflows and business processes."
+  },
+  {
+    icon: Cpu,
+    title: "Custom AI Models",
+    description: "Build and deploy custom machine learning models tailored to your specific needs."
   }
 ];
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-muted">
-      <div className="container mx-auto px-4">
-        <div className="mb-16 text-center">
-          <div className="mb-4 inline-block border-2 border-foreground bg-background px-4 py-2 font-mono text-sm font-bold">
-            OUR SERVICES
+    <section id="services" className="py-24 bg-gradient-to-b from-background to-muted/30">
+      <div className="container mx-auto px-6">
+        <div className="mb-20 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/50 text-accent-foreground mb-6 text-sm font-medium">
+            Our Services
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-            AI SOLUTIONS FOR EVERY NEED
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            AI Solutions for Every Need
           </h2>
+          <p className="text-xl text-muted-foreground">
+            Comprehensive AI consulting services to transform your business operations
+          </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-7xl mx-auto">
           {services.map((service, index) => (
             <Card 
               key={index}
-              className="border-2 border-foreground bg-card shadow-sm hover:shadow-md transition-all duration-300 overflow-hidden group"
+              className="group border border-border bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
-              <div className="aspect-square overflow-hidden">
-                <img 
-                  src={service.image} 
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                />
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                <service.icon className="h-7 w-7" />
               </div>
-              <div className="p-6">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center border-2 border-foreground bg-primary">
-                  <service.icon className="h-6 w-6 text-primary-foreground" />
-                </div>
-                <h3 className="mb-3 text-2xl font-bold">{service.title}</h3>
-                <p className="text-muted-foreground">{service.description}</p>
-              </div>
+              <h3 className="mb-3 text-xl font-bold">{service.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{service.description}</p>
             </Card>
           ))}
         </div>
