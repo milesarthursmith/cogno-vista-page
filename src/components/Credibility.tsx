@@ -10,7 +10,7 @@ const Credibility = () => {
           <div className="space-y-4 mt-12">
             {achievements.map((achievement, index) => <div key={index} className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <CheckCircle2 className="h-5 w-5 text-foreground flex-shrink-0 mt-0.5" />
-                <span className="text-base">{achievement}</span>
+                <span className="text-base font-mono">{achievement}</span>
               </div>)}
           </div>
           
