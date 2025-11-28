@@ -48,12 +48,15 @@ const Hero = () => {
           <div className="relative hidden lg:block">
             <div className="relative w-full aspect-square">
               {/* Floating cards simulation */}
-              <div className="absolute top-0 right-0 bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-2xl w-48 animate-float">
+              <div className="absolute top-0 right-0 bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-2xl w-56 animate-float">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center border border-blue-500/30">
-                    <div className="w-4 h-4 rounded bg-blue-500" />
+                  <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30">
+                    <Sparkles className="w-4 h-4 text-primary" />
                   </div>
-                  <div className="text-sm font-medium">Input</div>
+                  <div>
+                    <div className="text-xs text-muted-foreground">Service 01</div>
+                    <div className="text-sm font-medium">AI Agents & Workflows</div>
+                  </div>
                 </div>
               </div>
 
@@ -63,20 +66,20 @@ const Hero = () => {
                     <Sparkles className="w-4 h-4 text-primary" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Machine Learning</div>
-                    <div className="text-sm font-medium">Fraud Prediction</div>
+                    <div className="text-xs text-muted-foreground">Service 02</div>
+                    <div className="text-sm font-medium">GTM Engineering</div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-48 left-0 bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-2xl w-48 animate-float-slow">
+              <div className="absolute top-48 left-0 bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-4 shadow-2xl w-56 animate-float-slow">
                 <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
-                    <div className="w-4 h-4 rounded bg-purple-500" />
+                  <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center border border-accent/30">
+                    <Sparkles className="w-4 h-4 text-accent" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Manual Review</div>
-                    <div className="text-sm font-medium">Agent Inspection</div>
+                    <div className="text-xs text-muted-foreground">Service 03</div>
+                    <div className="text-sm font-medium">AI-Powered Marketing</div>
                   </div>
                 </div>
               </div>
