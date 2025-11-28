@@ -156,5 +156,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-weight: 300;
+    font-size: 0.9375rem;
+    line-height: 1.6;
   }
 }
