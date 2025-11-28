@@ -25,7 +25,7 @@ const Services = () => {
       <div className="container mx-auto px-6">
         <div className="mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">What We Build</h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground font-serif">
             Production-ready AI systems that integrate with your existing stack
           </p>
         </div>
@@ -36,10 +36,10 @@ const Services = () => {
                 <service.icon className="h-6 w-6" />
               </div>
               <h3 className="mb-3 text-2xl font-serif font-medium">{service.title}</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
+              <p className="text-muted-foreground leading-relaxed mb-6 font-serif">{service.description}</p>
               
               <ul className="space-y-2">
-                {service.details.map((detail, idx) => <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
+                {service.details.map((detail, idx) => <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2 font-serif">
                     <span className="text-foreground mt-1">•</span>
                     <span>{detail}</span>
                   </li>)}

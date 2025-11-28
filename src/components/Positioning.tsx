@@ -9,7 +9,7 @@ const Positioning = () => {
             <span className="text-foreground">practical, production-ready systems</span>
             {" "}— not prototypes.
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground font-serif">
             We partner with sales, marketing and operations teams to design and ship AI that actually gets used.
           </p>
         </div>

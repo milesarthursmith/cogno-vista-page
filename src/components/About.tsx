@@ -9,13 +9,13 @@ const About = () => {
             <h2 className="mb-6 text-4xl md:text-5xl font-serif font-medium">
               Our Team
             </h2>
-            <p className="text-lg text-muted-foreground mb-2">AI GTM Engineers</p>
-            <p className="text-lg text-muted-foreground mb-8">Growth Marketing · Technical Consulting</p>
+            <p className="text-lg text-muted-foreground mb-2 font-serif">AI GTM Engineers</p>
+            <p className="text-lg text-muted-foreground mb-8 font-serif">Growth Marketing · Technical Consulting</p>
             
             <div className="space-y-4">
               {experience.map((item, index) => <div key={index} className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-foreground flex-shrink-0 mt-0.5" />
-                  <span className="text-base">{item}</span>
+                  <span className="text-base font-serif">{item}</span>
                 </div>)}
             </div>
           </div>
@@ -24,15 +24,15 @@ const About = () => {
             <div className="space-y-8">
               <div>
                 <div className="text-5xl font-serif font-medium mb-2">100+</div>
-                <div className="text-muted-foreground">Hours Saved Monthly</div>
+                <div className="text-muted-foreground font-serif">Hours Saved Monthly</div>
               </div>
               <div>
                 <div className="text-5xl font-serif font-medium mb-2">42%</div>
-                <div className="text-muted-foreground">Cost per SQL Reduction</div>
+                <div className="text-muted-foreground font-serif">Cost per SQL Reduction</div>
               </div>
               <div>
                 <div className="text-5xl font-serif font-medium mb-2">10+</div>
-                <div className="text-muted-foreground">Years Experience</div>
+                <div className="text-muted-foreground font-serif">Years Experience</div>
               </div>
             </div>
           </div>
