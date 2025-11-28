@@ -22,8 +22,8 @@ const services = [{
 const Services = () => {
   return <section id="services" className="py-24 bg-secondary/30 relative overflow-hidden">
       {/* Jagged growth line motif */}
-      <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-64 pointer-events-none opacity-30" viewBox="0 0 100 40" preserveAspectRatio="none">
-        <path d="M 0 35 L 8 35 L 8 30 L 16 30 L 16 25 L 24 25 L 24 20 L 32 20 L 32 15 L 40 15 L 40 12 L 48 12 L 48 10 L 56 10 L 56 8 L 64 8 L 64 6 L 72 6 L 72 5 L 80 5 L 80 4 L 88 4 L 88 3 L 100 3" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="0.5" opacity="0.3" strokeDasharray="200" strokeDashoffset="200" className="animate-draw-line" />
+      <svg className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-96 pointer-events-none" viewBox="0 0 100 40" preserveAspectRatio="none">
+        <path d="M 0 35 L 8 35 L 8 30 L 16 30 L 16 25 L 24 25 L 24 20 L 32 20 L 32 15 L 40 15 L 40 12 L 48 12 L 48 10 L 56 10 L 56 8 L 64 8 L 64 6 L 72 6 L 72 5 L 80 5 L 80 4 L 88 4 L 88 3 L 100 3" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="1.5" opacity="0.2" strokeDasharray="200" strokeDashoffset="200" className="animate-draw-line" />
       </svg>
       
       <div className="container mx-auto px-6 relative z-10">
