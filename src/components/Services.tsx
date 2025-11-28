@@ -20,38 +20,30 @@ const services = [{
   stack: "All built with clear guardrails so outputs stay on-brand and fact-checked, not generic AI fluff"
 }];
 const Services = () => {
-  return <section id="services" className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+  return <section id="services" className="py-24 bg-secondary/30">
       
-      <div className="container relative mx-auto px-6">
-        <div className="mb-20 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 text-sm font-medium">
-            Services
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">What We Build</h2>
-          <p className="text-xl text-muted-foreground">
+      <div className="container mx-auto px-6">
+        <div className="mb-16 max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">What We Build</h2>
+          <p className="text-lg text-muted-foreground">
             Production-ready AI systems that integrate with your existing stack
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3 max-w-7xl mx-auto">
-          {services.map((service, index) => <Card key={index} className="group border border-border bg-card/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30">
-              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
-                <service.icon className="h-7 w-7" />
+        <div className="grid gap-8 lg:grid-cols-3 max-w-7xl">
+          {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow">
+              <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
+                <service.icon className="h-6 w-6" />
               </div>
-              <h3 className="mb-3 text-2xl font-bold">{service.title}</h3>
+              <h3 className="mb-3 text-2xl font-serif font-medium">{service.title}</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">{service.description}</p>
               
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-2">
                 {service.details.map((detail, idx) => <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
+                    <span className="text-foreground mt-1">•</span>
                     <span>{detail}</span>
                   </li>)}
               </ul>
-              
-              <div className="pt-4 border-t border-border/50">
-                
-              </div>
             </Card>)}
         </div>
       </div>

@@ -2,68 +2,61 @@ import { Linkedin, Twitter, Github } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-16">
+    <footer className="border-t border-border bg-background py-16">
       <div className="container mx-auto px-6">
         <div className="grid gap-12 md:grid-cols-4 max-w-7xl mx-auto">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl">AI</span>
-              </div>
-              <span className="font-semibold text-xl">AI Consulting</span>
-            </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Transforming businesses through intelligent AI solutions.
+            <span className="font-serif font-medium text-xl">Lariat AI</span>
+            <p className="text-sm text-muted-foreground leading-relaxed mt-4">
+              AI consulting for practical, production-ready systems.
             </p>
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold">Services</h4>
+            <h4 className="mb-4 font-medium">Services</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">AI Strategy</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Data Analytics</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Automation</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Training</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">AI Agents & Workflows</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">GTM Engineering</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">AI-Powered Marketing</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold">Company</h4>
+            <h4 className="mb-4 font-medium">Company</h4>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li><a href="#" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+              <li><a href="#about" className="hover:text-foreground transition-colors">About Us</a></li>
+              <li><a href="#services" className="hover:text-foreground transition-colors">Services</a></li>
+              <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="mb-4 font-semibold">Follow Us</h4>
+            <h4 className="mb-4 font-medium">Follow Us</h4>
             <div className="flex gap-3">
               <a 
                 href="#" 
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-4 w-4" />
               </a>
               <a 
                 href="#" 
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
               >
-                <Twitter className="h-5 w-5" />
+                <Twitter className="h-4 w-4" />
               </a>
               <a 
                 href="#" 
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
               >
-                <Github className="h-5 w-5" />
+                <Github className="h-4 w-4" />
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
-          <p>&copy; 2025 AI Consulting. All rights reserved.</p>
+        <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
+          <p>&copy; 2025 Lariat AI. All rights reserved.</p>
         </div>
       </div>
     </footer>

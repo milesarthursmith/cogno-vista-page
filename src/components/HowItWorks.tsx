@@ -30,38 +30,34 @@ const steps = [
 
 const HowItWorks = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-background" />
+    <section className="py-24 bg-background">
       
-      <div className="container relative mx-auto px-6">
+      <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 text-sm font-medium">
-              Process
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          <div className="mb-16">
+            <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
               How It Works
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg text-muted-foreground">
               A structured approach from discovery to scale
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {steps.map((step, index) => (
               <div 
                 key={index}
-                className="flex gap-6 items-start bg-card/50 backdrop-blur-sm border border-border rounded-2xl p-8 shadow-lg hover:shadow-xl hover:shadow-primary/10 transition-all hover:-translate-y-1"
+                className="flex gap-6 items-start bg-card border border-border rounded-xl p-6"
               >
                 <div className="flex-shrink-0">
-                  <div className="h-12 w-12 rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold text-lg">
+                  <div className="h-10 w-10 rounded-lg bg-secondary text-foreground flex items-center justify-center font-medium">
                     {index + 1}
                   </div>
                 </div>
                 <div className="flex-grow">
-                  <div className="flex items-center gap-3 mb-3">
-                    <step.icon className="h-6 w-6 text-primary" />
-                    <h3 className="text-xl font-bold">{step.title}</h3>
+                  <div className="flex items-center gap-3 mb-2">
+                    <step.icon className="h-5 w-5 text-foreground" />
+                    <h3 className="text-xl font-serif font-medium">{step.title}</h3>
                   </div>
                   <p className="text-muted-foreground leading-relaxed">{step.description}</p>
                 </div>
@@ -69,8 +65,8 @@ const HowItWorks = () => {
             ))}
           </div>
 
-          <p className="text-center text-muted-foreground mt-12 text-lg">
-            This approach works for <span className="text-foreground font-medium">SMB and mid-market companies</span> as well as specific programs inside larger enterprises.
+          <p className="text-muted-foreground mt-12">
+            This approach works for <span className="text-foreground">SMB and mid-market companies</span> as well as specific programs inside larger enterprises.
           </p>
         </div>
       </div>
