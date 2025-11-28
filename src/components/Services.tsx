@@ -34,8 +34,8 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3 max-w-7xl relative">
-          {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow">
+        <div className="flex flex-col lg:flex-row gap-8 max-w-7xl relative">
+          {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow flex-1" style={{ marginTop: index === 0 ? '0' : index === 1 ? '8rem' : '16rem' }}>
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
                 <service.icon className="h-6 w-6" />
               </div>
