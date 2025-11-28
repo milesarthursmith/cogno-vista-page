@@ -10,11 +10,13 @@ const Header = () => {
           </div>
           
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Services
             </a>
-            
-            <a href="#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Agent Examples
+            </a>
+            <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
           </nav>
