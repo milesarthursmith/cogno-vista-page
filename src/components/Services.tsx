@@ -31,25 +31,7 @@ const Services = () => {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3 max-w-7xl relative">
-          {/* Animated growth line behind cards */}
-          <svg 
-            className="absolute left-0 top-0 w-full h-full pointer-events-none" 
-            style={{ zIndex: 0 }}
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M 10 90 L 50 50 L 90 10"
-              fill="none"
-              stroke="hsl(225, 100%, 60%)"
-              strokeWidth="0.5"
-              opacity="0.4"
-              strokeDasharray="200"
-              strokeDashoffset="200"
-              className="animate-draw-line"
-            />
-          </svg>
-          {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow relative z-10">
+          {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow">
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
                 <service.icon className="h-6 w-6" />
               </div>

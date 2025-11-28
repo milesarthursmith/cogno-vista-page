@@ -35,6 +35,25 @@ const Hero = () => {
           </div>
 
           <div className="relative hidden lg:block">
+            {/* Animated growth line */}
+            <svg 
+              className="absolute left-0 top-0 w-full h-full pointer-events-none" 
+              style={{ zIndex: 0 }}
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 10 90 L 50 50 L 90 10"
+                fill="none"
+                stroke="hsl(225, 100%, 60%)"
+                strokeWidth="0.8"
+                opacity="0.3"
+                strokeDasharray="200"
+                strokeDashoffset="200"
+                className="animate-draw-line"
+              />
+            </svg>
+
             <div className="relative w-full aspect-square">
               {/* Floating cards simulation */}
               <div className="absolute top-0 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-56 animate-float">
@@ -109,6 +128,14 @@ const Hero = () => {
         }
         .animate-float-slow {
           animation: float-slow 5s ease-in-out infinite;
+        }
+        @keyframes draw-line {
+          to {
+            stroke-dashoffset: 0;
+          }
+        }
+        .animate-draw-line {
+          animation: draw-line 3s ease-out forwards;
         }
       `}</style>
     </section>
