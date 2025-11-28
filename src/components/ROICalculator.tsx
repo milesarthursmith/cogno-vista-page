@@ -4,7 +4,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Calculator, TrendingUp, Clock, DollarSign } from "lucide-react";
-
 const ROICalculator = () => {
   const [teamSize, setTeamSize] = useState(5);
   const [avgHourlyRate, setAvgHourlyRate] = useState(75);
@@ -12,29 +11,24 @@ const ROICalculator = () => {
   const [automationPercent, setAutomationPercent] = useState(60);
 
   // Calculations
-  const hoursAutomatedPerWeek = (hoursPerWeekManual * automationPercent) / 100;
+  const hoursAutomatedPerWeek = hoursPerWeekManual * automationPercent / 100;
   const totalHoursSavedPerWeek = hoursAutomatedPerWeek * teamSize;
   const totalHoursSavedPerMonth = totalHoursSavedPerWeek * 4.33;
   const totalHoursSavedPerYear = totalHoursSavedPerWeek * 52;
-  
   const costSavingsPerMonth = totalHoursSavedPerMonth * avgHourlyRate;
   const costSavingsPerYear = totalHoursSavedPerYear * avgHourlyRate;
-
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 0
     }).format(value);
   };
-
   const formatHours = (value: number) => {
     return Math.round(value).toLocaleString();
   };
-
-  return (
-    <section className="py-24">
+  return <section className="py-24">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -61,16 +55,8 @@ const ROICalculator = () => {
                     Team Size
                   </Label>
                   <div className="flex items-center gap-4">
-                    <Input
-                      id="teamSize"
-                      type="number"
-                      min="1"
-                      max="100"
-                      value={teamSize}
-                      onChange={(e) => setTeamSize(Number(e.target.value))}
-                      className="h-11"
-                    />
-                    <span className="text-muted-foreground whitespace-nowrap text-sm">people</span>
+                    <Input id="teamSize" type="number" min="1" max="100" value={teamSize} onChange={e => setTeamSize(Number(e.target.value))} className="h-11" />
+                    <span className="text-muted-foreground whitespace-nowrap text-sm font-mono">people</span>
                   </div>
                 </div>
 
@@ -81,17 +67,9 @@ const ROICalculator = () => {
                   <div className="flex items-center gap-4">
                     <div className="relative flex-1">
                       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">$</span>
-                      <Input
-                        id="hourlyRate"
-                        type="number"
-                        min="10"
-                        max="500"
-                        value={avgHourlyRate}
-                        onChange={(e) => setAvgHourlyRate(Number(e.target.value))}
-                        className="h-11 pl-7"
-                      />
+                      <Input id="hourlyRate" type="number" min="10" max="500" value={avgHourlyRate} onChange={e => setAvgHourlyRate(Number(e.target.value))} className="h-11 pl-7" />
                     </div>
-                    <span className="text-muted-foreground whitespace-nowrap text-sm">per hour</span>
+                    <span className="text-muted-foreground whitespace-nowrap text-sm font-mono">per hour</span>
                   </div>
                 </div>
 
@@ -100,19 +78,11 @@ const ROICalculator = () => {
                     Hours Spent on Manual Tasks (per person/week)
                   </Label>
                   <div className="space-y-4">
-                    <Slider
-                      id="manualHours"
-                      min={1}
-                      max={40}
-                      step={1}
-                      value={[hoursPerWeekManual]}
-                      onValueChange={([value]) => setHoursPerWeekManual(value)}
-                      className="cursor-pointer"
-                    />
+                    <Slider id="manualHours" min={1} max={40} step={1} value={[hoursPerWeekManual]} onValueChange={([value]) => setHoursPerWeekManual(value)} className="cursor-pointer" />
                     <div className="flex justify-between text-xs">
                       <span className="text-muted-foreground">1 hour</span>
                       <span className="text-foreground font-medium">{hoursPerWeekManual} hours</span>
-                      <span className="text-muted-foreground">40 hours</span>
+                      <span className="text-muted-foreground font-mono">40 hours</span>
                     </div>
                   </div>
                 </div>
@@ -122,15 +92,7 @@ const ROICalculator = () => {
                     Expected Automation Rate
                   </Label>
                   <div className="space-y-4">
-                    <Slider
-                      id="automation"
-                      min={10}
-                      max={90}
-                      step={5}
-                      value={[automationPercent]}
-                      onValueChange={([value]) => setAutomationPercent(value)}
-                      className="cursor-pointer"
-                    />
+                    <Slider id="automation" min={10} max={90} step={5} value={[automationPercent]} onValueChange={([value]) => setAutomationPercent(value)} className="cursor-pointer" />
                     <div className="flex justify-between text-xs">
                       <span className="text-muted-foreground">10%</span>
                       <span className="text-foreground font-medium">{automationPercent}%</span>
@@ -212,8 +174,6 @@ const ROICalculator = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ROICalculator;
