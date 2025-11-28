@@ -16,7 +16,7 @@ const Credibility = () => {
       <div className="container relative mx-auto px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-center">
-            I've designed and shipped production systems used by global GTM teams
+            We've designed and shipped production systems used by global GTM teams
           </h2>
           
           <div className="space-y-4 mt-12">
@@ -29,7 +29,7 @@ const Credibility = () => {
           </div>
           
           <p className="text-lg text-muted-foreground text-center mt-12 leading-relaxed">
-            These are examples from enterprise environments. I now apply the same thinking in a form that's accessible to{" "}
+            These are examples from enterprise environments. We now apply the same thinking in a form that's accessible to{" "}
             <span className="text-foreground font-medium">SMBs and mid-market teams</span>.
           </p>
         </div>

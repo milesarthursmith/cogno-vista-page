@@ -15,7 +15,7 @@ const Hero = () => {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8 text-sm font-medium">
               <Sparkles className="w-4 h-4" />
-              I build scalable AI agents, workflows and GTM systems that replace repetitive, manual work — not people.
+              We build scalable AI agents, workflows and GTM systems that replace repetitive, manual work — not people.
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
@@ -24,7 +24,7 @@ const Hero = () => {
             </h1>
             
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              I design and build AI agents, automations and workflows that take repetitive work off your team so they can spend more time with customers and less time in admin.
+              We design and build AI agents, automations and workflows that take repetitive work off your team so they can spend more time with customers and less time in admin.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -86,7 +86,7 @@ const Hero = () => {
 
         {/* Logo section */}
         <div className="mt-24 pt-12 border-t border-border/50">
-          <p className="text-center text-sm text-muted-foreground mb-8">Tools & platforms I work with</p>
+          <p className="text-center text-sm text-muted-foreground mb-8">Tools & platforms we work with</p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
             <div className="text-2xl font-bold text-foreground">Relevance AI</div>
             <div className="text-2xl font-bold text-foreground">n8n</div>
