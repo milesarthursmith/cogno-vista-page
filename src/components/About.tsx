@@ -2,8 +2,8 @@ import { CheckCircle2 } from "lucide-react";
 
 const experience = [
   "10+ years in B2B & B2C marketing (Red Bull, Universal Music, Lightspeed Commerce)",
-  "Work with SMB, mid-market and selected enterprise teams",
-  "Focus on practical AI systems that ship, not slideware",
+  "We work with SMB, mid-market and selected enterprise teams",
+  "We focus on practical AI systems that ship, not slideware",
   "Melbourne based, global remote-first approach"
 ];
 
@@ -19,10 +19,10 @@ const About = () => {
               About
             </div>
             <h2 className="mb-6 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
-              Miles Smith
+              Our Team
             </h2>
-            <p className="text-xl text-muted-foreground mb-2">AI GTM Engineer</p>
-            <p className="text-xl text-muted-foreground mb-8">Growth Marketer · Technical Consultant</p>
+            <p className="text-xl text-muted-foreground mb-2">AI GTM Engineers</p>
+            <p className="text-xl text-muted-foreground mb-8">Growth Marketing · Technical Consulting</p>
             
             <div className="space-y-4 mb-10">
               {experience.map((item, index) => (

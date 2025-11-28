@@ -11,7 +11,7 @@ const Positioning = () => {
             {" "}— not prototypes.
           </h2>
           <p className="text-xl text-muted-foreground">
-            I partner with sales, marketing and operations teams to design and ship AI that actually gets used.
+            We partner with sales, marketing and operations teams to design and ship AI that actually gets used.
           </p>
         </div>
       </div>

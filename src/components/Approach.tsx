@@ -13,7 +13,7 @@ const Approach = () => {
               Tailored to Your Scale
             </h2>
             <p className="text-xl text-muted-foreground">
-              Whether you're a growing SMB or an enterprise team, I adapt the approach to fit your needs
+              Whether you're a growing SMB or an enterprise team, we adapt the approach to fit your needs
             </p>
           </div>
 

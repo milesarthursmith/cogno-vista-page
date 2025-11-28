@@ -9,7 +9,7 @@ const steps = [
   {
     icon: Layers,
     title: "System Architecture",
-    description: "I design the agent ecosystem and workflows: which agents we need, what they can safely own, and where humans stay in the loop."
+    description: "We design the agent ecosystem and workflows: which agents we need, what they can safely own, and where humans stay in the loop."
   },
   {
     icon: Wrench,
