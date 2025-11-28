@@ -99,6 +99,9 @@ const ROICalculator = () => {
                       <span className="text-muted-foreground">90%</span>
                     </div>
                   </div>
+                  <p className="text-xs text-muted-foreground mt-3 font-serif leading-relaxed">
+                    Typical automation rates: Data entry & reporting (70-90%), Email triage & responses (50-70%), Research & analysis (40-60%), Creative review (30-50%)
+                  </p>
                 </div>
               </div>
             </Card>
