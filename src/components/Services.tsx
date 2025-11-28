@@ -33,17 +33,22 @@ const Services = () => {
         <div className="relative max-w-7xl">
           {/* Animated growth line */}
           <svg 
-            className="absolute inset-0 w-full h-full pointer-events-none" 
+            className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" 
             style={{ zIndex: 0 }}
-            viewBox="0 0 1000 400"
+            viewBox="0 0 1200 500"
             preserveAspectRatio="none"
           >
+            <defs>
+              <linearGradient id="lineGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
+                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
+              </linearGradient>
+            </defs>
             <path
-              d="M 50 350 Q 300 250, 500 150 T 950 50"
+              d="M 100 450 Q 400 300, 600 200 T 1100 100"
               fill="none"
-              stroke="hsl(var(--primary))"
-              strokeWidth="2"
-              opacity="0.2"
+              stroke="url(#lineGradient)"
+              strokeWidth="3"
               strokeDasharray="2000"
               strokeDashoffset="2000"
               className="animate-draw-line"
