@@ -30,32 +30,26 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="relative max-w-7xl">
-          {/* Animated growth line */}
+        <div className="relative max-w-7xl mx-auto">
+          {/* Animated growth line - testing visibility */}
           <svg 
-            className="absolute inset-0 w-full h-full pointer-events-none overflow-visible" 
-            style={{ zIndex: 0 }}
-            viewBox="0 0 1200 500"
+            className="absolute left-0 top-0 w-full h-full pointer-events-none" 
+            style={{ zIndex: 1 }}
+            viewBox="0 0 1200 600"
             preserveAspectRatio="none"
           >
-            <defs>
-              <linearGradient id="lineGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="hsl(var(--primary))" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.8" />
-              </linearGradient>
-            </defs>
             <path
-              d="M 100 450 Q 400 300, 600 200 T 1100 100"
+              d="M 50 550 Q 350 400, 600 250 T 1150 100"
               fill="none"
-              stroke="url(#lineGradient)"
-              strokeWidth="3"
-              strokeDasharray="2000"
-              strokeDashoffset="2000"
+              stroke="hsl(225, 100%, 60%)"
+              strokeWidth="6"
+              strokeDasharray="3000"
+              strokeDashoffset="3000"
               className="animate-draw-line"
             />
           </svg>
 
-          <div className="grid gap-8 lg:grid-cols-3 relative" style={{ zIndex: 1 }}>
+          <div className="grid gap-8 lg:grid-cols-3 relative" style={{ zIndex: 2 }}>
           {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow">
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
                 <service.icon className="h-6 w-6" />
