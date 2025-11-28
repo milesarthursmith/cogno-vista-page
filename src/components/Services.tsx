@@ -36,10 +36,12 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-background to-muted/30">
-      <div className="container mx-auto px-6">
+    <section id="services" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
+      
+      <div className="container relative mx-auto px-6">
         <div className="mb-20 text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/50 text-accent-foreground mb-6 text-sm font-medium">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 text-sm font-medium">
             Our Services
           </div>
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
@@ -54,9 +56,9 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={index}
-              className="group border border-border bg-card rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="group border border-border bg-card/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1 hover:border-primary/30"
             >
-              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+              <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
                 <service.icon className="h-7 w-7" />
               </div>
               <h3 className="mb-3 text-xl font-bold">{service.title}</h3>

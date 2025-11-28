@@ -11,11 +11,13 @@ const benefits = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-6">
+    <section id="about" className="py-24 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5" />
+      
+      <div className="container relative mx-auto px-6">
         <div className="grid gap-16 lg:grid-cols-2 items-center max-w-7xl mx-auto">
           <div>
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/50 text-accent-foreground mb-6 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 text-sm font-medium">
               Why Choose Us
             </div>
             <h2 className="mb-6 text-4xl md:text-5xl font-bold tracking-tight leading-tight">
@@ -37,18 +39,18 @@ const About = () => {
           </div>
           
           <div className="relative">
-            <div className="rounded-3xl bg-gradient-to-br from-primary/10 to-accent/10 p-12 backdrop-blur-sm border border-border shadow-2xl">
+            <div className="rounded-3xl bg-gradient-to-br from-primary/20 via-primary/10 to-transparent p-12 backdrop-blur-sm border border-primary/20 shadow-2xl shadow-primary/10">
               <div className="space-y-6">
-                <div className="rounded-2xl bg-card border border-border p-8 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">500+</div>
+                <div className="rounded-2xl bg-card/80 backdrop-blur-sm border border-border p-8 shadow-xl hover:shadow-2xl hover:shadow-primary/10 transition-all hover:-translate-y-1">
+                  <div className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">500+</div>
                   <div className="font-medium text-muted-foreground">Projects Delivered</div>
                 </div>
-                <div className="rounded-2xl bg-card border border-border p-8 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">98%</div>
+                <div className="rounded-2xl bg-card/80 backdrop-blur-sm border border-border p-8 shadow-xl hover:shadow-2xl hover:shadow-primary/10 transition-all hover:-translate-y-1">
+                  <div className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">98%</div>
                   <div className="font-medium text-muted-foreground">Client Satisfaction</div>
                 </div>
-                <div className="rounded-2xl bg-card border border-border p-8 shadow-lg hover:shadow-xl transition-shadow">
-                  <div className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">$50M+</div>
+                <div className="rounded-2xl bg-card/80 backdrop-blur-sm border border-border p-8 shadow-xl hover:shadow-2xl hover:shadow-primary/10 transition-all hover:-translate-y-1">
+                  <div className="text-5xl font-bold mb-3 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">$50M+</div>
                   <div className="font-medium text-muted-foreground">Value Generated</div>
                 </div>
               </div>
