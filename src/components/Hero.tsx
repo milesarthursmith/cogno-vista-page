@@ -1,15 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-
 const Hero = () => {
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
+  return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
       
       <div className="container relative z-10 mx-auto px-6 py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">
-              AI consulting <span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Scale your sales, marketing and operations without adding headcount.<span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
             </h1>
             
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
@@ -17,18 +14,11 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12"
-              >
+              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12">
                 Book a 15-minute call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline"
-                className="rounded-lg px-8 h-12 border-border hover:bg-secondary"
-              >
+              <Button size="lg" variant="outline" className="rounded-lg px-8 h-12 border-border hover:bg-secondary">
                 See example agents
               </Button>
             </div>
@@ -36,22 +26,10 @@ const Hero = () => {
 
           <div className="relative hidden lg:block">
             {/* Animated growth line */}
-            <svg 
-              className="absolute left-0 top-0 w-full h-full pointer-events-none" 
-              style={{ zIndex: 0 }}
-              viewBox="0 0 100 100"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M 5 95 Q 20 80, 35 70 T 65 45 T 95 15"
-                fill="none"
-                stroke="hsl(225, 100%, 60%)"
-                strokeWidth="1"
-                opacity="0.4"
-                strokeDasharray="300"
-                strokeDashoffset="300"
-                className="animate-draw-line"
-              />
+            <svg className="absolute left-0 top-0 w-full h-full pointer-events-none" style={{
+            zIndex: 0
+          }} viewBox="0 0 100 100" preserveAspectRatio="none">
+              <path d="M 5 95 Q 20 80, 35 70 T 65 45 T 95 15" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="1" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" className="animate-draw-line" />
             </svg>
 
             <div className="relative w-full aspect-square">
@@ -138,8 +116,6 @@ const Hero = () => {
           animation: draw-line 3s ease-out forwards;
         }
       `}</style>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
