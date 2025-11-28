@@ -1,15 +1,7 @@
 import { CheckCircle2 } from "lucide-react";
-
-const experience = [
-  "10+ years in B2B & B2C marketing (Red Bull, Universal Music, Lightspeed Commerce)",
-  "We work with SMB, mid-market and selected enterprise teams",
-  "We focus on practical AI systems that ship, not slideware",
-  "Melbourne based, global remote-first approach"
-];
-
+const experience = ["10+ years in B2B & B2C marketing (Red Bull, Universal Music, Lightspeed Commerce)", "We work with SMB, mid-market and selected enterprise teams", "We focus on practical AI systems that ship, not slideware", "Melbourne based, global remote-first approach"];
 const About = () => {
-  return (
-    <section id="about" className="py-24 relative overflow-hidden">
+  return <section id="about" className="py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5" />
       
       <div className="container relative mx-auto px-6">
@@ -25,43 +17,13 @@ const About = () => {
             <p className="text-xl text-muted-foreground mb-8">Growth Marketing · Technical Consulting</p>
             
             <div className="space-y-4 mb-10">
-              {experience.map((item, index) => (
-                <div key={index} className="flex items-start gap-3">
+              {experience.map((item, index) => <div key={index} className="flex items-start gap-3">
                   <CheckCircle2 className="h-6 w-6 text-primary flex-shrink-0 mt-0.5" />
                   <span className="text-lg">{item}</span>
-                </div>
-              ))}
+                </div>)}
             </div>
 
-            <div className="space-y-3 bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-muted-foreground">Phone:</span>
-                <a href="tel:0406629203" className="text-foreground hover:text-primary transition-colors">
-                  0406 629 203
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-muted-foreground">Email:</span>
-                <a href="mailto:milessmith76@gmail.com" className="text-foreground hover:text-primary transition-colors">
-                  milessmith76@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-muted-foreground">LinkedIn:</span>
-                <a 
-                  href="https://linkedin.com/in/milesarthursmith" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-foreground hover:text-primary transition-colors"
-                >
-                  linkedin.com/in/milesarthursmith
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium text-muted-foreground">Location:</span>
-                <span className="text-foreground">Melbourne / Global (remote-first)</span>
-              </div>
-            </div>
+            
           </div>
           
           <div className="relative">
@@ -84,8 +46,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
