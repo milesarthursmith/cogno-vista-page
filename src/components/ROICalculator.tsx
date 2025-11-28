@@ -34,32 +34,30 @@ const ROICalculator = () => {
   };
 
   return (
-    <section className="py-24 relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-primary/5" />
-      
-      <div className="container relative mx-auto px-6">
+    <section className="py-24">
+      <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border text-muted-foreground mb-6 text-sm">
               <Calculator className="w-4 h-4" />
               ROI Calculator
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-serif font-normal tracking-tight mb-4">
               Calculate Your Potential Savings
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               See how much time and money AI automation could save your team
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Input Section */}
-            <Card className="border border-border bg-card/50 backdrop-blur-sm rounded-2xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold mb-8">Your Current Situation</h3>
+            <Card className="border border-border bg-card p-8">
+              <h3 className="text-xl font-medium mb-8">Your Current Situation</h3>
               
               <div className="space-y-8">
                 <div>
-                  <Label htmlFor="teamSize" className="text-base font-semibold mb-3 block">
+                  <Label htmlFor="teamSize" className="text-sm font-medium mb-2 block">
                     Team Size
                   </Label>
                   <div className="flex items-center gap-4">
@@ -70,19 +68,19 @@ const ROICalculator = () => {
                       max="100"
                       value={teamSize}
                       onChange={(e) => setTeamSize(Number(e.target.value))}
-                      className="rounded-xl bg-background/50 border-border h-12"
+                      className="h-11"
                     />
-                    <span className="text-muted-foreground whitespace-nowrap">people</span>
+                    <span className="text-muted-foreground whitespace-nowrap text-sm">people</span>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="hourlyRate" className="text-base font-semibold mb-3 block">
+                  <Label htmlFor="hourlyRate" className="text-sm font-medium mb-2 block">
                     Average Hourly Rate
                   </Label>
                   <div className="flex items-center gap-4">
                     <div className="relative flex-1">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground">$</span>
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-sm">$</span>
                       <Input
                         id="hourlyRate"
                         type="number"
@@ -90,15 +88,15 @@ const ROICalculator = () => {
                         max="500"
                         value={avgHourlyRate}
                         onChange={(e) => setAvgHourlyRate(Number(e.target.value))}
-                        className="rounded-xl bg-background/50 border-border h-12 pl-8"
+                        className="h-11 pl-7"
                       />
                     </div>
-                    <span className="text-muted-foreground whitespace-nowrap">per hour</span>
+                    <span className="text-muted-foreground whitespace-nowrap text-sm">per hour</span>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="manualHours" className="text-base font-semibold mb-3 block">
+                  <Label htmlFor="manualHours" className="text-sm font-medium mb-2 block">
                     Hours Spent on Manual Tasks (per person/week)
                   </Label>
                   <div className="space-y-4">
@@ -111,16 +109,16 @@ const ROICalculator = () => {
                       onValueChange={([value]) => setHoursPerWeekManual(value)}
                       className="cursor-pointer"
                     />
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-xs">
                       <span className="text-muted-foreground">1 hour</span>
-                      <span className="text-primary font-semibold">{hoursPerWeekManual} hours</span>
+                      <span className="text-foreground font-medium">{hoursPerWeekManual} hours</span>
                       <span className="text-muted-foreground">40 hours</span>
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <Label htmlFor="automation" className="text-base font-semibold mb-3 block">
+                  <Label htmlFor="automation" className="text-sm font-medium mb-2 block">
                     Expected Automation Rate
                   </Label>
                   <div className="space-y-4">
@@ -133,9 +131,9 @@ const ROICalculator = () => {
                       onValueChange={([value]) => setAutomationPercent(value)}
                       className="cursor-pointer"
                     />
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-xs">
                       <span className="text-muted-foreground">10%</span>
-                      <span className="text-primary font-semibold">{automationPercent}%</span>
+                      <span className="text-foreground font-medium">{automationPercent}%</span>
                       <span className="text-muted-foreground">90%</span>
                     </div>
                   </div>
@@ -145,68 +143,68 @@ const ROICalculator = () => {
 
             {/* Results Section */}
             <div className="space-y-6">
-              <Card className="border border-primary/30 bg-gradient-to-br from-primary/10 to-primary/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-primary/10">
+              <Card className="border border-border bg-card p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="h-12 w-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                    <Clock className="h-6 w-6 text-primary" />
+                  <div className="h-10 w-10 rounded-md border border-border flex items-center justify-center">
+                    <Clock className="h-5 w-5 text-foreground" />
                   </div>
-                  <h3 className="text-2xl font-bold">Time Savings</h3>
+                  <h3 className="text-xl font-medium">Time Savings</h3>
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6">
-                    <div className="text-sm text-muted-foreground mb-2">Per Month</div>
-                    <div className="text-4xl font-bold text-primary">
+                  <div className="border border-border rounded-md p-5">
+                    <div className="text-xs text-muted-foreground mb-2">Per Month</div>
+                    <div className="text-3xl font-semibold text-foreground">
                       {formatHours(totalHoursSavedPerMonth)}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">hours saved</div>
+                    <div className="text-xs text-muted-foreground mt-1">hours saved</div>
                   </div>
                   
-                  <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6">
-                    <div className="text-sm text-muted-foreground mb-2">Per Year</div>
-                    <div className="text-4xl font-bold text-primary">
+                  <div className="border border-border rounded-md p-5">
+                    <div className="text-xs text-muted-foreground mb-2">Per Year</div>
+                    <div className="text-3xl font-semibold text-foreground">
                       {formatHours(totalHoursSavedPerYear)}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">hours saved</div>
+                    <div className="text-xs text-muted-foreground mt-1">hours saved</div>
                   </div>
                 </div>
               </Card>
 
-              <Card className="border border-primary/30 bg-gradient-to-br from-accent/10 to-accent/5 backdrop-blur-sm rounded-2xl p-8 shadow-lg shadow-accent/10">
+              <Card className="border border-border bg-card p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="h-12 w-12 rounded-xl bg-accent/20 flex items-center justify-center">
-                    <DollarSign className="h-6 w-6 text-accent" />
+                  <div className="h-10 w-10 rounded-md border border-border flex items-center justify-center">
+                    <DollarSign className="h-5 w-5 text-foreground" />
                   </div>
-                  <h3 className="text-2xl font-bold">Cost Savings</h3>
+                  <h3 className="text-xl font-medium">Cost Savings</h3>
                 </div>
                 
                 <div className="space-y-4">
-                  <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6">
-                    <div className="text-sm text-muted-foreground mb-2">Per Month</div>
-                    <div className="text-4xl font-bold text-accent">
+                  <div className="border border-border rounded-md p-5">
+                    <div className="text-xs text-muted-foreground mb-2">Per Month</div>
+                    <div className="text-3xl font-semibold text-foreground">
                       {formatCurrency(costSavingsPerMonth)}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">saved</div>
+                    <div className="text-xs text-muted-foreground mt-1">saved</div>
                   </div>
                   
-                  <div className="bg-card/50 backdrop-blur-sm rounded-xl p-6">
-                    <div className="text-sm text-muted-foreground mb-2">Per Year</div>
-                    <div className="text-4xl font-bold text-accent">
+                  <div className="border border-border rounded-md p-5">
+                    <div className="text-xs text-muted-foreground mb-2">Per Year</div>
+                    <div className="text-3xl font-semibold text-foreground">
                       {formatCurrency(costSavingsPerYear)}
                     </div>
-                    <div className="text-sm text-muted-foreground mt-1">saved</div>
+                    <div className="text-xs text-muted-foreground mt-1">saved</div>
                   </div>
                 </div>
               </Card>
 
-              <div className="bg-card/50 backdrop-blur-sm border border-border rounded-xl p-6">
+              <div className="bg-muted/30 border border-border rounded-md p-5">
                 <div className="flex items-start gap-3">
-                  <TrendingUp className="h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                  <TrendingUp className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
                   <div className="text-sm text-muted-foreground leading-relaxed">
                     <strong className="text-foreground">Based on your inputs:</strong> Your team could save approximately{" "}
-                    <span className="text-primary font-semibold">{formatHours(totalHoursSavedPerWeek)} hours per week</span>{" "}
+                    <span className="text-foreground font-medium">{formatHours(totalHoursSavedPerWeek)} hours per week</span>{" "}
                     and reduce operational costs by{" "}
-                    <span className="text-accent font-semibold">{formatCurrency(costSavingsPerMonth)} per month</span>.
+                    <span className="text-foreground font-medium">{formatCurrency(costSavingsPerMonth)} per month</span>.
                   </div>
                 </div>
               </div>
