@@ -11,7 +11,7 @@ const Approach = () => {
             <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
               Tailored to Your Scale
             </h2>
-            <p className="text-lg text-muted-foreground">
+            <p className="text-lg text-muted-foreground font-serif">
               Whether you're a growing SMB or an enterprise team, we adapt the approach to fit your needs
             </p>
           </div>
@@ -22,7 +22,7 @@ const Approach = () => {
                 <Rocket className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-serif font-medium mb-4">For SMB & Mid-Market Teams</h3>
-              <ul className="space-y-4 text-muted-foreground">
+              <ul className="space-y-4 text-muted-foreground font-serif">
                 <li className="flex items-start gap-3">
                   <span className="text-foreground mt-1">•</span>
                   <span>Start with a narrow, high-ROI workflow (e.g. meeting notes, lead enrichment, or outreach agent)</span>
@@ -43,7 +43,7 @@ const Approach = () => {
                 <Building2 className="h-6 w-6" />
               </div>
               <h3 className="text-2xl font-serif font-medium mb-4">For Enterprise Teams</h3>
-              <ul className="space-y-4 text-muted-foreground">
+              <ul className="space-y-4 text-muted-foreground font-serif">
                 <li className="flex items-start gap-3">
                   <span className="text-foreground mt-1">•</span>
                   <span>Work as a specialist alongside internal data/engineering teams</span>
