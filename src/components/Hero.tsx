@@ -23,11 +23,11 @@ const Hero = () => {
           </div>
 
           <div className="relative hidden lg:block">
-            {/* Animated growth line */}
+            {/* Animated growth line - jagged like TrendingUp icon */}
             <svg className="absolute left-0 top-0 w-full h-full pointer-events-none" style={{
             zIndex: 0
           }} viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 5 95 Q 20 80, 35 70 T 65 45 T 95 15" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="1" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" className="animate-draw-line" />
+              <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 50 L 55 50 L 55 40 L 65 40 L 65 30 L 75 30 L 75 20 L 85 20 L 85 10 L 95 10" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="1.5" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" className="animate-draw-line" />
             </svg>
 
             <div className="relative w-full aspect-square">
