@@ -7,19 +7,51 @@ const ProblemFraming = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-card border border-border rounded-xl p-8">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="h-10 w-10 rounded-lg bg-red-50 flex items-center justify-center">
-                  <TrendingDown className="h-5 w-5 text-red-600" />
+            <div className="space-y-6">
+              <div className="bg-card border border-border rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-lg bg-red-50 flex items-center justify-center">
+                    <TrendingDown className="h-5 w-5 text-red-600" />
+                  </div>
+                  <div className="text-4xl font-serif font-medium text-red-600">28-35%</div>
                 </div>
-                <div className="text-4xl font-serif font-medium text-red-600">28-35%</div>
+                <p className="text-muted-foreground font-serif">
+                  Time sales reps spend actually selling
+                </p>
+                <p className="text-sm text-muted-foreground mt-2 font-serif">
+                  According to Salesforce's State of Sales
+                </p>
               </div>
-              <p className="text-muted-foreground font-serif">
-                Time sales reps spend actually selling
-              </p>
-              <p className="text-sm text-muted-foreground mt-2 font-serif">
-                According to Salesforce's State of Sales
-              </p>
+
+              <div className="bg-card border border-border rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-lg bg-red-50 flex items-center justify-center">
+                    <TrendingDown className="h-5 w-5 text-red-600" />
+                  </div>
+                  <div className="text-4xl font-serif font-medium text-red-600">40%</div>
+                </div>
+                <p className="text-muted-foreground font-serif">
+                  Time marketers spend on administrative tasks
+                </p>
+                <p className="text-sm text-muted-foreground mt-2 font-serif">
+                  According to HubSpot's Marketing Statistics
+                </p>
+              </div>
+
+              <div className="bg-card border border-border rounded-xl p-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="h-10 w-10 rounded-lg bg-red-50 flex items-center justify-center">
+                    <TrendingDown className="h-5 w-5 text-red-600" />
+                  </div>
+                  <div className="text-4xl font-serif font-medium text-red-600">60%</div>
+                </div>
+                <p className="text-muted-foreground font-serif">
+                  Time operations teams spend on manual data work
+                </p>
+                <p className="text-sm text-muted-foreground mt-2 font-serif">
+                  According to McKinsey Global Institute
+                </p>
+              </div>
             </div>
 
             <div>
