@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, TrendingUp } from "lucide-react";
 const Header = () => {
   return <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-2">
+            <TrendingUp className="h-5 w-5" />
             <span className="font-medium text-xl font-mono">boring stuff</span>
           </div>
           
