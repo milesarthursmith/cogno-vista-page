@@ -21,7 +21,7 @@ const Index = () => {
       <ROICalculator />
       <HowItWorks />
       <Approach />
-      <About />
+      
       <Contact />
       <Footer />
     </div>;
