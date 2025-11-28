@@ -15,16 +15,16 @@ const Hero = () => {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-8 text-sm font-medium">
               <Sparkles className="w-4 h-4" />
-              AI-Powered Business Transformation
+              I build scalable AI agents, workflows and GTM systems that replace repetitive, manual work — not people.
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
-              The AI Decision Platform built for{" "}
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">control and scale</span>
+              Scale your sales, marketing and operations{" "}
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">without adding headcount</span>
             </h1>
             
             <p className="text-xl text-muted-foreground mb-10 leading-relaxed">
-              Automate risk workflows, launch faster, and adapt instantly with agentic AI powering every decision.
+              I design and build AI agents, automations and workflows that take repetitive work off your team so they can spend more time with customers and less time in admin.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
@@ -32,7 +32,7 @@ const Hero = () => {
                 size="lg" 
                 className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl px-8 h-14 text-lg shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
               >
-                See the Platform in Action
+                Book a 15-minute call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button 
@@ -40,7 +40,7 @@ const Hero = () => {
                 variant="outline"
                 className="rounded-xl px-8 h-14 text-lg border-border hover:bg-muted transition-all"
               >
-                Platform Evaluation Guide
+                See example agents
               </Button>
             </div>
           </div>
@@ -86,13 +86,12 @@ const Hero = () => {
 
         {/* Logo section */}
         <div className="mt-24 pt-12 border-t border-border/50">
-          <p className="text-center text-sm text-muted-foreground mb-8">Trusted by leading companies</p>
+          <p className="text-center text-sm text-muted-foreground mb-8">Tools & platforms I work with</p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-40">
-            <div className="text-2xl font-bold text-foreground">APCU</div>
-            <div className="text-2xl font-bold text-foreground">Jeeves</div>
-            <div className="text-2xl font-bold text-foreground">Access Finance</div>
-            <div className="text-2xl font-bold text-foreground">NuBank</div>
-            <div className="text-2xl font-bold text-foreground">Zilch</div>
+            <div className="text-2xl font-bold text-foreground">Relevance AI</div>
+            <div className="text-2xl font-bold text-foreground">n8n</div>
+            <div className="text-2xl font-bold text-foreground">Google Cloud</div>
+            <div className="text-2xl font-bold text-foreground">Clay</div>
           </div>
         </div>
       </div>

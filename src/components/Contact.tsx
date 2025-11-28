@@ -12,13 +12,13 @@ const Contact = () => {
         <div className="mx-auto max-w-5xl">
           <div className="mb-20 text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-6 text-sm font-medium">
-              Get In Touch
+              Let's Talk
             </div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
-              Start Your AI Journey Today
+              Ready to take the busywork off your GTM team's plate?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Let's discuss how we can help transform your business with AI
+              Let's identify one workflow we can automate in the next 30 days.
             </p>
           </div>
 
@@ -61,25 +61,36 @@ const Contact = () => {
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
                   <Mail className="h-6 w-6" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold">Email Us</h3>
-                <p className="text-muted-foreground">contact@aiconsulting.com</p>
+                <h3 className="mb-2 text-lg font-bold">Email</h3>
+                <a href="mailto:milessmith76@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">
+                  milessmith76@gmail.com
+                </a>
               </div>
 
               <div className="group rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all hover:-translate-y-1 hover:border-primary/30">
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
                   <Phone className="h-6 w-6" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold">Call Us</h3>
-                <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                <h3 className="mb-2 text-lg font-bold">Phone</h3>
+                <a href="tel:0406629203" className="text-muted-foreground hover:text-primary transition-colors">
+                  0406 629 203
+                </a>
               </div>
 
               <div className="group rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 shadow-lg hover:shadow-2xl hover:shadow-primary/10 transition-all hover:-translate-y-1 hover:border-primary/30">
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300 group-hover:scale-110">
                   <MapPin className="h-6 w-6" />
                 </div>
-                <h3 className="mb-2 text-lg font-bold">Visit Us</h3>
-                <p className="text-muted-foreground">123 AI Street, Tech City, TC 12345</p>
+                <h3 className="mb-2 text-lg font-bold">Location</h3>
+                <p className="text-muted-foreground">Melbourne / Global (remote-first)</p>
               </div>
+
+              <Button 
+                size="lg" 
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl h-14 text-lg shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all"
+              >
+                Book a 15-minute call
+              </Button>
             </div>
           </div>
         </div>
