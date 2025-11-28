@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-6 py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Remove the repetitive work. Reveal the opportunities.<span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Automate the boring stuff and unlock new possibilities. <span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
             </h1>
             
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">From sales, marketing and ops - we design and build AI agents, automations and workflows that take repetitive work off your team.</p>
