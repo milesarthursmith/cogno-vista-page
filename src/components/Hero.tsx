@@ -1,12 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Wrench, TrendingUp } from "lucide-react";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
       
       <div className="container relative z-10 mx-auto px-6 py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Automate the boring stuff and unlock new possibilities. <span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Automate the boring stuff and unlock new possibilities.
             </h1>
             
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-serif">From sales, marketing and ops - we design and build AI agents, automations and workflows that take repetitive work off your team.</p>
@@ -35,7 +35,7 @@ const Hero = () => {
               <div className="absolute top-0 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-56 animate-float">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-foreground" />
+                    <Bot className="w-4 h-4 text-foreground" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 01</div>
@@ -47,7 +47,7 @@ const Hero = () => {
               <div className="absolute top-24 left-1/2 -translate-x-1/2 bg-card border border-border rounded-xl p-4 shadow-sm w-56 animate-float-delayed">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-foreground" />
+                    <Wrench className="w-4 h-4 text-foreground" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 02</div>
@@ -59,7 +59,7 @@ const Hero = () => {
               <div className="absolute top-48 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-56 animate-float-slow">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-8 h-8 rounded-lg bg-secondary flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 text-foreground" />
+                    <TrendingUp className="w-4 h-4 text-foreground" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 03</div>
