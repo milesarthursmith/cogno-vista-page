@@ -14,10 +14,10 @@ const ProblemFraming = () => {
                 </div>
                 <div className="text-4xl font-serif font-medium text-red-600">28-35%</div>
               </div>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground font-serif">
                 Time sales reps spend actually selling
               </p>
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-sm text-muted-foreground mt-2 font-serif">
                 According to Salesforce's State of Sales
               </p>
             </div>
@@ -34,7 +34,7 @@ const ProblemFraming = () => {
                   </div>
                   <div>
                     <h3 className="font-serif font-medium text-lg mb-2">Efficiency</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground font-serif">
                       Remove repetitive work, clean data, prepare context automatically.
                     </p>
                   </div>
@@ -46,7 +46,7 @@ const ProblemFraming = () => {
                   </div>
                   <div>
                     <h3 className="font-serif font-medium text-lg mb-2">Opportunity</h3>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground font-serif">
                       Surface insights you couldn't see before — patterns in calls, win/loss drivers, message performance.
                     </p>
                   </div>

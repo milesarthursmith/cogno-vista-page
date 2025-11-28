@@ -10,11 +10,11 @@ const Credibility = () => {
           <div className="space-y-4 mt-12">
             {achievements.map((achievement, index) => <div key={index} className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <CheckCircle2 className="h-5 w-5 text-foreground flex-shrink-0 mt-0.5" />
-                <span className="text-base font-mono">{achievement}</span>
+                <span className="text-base font-serif">{achievement}</span>
               </div>)}
           </div>
           
-          <p className="text-base text-muted-foreground mt-12 leading-relaxed">
+          <p className="text-base text-muted-foreground mt-12 leading-relaxed font-serif">
             These are examples from enterprise environments. We now apply the same thinking in a form that's accessible to{" "}
             <span className="text-foreground">SMBs and mid-market teams</span>.
           </p>

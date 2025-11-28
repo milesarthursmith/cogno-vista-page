@@ -45,7 +45,7 @@ const ROICalculator = () => {
             <h2 className="text-4xl md:text-5xl font-serif font-normal tracking-tight mb-4">
               Calculate Your Potential Savings
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-serif">
               See how much time and money AI automation could save your team
             </p>
           </div>
@@ -53,11 +53,11 @@ const ROICalculator = () => {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Input Section */}
             <Card className="border border-border bg-card p-8">
-              <h3 className="text-xl font-medium mb-8">Your Current Situation</h3>
+              <h3 className="text-xl font-medium mb-8 font-mono">Your Current Situation</h3>
               
               <div className="space-y-8">
                 <div>
-                  <Label htmlFor="teamSize" className="text-sm font-medium mb-2 block">
+                  <Label htmlFor="teamSize" className="text-sm font-medium mb-2 block font-mono">
                     Team Size
                   </Label>
                   <div className="flex items-center gap-4">
@@ -75,7 +75,7 @@ const ROICalculator = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="hourlyRate" className="text-sm font-medium mb-2 block">
+                  <Label htmlFor="hourlyRate" className="text-sm font-medium mb-2 block font-mono">
                     Average Hourly Rate
                   </Label>
                   <div className="flex items-center gap-4">
@@ -96,7 +96,7 @@ const ROICalculator = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="manualHours" className="text-sm font-medium mb-2 block">
+                  <Label htmlFor="manualHours" className="text-sm font-medium mb-2 block font-mono">
                     Hours Spent on Manual Tasks (per person/week)
                   </Label>
                   <div className="space-y-4">
@@ -118,7 +118,7 @@ const ROICalculator = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="automation" className="text-sm font-medium mb-2 block">
+                  <Label htmlFor="automation" className="text-sm font-medium mb-2 block font-mono">
                     Expected Automation Rate
                   </Label>
                   <div className="space-y-4">
@@ -148,7 +148,7 @@ const ROICalculator = () => {
                   <div className="h-10 w-10 rounded-md border border-border flex items-center justify-center">
                     <Clock className="h-5 w-5 text-foreground" />
                   </div>
-                  <h3 className="text-xl font-medium">Time Savings</h3>
+                  <h3 className="text-xl font-medium font-mono">Time Savings</h3>
                 </div>
                 
                 <div className="space-y-4">
@@ -175,7 +175,7 @@ const ROICalculator = () => {
                   <div className="h-10 w-10 rounded-md border border-border flex items-center justify-center">
                     <DollarSign className="h-5 w-5 text-foreground" />
                   </div>
-                  <h3 className="text-xl font-medium">Cost Savings</h3>
+                  <h3 className="text-xl font-medium font-mono">Cost Savings</h3>
                 </div>
                 
                 <div className="space-y-4">
@@ -200,7 +200,7 @@ const ROICalculator = () => {
               <div className="bg-muted/30 border border-border rounded-md p-5">
                 <div className="flex items-start gap-3">
                   <TrendingUp className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                  <div className="text-sm text-muted-foreground leading-relaxed">
+                  <div className="text-sm text-muted-foreground leading-relaxed font-serif">
                     <strong className="text-foreground">Based on your inputs:</strong> Your team could save approximately{" "}
                     <span className="text-foreground font-medium">{formatHours(totalHoursSavedPerWeek)} hours per week</span>{" "}
                     and reduce operational costs by{" "}
