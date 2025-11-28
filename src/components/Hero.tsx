@@ -81,14 +81,10 @@ const Hero = () => {
             <div className="text-xl font-medium text-foreground">n8n</div>
             <div className="text-xl font-medium text-foreground">Google Cloud</div>
             <div className="text-xl font-medium text-foreground">Clay</div>
-          </div>
-        </div><div className="mt-32 pt-12 border-t border-border">
-          <p className="text-center text-sm text-muted-foreground mb-8">Tools & platforms we work with</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-50">
-            <div className="text-xl font-medium text-foreground">Relevance AI</div>
-            <div className="text-xl font-medium text-foreground">n8n</div>
-            <div className="text-xl font-medium text-foreground">Google Cloud</div>
-            <div className="text-xl font-medium text-foreground">Clay</div>
+            <div className="text-xl font-medium text-foreground">Salesforce</div>
+            <div className="text-xl font-medium text-foreground">AirOps</div>
+            <div className="text-xl font-medium text-foreground">Google Ads</div>
+            <div className="text-xl font-medium text-foreground">Meta Ads</div>
           </div>
         </div>
       </div>
