@@ -5,7 +5,7 @@ const Credibility = () => {
       
       <div className="container mx-auto px-6">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-serif font-medium mb-6">We've designed and shipped production systems used by global teams</h2>
+          <h2 className="text-3xl md:text-4xl font-serif font-medium mb-6">We've designed and shipped systems used by startups, SMBs and enterprises. </h2>
           
           <div className="space-y-4 mt-12">
             {achievements.map((achievement, index) => <div key={index} className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
