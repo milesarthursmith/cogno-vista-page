@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid gap-12 md:grid-cols-4 max-w-7xl mx-auto">
           <div>
-            <span className="font-mono font-medium text-xl">boring stuff</span>
+            <span className="font-mono font-medium text-xl">humanstuff.ai</span>
             <p className="text-sm text-muted-foreground leading-relaxed mt-4 font-serif">
               AI consulting for practical, production-ready systems.
             </p>
@@ -56,7 +56,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-          <p className="font-serif">&copy; 2025 boring stuff. All rights reserved.</p>
+          <p className="font-serif">&copy; 2025 humanstuff.ai. All rights reserved.</p>
         </div>
       </div>
     </footer>
