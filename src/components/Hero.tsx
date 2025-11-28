@@ -43,13 +43,13 @@ const Hero = () => {
               preserveAspectRatio="none"
             >
               <path
-                d="M 10 90 L 50 50 L 90 10"
+                d="M 5 95 Q 20 80, 35 70 T 65 45 T 95 15"
                 fill="none"
                 stroke="hsl(225, 100%, 60%)"
-                strokeWidth="0.8"
-                opacity="0.3"
-                strokeDasharray="200"
-                strokeDashoffset="200"
+                strokeWidth="1"
+                opacity="0.4"
+                strokeDasharray="300"
+                strokeDashoffset="300"
                 className="animate-draw-line"
               />
             </svg>
