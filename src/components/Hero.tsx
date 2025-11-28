@@ -65,7 +65,7 @@ const Hero = () => {
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 03</div>
-                    <div className="text-sm font-medium">AI-Powered Marketing</div>
+                    <div className="text-sm font-medium">AI-Powered Growth Marketing</div>
                   </div>
                 </div>
               </div>
