@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="container relative z-10 mx-auto px-6 py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Scale your sales, marketing and operations without adding headcount.<span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">Free your team from the boring stuff. Let them focus on what matters.<span className="text-muted-foreground">for SaaS and B2B teams who want</span> practical, production-ready systems <span className="text-muted-foreground">— not prototypes.</span>
             </h1>
             
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
