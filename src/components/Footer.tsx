@@ -2,7 +2,7 @@ import { Linkedin, Twitter, Github } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="border-t border-border bg-muted/30 py-16">
+    <footer className="border-t border-border bg-card/30 backdrop-blur-sm py-16">
       <div className="container mx-auto px-6">
         <div className="grid gap-12 md:grid-cols-4 max-w-7xl mx-auto">
           <div>
@@ -42,19 +42,19 @@ const Footer = () => {
             <div className="flex gap-3">
               <a 
                 href="#" 
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
               >
                 <Twitter className="h-5 w-5" />
               </a>
               <a 
                 href="#" 
-                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-secondary hover:bg-primary hover:text-primary-foreground transition-all"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
               >
                 <Github className="h-5 w-5" />
               </a>
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-border pt-8 text-center text-sm text-muted-foreground">
+        <div className="mt-12 border-t border-border/50 pt-8 text-center text-sm text-muted-foreground">
           <p>&copy; 2025 AI Consulting. All rights reserved.</p>
         </div>
       </div>
