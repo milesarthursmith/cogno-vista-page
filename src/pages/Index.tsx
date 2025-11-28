@@ -10,13 +10,11 @@ import Approach from "@/components/Approach";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-
 const Index = () => {
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Header />
       <Hero />
-      <Positioning />
+      
       <Credibility />
       <Services />
       <ProblemFraming />
@@ -26,8 +24,6 @@ const Index = () => {
       <About />
       <Contact />
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
