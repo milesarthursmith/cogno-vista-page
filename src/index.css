@@ -92,6 +92,13 @@ All colors MUST be HSL.
     --tracking-normal: 0em;
 
     --spacing: 0.25rem;
+
+    /* Abstract art color palette */
+    --art-cream: 40 30% 95%;
+    --art-beige: 35 25% 88%;
+    --art-coral: 15 60% 80%;
+    --art-sand: 30 20% 85%;
+    --art-blush: 10 50% 85%;
   }
 
   .dark {
@@ -164,5 +171,31 @@ All colors MUST be HSL.
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-serif);
     font-weight: 500;
+  }
+}
+
+@layer utilities {
+  @keyframes blob-float {
+    0%, 100% { 
+      transform: translate(0, 0) scale(1); 
+    }
+    33% { 
+      transform: translate(10px, -10px) scale(1.02); 
+    }
+    66% { 
+      transform: translate(-5px, 5px) scale(0.98); 
+    }
+  }
+
+  .animate-blob-float {
+    animation: blob-float 20s ease-in-out infinite;
+  }
+
+  .animate-blob-float-slow {
+    animation: blob-float 25s ease-in-out infinite;
+  }
+
+  .animate-blob-float-delayed {
+    animation: blob-float 18s ease-in-out 2s infinite;
   }
 }
