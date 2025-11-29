@@ -46,8 +46,8 @@ const Hero = () => {
                     <Bot className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Service 01</div>
-                    <div className="text-sm font-medium">AI Agent Development</div>
+                    <div className="text-xs text-muted-foreground">Automation</div>
+                    <div className="text-sm font-medium">AI Agents & Workflows</div>
                   </div>
                 </div>
               </div>
@@ -58,8 +58,8 @@ const Hero = () => {
                     <Wrench className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Service 02</div>
-                    <div className="text-sm font-medium">Revenue Operations</div>
+                    <div className="text-xs text-muted-foreground">Engineering</div>
+                    <div className="text-sm font-medium">GTM Engineering</div>
                   </div>
                 </div>
               </div>
@@ -70,8 +70,8 @@ const Hero = () => {
                     <TrendingUp className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
-                    <div className="text-xs text-muted-foreground">Service 03</div>
-                    <div className="text-sm font-medium">Growth Marketing Automation</div>
+                    <div className="text-xs text-muted-foreground">Growth</div>
+                    <div className="text-sm font-medium">AI-Powered Growth Marketing</div>
                   </div>
                 </div>
               </div>
