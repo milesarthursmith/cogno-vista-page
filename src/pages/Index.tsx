@@ -4,7 +4,7 @@ import Positioning from "@/components/Positioning";
 import Credibility from "@/components/Credibility";
 import Services from "@/components/Services";
 import ProblemFraming from "@/components/ProblemFraming";
-import ROICalculator from "@/components/ROICalculator";
+import ROICta from "@/components/ROICta";
 import HowItWorks from "@/components/HowItWorks";
 import Approach from "@/components/Approach";
 import About from "@/components/About";
@@ -18,7 +18,7 @@ const Index = () => {
       <Credibility />
       <Services />
       <ProblemFraming />
-      <ROICalculator />
+      <ROICta />
       <HowItWorks />
       <Approach />
       
