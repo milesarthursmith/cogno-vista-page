@@ -65,6 +65,18 @@ const handler = async (req: Request): Promise<Response> => {
       businessType: businessTypeLabel,
     });
 
+    const plainTextContent = generatePlainTextEmail({
+      email,
+      score,
+      stage,
+      dimensions,
+      opportunities: enhancedOpportunities,
+      toolRecommendations,
+      roiEstimates,
+      stageRecommendations,
+      businessType: businessTypeLabel,
+    });
+
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (!resendApiKey) {
       throw new Error("RESEND_API_KEY is not set");
@@ -77,10 +89,12 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "humanstuff.ai <onboarding@resend.dev>",
+        from: "AI Readiness Assessment <onboarding@resend.dev>",
+        reply_to: "hello@humanstuff.ai",
         to: [email],
-        subject: `Your ${businessTypeLabel} AI Readiness Score: ${score}% - ${stage.name}`,
+        subject: `Your ${businessTypeLabel} AI Readiness Score: ${score}%`,
         html: htmlContent,
+        text: plainTextContent,
       }),
     });
 
@@ -470,6 +484,80 @@ function getStageRecommendations(
   }
   
   return recommendations;
+}
+
+function generatePlainTextEmail(data: {
+  email: string;
+  score: number;
+  stage: { name: string; description: string; color: string };
+  dimensions: { cultural: number; technical: number; useCase: number };
+  opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>;
+  toolRecommendations: Array<{ name: string; use_case: string; pricing: string; complexity: string }>;
+  roiEstimates: { weeklyHoursSaved: string; annualCostSavings: string; paybackPeriod: string; details: string };
+  stageRecommendations: { immediate: string[]; next30Days: string[]; next90Days: string[] };
+  businessType: string;
+}): string {
+  return `
+${data.businessType} AI READINESS ASSESSMENT RESULTS
+====================================================
+
+Your Readiness Score: ${data.score}%
+Stage: ${data.stage.name}
+${data.stage.description}
+
+READINESS BREAKDOWN
+-------------------
+Culture: ${data.dimensions.cultural}% (Team readiness & buy-in)
+Technology: ${data.dimensions.technical}% (Infrastructure & integration)
+Process: ${data.dimensions.useCase}% (Opportunity mapping)
+
+PROJECTED ROI
+-------------
+Time Saved: ${data.roiEstimates.weeklyHoursSaved}
+Annual Savings: ${data.roiEstimates.annualCostSavings}
+Payback Period: ${data.roiEstimates.paybackPeriod}
+
+${data.roiEstimates.details}
+
+${data.businessType.toUpperCase()} AUTOMATION OPPORTUNITIES
+-------------------------------------------
+${data.opportunities.map((opp, i) => `
+${i + 1}. ${opp.title}
+   ${opp.description}
+   Impact: ${opp.impact} | Effort: ${opp.effort}
+`).join('\n')}
+
+RECOMMENDED TOOLS
+-----------------
+${data.toolRecommendations.map((tool, i) => `
+${i + 1}. ${tool.name}
+   ${tool.use_case}
+   ${tool.pricing} | ${tool.complexity} complexity
+`).join('\n')}
+
+YOUR 90-DAY ACTION PLAN
+-----------------------
+
+Start Immediately:
+${data.stageRecommendations.immediate.map(r => `• ${r}`).join('\n')}
+
+Next 30 Days:
+${data.stageRecommendations.next30Days.map(r => `• ${r}`).join('\n')}
+
+Next 90 Days:
+${data.stageRecommendations.next90Days.map(r => `• ${r}`).join('\n')}
+
+BOOK YOUR STRATEGY SESSION
+---------------------------
+Ready to get started? Book a consultation at:
+https://humanstuff.ai/#contact
+
+---
+humanstuff.ai
+Automate the boring stuff so you can focus on the human stuff
+
+Questions? Reply to this email or visit https://humanstuff.ai
+  `.trim();
 }
 
 function generateEmailHTML(data: {
@@ -879,12 +967,23 @@ function generateEmailHTML(data: {
     </div>
 
     <div class="cta-section">
+      <p style="margin-bottom: 20px; font-size: 15px; color: #666;">Ready to implement these recommendations?</p>
       <a href="https://humanstuff.ai/#contact" class="cta-button">Book Your Strategy Session</a>
+      <p style="margin-top: 16px; font-size: 13px; color: #999;">
+        <a href="https://humanstuff.ai" style="color: #999; text-decoration: underline;">Visit our website</a> to learn more about our services
+      </p>
     </div>
 
     <div class="footer">
-      <p>Questions? Reply to this email or visit <a href="https://humanstuff.ai">humanstuff.ai</a></p>
-      <p style="margin-top: 12px; color: #bbb;">Automate the boring stuff so you can focus on the human stuff</p>
+      <p style="margin-bottom: 12px;"><strong>humanstuff.ai</strong></p>
+      <p style="margin-bottom: 8px;">Automate the boring stuff so you can focus on the human stuff</p>
+      <p style="margin-bottom: 16px;">
+        Questions? Reply to this email or visit <a href="https://humanstuff.ai">humanstuff.ai</a>
+      </p>
+      <p style="font-size: 11px; color: #bbb; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e5e5;">
+        You received this email because you completed the AI Readiness Assessment at humanstuff.ai. 
+        This is a transactional email containing your requested assessment results.
+      </p>
     </div>
   </div>
 </body>

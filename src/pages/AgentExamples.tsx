@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Bot, Mail, Search, Database, BarChart, FileText, Users, Zap } from "lucide-react";
@@ -113,10 +114,11 @@ const agentExamples = [
 
 const AgentExamples = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <AbstractBackground />
       <Header />
       
-      <main className="pt-24 pb-16">
+      <main className="pt-24 pb-16 relative z-10">
         <div className="container mx-auto px-6">
           {/* Header Section */}
           <div className="max-w-3xl mx-auto text-center mb-16">

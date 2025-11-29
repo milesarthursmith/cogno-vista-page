@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Calculator, TrendingUp, Clock, DollarSign, ArrowRight, Mail } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { Link } from "react-router-dom";
 
 const ROICalculatorPage = () => {
@@ -37,10 +38,11 @@ const ROICalculatorPage = () => {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <AbstractBackground />
       <Header />
       
-      <section className="py-24 pt-32">
+      <section className="py-24 pt-32 relative z-10">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
