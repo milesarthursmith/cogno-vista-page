@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import AuditCta from "@/components/AuditCta";
 import Positioning from "@/components/Positioning";
 import Credibility from "@/components/Credibility";
 import Services from "@/components/Services";
@@ -14,6 +15,7 @@ const Index = () => {
   return <div className="min-h-screen">
       <Header />
       <Hero />
+      <AuditCta />
       
       <Credibility />
       <Services />
