@@ -544,10 +544,11 @@ const QuizPage = () => {
               </p>
             </div>
 
-            <Card className="border border-border p-8">
+            <Card className="border border-border p-8 min-h-[500px] flex flex-col">
               <h2 className="text-2xl font-serif font-normal mb-6">{currentQuestion.question}</h2>
 
-              {currentQuestion.type === "radio" ? (
+              <div className="flex-1">
+                {currentQuestion.type === "radio" ? (
                 <RadioGroup
                   value={answers[currentStep] as string || ""}
                   onValueChange={handleAnswer}
@@ -603,6 +604,7 @@ const QuizPage = () => {
                   })}
                 </div>
               )}
+              </div>
 
               <div className="flex gap-4 mt-8">
                 <Button
