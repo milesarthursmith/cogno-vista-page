@@ -7,6 +7,38 @@ const ProblemFraming = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-serif font-medium mb-6">
+                Your team's problem isn't effort. It's how much of that effort is stuck in manual, repeatable work.
+              </h2>
+              
+              <div className="space-y-6 mt-8">
+                <div className="flex items-start gap-4">
+                  <div className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="h-5 w-5 text-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-medium text-lg mb-2">Efficiency</h3>
+                    <p className="text-muted-foreground font-serif">
+                      Remove repetitive work, clean data, prepare context automatically.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
+                    <TrendingUp className="h-5 w-5 text-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-medium text-lg mb-2">Opportunity</h3>
+                    <p className="text-muted-foreground font-serif">
+                      Surface insights you couldn't see before — patterns in calls, win/loss drivers, message performance.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="space-y-6">
               <div className="bg-card border border-border rounded-xl p-8">
                 <div className="flex items-center gap-3 mb-4">
@@ -51,38 +83,6 @@ const ProblemFraming = () => {
                 <p className="text-sm text-muted-foreground mt-2 font-serif">
                   According to McKinsey Global Institute
                 </p>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-3xl md:text-4xl font-serif font-medium mb-6">
-                Your team's problem isn't effort. It's how much of that effort is stuck in manual, repeatable work.
-              </h2>
-              
-              <div className="space-y-6 mt-8">
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="h-5 w-5 text-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-medium text-lg mb-2">Efficiency</h3>
-                    <p className="text-muted-foreground font-serif">
-                      Remove repetitive work, clean data, prepare context automatically.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
-                    <TrendingUp className="h-5 w-5 text-foreground" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-medium text-lg mb-2">Opportunity</h3>
-                    <p className="text-muted-foreground font-serif">
-                      Surface insights you couldn't see before — patterns in calls, win/loss drivers, message performance.
-                    </p>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
