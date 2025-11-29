@@ -25,7 +25,7 @@ const Hero = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-lg px-8 h-12 border-border hover:bg-secondary font-mono">
-                See example agents
+                See examples
               </Button>
             </div>
           </div>
