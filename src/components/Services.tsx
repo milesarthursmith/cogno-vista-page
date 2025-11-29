@@ -43,7 +43,7 @@ const Services = () => {
               <ul className="space-y-2">
                 {service.details.map((detail, idx) => <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2 font-serif">
                     <span className="text-foreground mt-1">•</span>
-                    
+                    <span>{detail}</span>
                   </li>)}
               </ul>
             </Card>)}
