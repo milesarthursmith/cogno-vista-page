@@ -14,10 +14,7 @@ const Credibility = () => {
               </div>)}
           </div>
           
-          <p className="text-base text-muted-foreground mt-12 leading-relaxed font-serif">
-            These are examples from enterprise environments. We now apply the same thinking in a form that's accessible to{" "}
-            <span className="text-foreground">SMBs and mid-market teams</span>.
-          </p>
+          
         </div>
       </div>
     </section>;
