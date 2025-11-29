@@ -31,18 +31,6 @@ const Hero = () => {
           </div>
 
           <div className="relative hidden lg:block">
-            {/* Animated growth line with arrow - thinner */}
-            <svg className="absolute left-0 top-0 w-full h-full pointer-events-none" style={{
-            zIndex: 0
-          }} viewBox="0 0 100 100" preserveAspectRatio="none">
-              <defs>
-                <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-                  <polygon points="0 0, 6 3, 0 6" fill="hsl(225, 100%, 60%)" opacity="0.5" />
-                </marker>
-              </defs>
-              <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 55 L 55 55 L 55 45 L 65 45 L 65 35 L 75 35 L 75 25 L 85 25 L 85 15 L 95 15" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="0.8" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" markerEnd="url(#arrowhead)" className="animate-draw-line" />
-            </svg>
-
             <div className="relative w-full aspect-square mx-0">
               {/* Floating cards simulation */}
               <div className="absolute top-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float">
@@ -120,14 +108,6 @@ const Hero = () => {
         }
         .animate-float-slow {
           animation: float-slow 5s ease-in-out infinite;
-        }
-        @keyframes draw-line {
-          to {
-            stroke-dashoffset: 0;
-          }
-        }
-        .animate-draw-line {
-          animation: draw-line 3s ease-out forwards;
         }
       `}</style>
     </section>;
