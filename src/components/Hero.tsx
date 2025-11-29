@@ -40,7 +40,7 @@ const Hero = () => {
                   <polygon points="0 0, 6 3, 0 6" fill="hsl(225, 100%, 60%)" opacity="0.5" />
                 </marker>
               </defs>
-              <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 50 L 55 50 L 55 40 L 65 40 L 65 30 L 75 30 L 75 20 L 85 20 L 85 10 L 95 10" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="0.8" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" markerEnd="url(#arrowhead)" className="animate-draw-line" />
+              <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 55 L 55 55 L 55 45 L 65 45 L 65 35 L 75 35 L 75 25 L 85 25 L 85 15 L 95 15" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="0.8" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" markerEnd="url(#arrowhead)" className="animate-draw-line" />
             </svg>
 
             <div className="relative w-full aspect-square mx-0">
