@@ -40,15 +40,17 @@ const Hero = () => {
                   <polygon points="0 0, 4 2, 0 4" fill="hsl(var(--border))" />
                 </marker>
               </defs>
-              {/* Line from left top card to right middle card */}
+              {/* Line from automation to engineering (left side) */}
+              <line x1="16" y1="25" x2="16" y2="70" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
+              {/* Line from automation to growth (top left to right) */}
               <line x1="32" y1="20" x2="68" y2="50" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
-              {/* Line from left bottom card to right middle card */}
+              {/* Line from engineering to growth (bottom left to right) */}
               <line x1="32" y1="75" x2="68" y2="50" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
             </svg>
 
             <div className="relative w-full aspect-square mx-0">
-              {/* Floating cards simulation */}
-              <div className="absolute top-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float">
+              {/* Floating cards simulation - minimal movement */}
+              <div className="absolute top-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-minimal">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <Bot className="w-5 h-5 text-foreground" />
@@ -60,7 +62,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-20 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float px-[20px]">
+              <div className="absolute bottom-20 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-minimal px-[20px]">
                 <div className="flex items-center justify-start gap-[12px] mx-0 px-0">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <Wrench className="w-5 h-5 text-foreground" />
@@ -72,7 +74,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="absolute top-[40%] -translate-y-1/2 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-slow">
+              <div className="absolute top-[40%] -translate-y-1/2 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-minimal">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="w-5 h-5 text-foreground" />
@@ -103,26 +105,12 @@ const Hero = () => {
       </div>
 
       <style>{`
-        @keyframes float {
+        @keyframes float-minimal {
           0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-20px); }
+          50% { transform: translateY(-5px); }
         }
-        @keyframes float-delayed {
-          0%, 100% { transform: translate(-50%, 0px); }
-          50% { transform: translate(-50%, -25px); }
-        }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-15px); }
-        }
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
-        }
-        .animate-float-delayed {
-          animation: float-delayed 4s ease-in-out infinite;
-        }
-        .animate-float-slow {
-          animation: float-slow 5s ease-in-out infinite;
+        .animate-float-minimal {
+          animation: float-minimal 4s ease-in-out infinite;
         }
       `}</style>
     </section>;
