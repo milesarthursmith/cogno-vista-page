@@ -17,6 +17,7 @@ export type Database = {
       quiz_responses: {
         Row: {
           budget_readiness: string
+          business_type: string | null
           compliance_requirements: string | null
           created_at: string | null
           cultural_score: number | null
@@ -38,6 +39,7 @@ export type Database = {
         }
         Insert: {
           budget_readiness: string
+          business_type?: string | null
           compliance_requirements?: string | null
           created_at?: string | null
           cultural_score?: number | null
@@ -59,6 +61,7 @@ export type Database = {
         }
         Update: {
           budget_readiness?: string
+          business_type?: string | null
           compliance_requirements?: string | null
           created_at?: string | null
           cultural_score?: number | null

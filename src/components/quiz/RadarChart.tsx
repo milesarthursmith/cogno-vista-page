@@ -1,0 +1,41 @@
+import { Radar, RadarChart as RechartsRadar, PolarGrid, PolarAngleAxis, PolarRadiusAxis, ResponsiveContainer } from "recharts";
+
+interface RadarChartProps {
+  cultural: number;
+  technical: number;
+  useCase: number;
+}
+
+export const RadarChart = ({ cultural, technical, useCase }: RadarChartProps) => {
+  const data = [
+    { dimension: "Cultural", score: cultural },
+    { dimension: "Technical", score: technical },
+    { dimension: "Use Case", score: useCase },
+  ];
+
+  return (
+    <div className="w-full h-[300px] flex items-center justify-center">
+      <ResponsiveContainer width="100%" height="100%">
+        <RechartsRadar data={data}>
+          <PolarGrid stroke="hsl(var(--border))" strokeWidth={1} />
+          <PolarAngleAxis 
+            dataKey="dimension" 
+            tick={{ fill: "hsl(var(--foreground))", fontSize: 14, fontFamily: "var(--font-serif)" }}
+          />
+          <PolarRadiusAxis 
+            angle={90} 
+            domain={[0, 100]} 
+            tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
+          />
+          <Radar
+            dataKey="score"
+            stroke="hsl(var(--primary))"
+            fill="hsl(var(--primary))"
+            fillOpacity={0.3}
+            strokeWidth={2}
+          />
+        </RechartsRadar>
+      </ResponsiveContainer>
+    </div>
+  );
+};
