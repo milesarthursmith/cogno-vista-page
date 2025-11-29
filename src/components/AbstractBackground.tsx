@@ -13,7 +13,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 30% 40%, hsl(var(--art-cream)), hsl(var(--art-beige)) 50%, transparent 70%)',
             borderRadius: '60% 40% 70% 30% / 40% 60% 30% 70%',
-            filter: 'blur(50px)',
+            filter: 'blur(25px)',
             opacity: 0.6,
             pointerEvents: 'none',
           }}
@@ -25,7 +25,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 60% 50%, hsl(var(--art-coral)), hsl(var(--art-blush)) 40%, transparent 65%)',
             borderRadius: '50% 60% 40% 70% / 60% 40% 70% 50%',
-            filter: 'blur(45px)',
+            filter: 'blur(20px)',
             opacity: 0.5,
             pointerEvents: 'none',
           }}
@@ -37,7 +37,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 40% 60%, hsl(var(--art-sand)), hsl(var(--art-coral)) 45%, transparent 70%)',
             borderRadius: '70% 30% 60% 40% / 50% 60% 40% 50%',
-            filter: 'blur(50px)',
+            filter: 'blur(25px)',
             opacity: 0.45,
             pointerEvents: 'none',
           }}
@@ -53,7 +53,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 40% 50%, hsl(var(--art-cream)), hsl(var(--art-beige)) 50%, transparent 70%)',
             borderRadius: '55% 45% 65% 35% / 45% 55% 45% 55%',
-            filter: 'blur(60px)',
+            filter: 'blur(30px)',
             opacity: 0.4,
             pointerEvents: 'none',
           }}
@@ -65,7 +65,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 60% 40%, hsl(var(--art-coral)), hsl(var(--art-blush)) 45%, transparent 70%)',
             borderRadius: '45% 55% 50% 50% / 55% 45% 60% 40%',
-            filter: 'blur(50px)',
+            filter: 'blur(25px)',
             opacity: 0.4,
             pointerEvents: 'none',
           }}
@@ -77,7 +77,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 50% 50%, hsl(var(--art-blush)), hsl(var(--art-sand)) 40%, transparent 65%)',
             borderRadius: '65% 35% 55% 45% / 40% 60% 50% 50%',
-            filter: 'blur(50px)',
+            filter: 'blur(25px)',
             opacity: 0.35,
             pointerEvents: 'none',
           }}
@@ -93,7 +93,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 40% 50%, hsl(var(--art-cream)), hsl(var(--art-sand)) 50%, transparent 70%)',
             borderRadius: '60% 40% 65% 35% / 50% 50% 60% 40%',
-            filter: 'blur(55px)',
+            filter: 'blur(25px)',
             opacity: 0.5,
             pointerEvents: 'none',
           }}
@@ -105,7 +105,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 60% 50%, hsl(var(--art-coral)), hsl(var(--art-blush)) 45%, transparent 70%)',
             borderRadius: '50% 50% 60% 40% / 55% 45% 50% 50%',
-            filter: 'blur(50px)',
+            filter: 'blur(22px)',
             opacity: 0.55,
             pointerEvents: 'none',
           }}
@@ -117,7 +117,7 @@ const AbstractBackground = ({ variant = 'hero', className = '' }: AbstractBackgr
           style={{
             background: 'radial-gradient(circle at 40% 60%, hsl(var(--art-beige)), hsl(var(--art-coral)) 40%, transparent 65%)',
             borderRadius: '70% 30% 50% 50% / 60% 40% 50% 50%',
-            filter: 'blur(45px)',
+            filter: 'blur(20px)',
             opacity: 0.45,
             pointerEvents: 'none',
           }}
