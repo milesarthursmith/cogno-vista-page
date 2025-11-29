@@ -17,39 +17,66 @@ export type Database = {
       quiz_responses: {
         Row: {
           budget_readiness: string
+          compliance_requirements: string | null
           created_at: string | null
+          cultural_score: number | null
+          current_ai_adoption: string | null
+          data_infrastructure: string | null
           email: string
           id: string
           manual_hours_per_week: number
+          primary_processes: string[] | null
           process_documentation: string
           readiness_score: number
+          team_ai_readiness: string | null
           team_size: number
           tech_stack_maturity: string
+          technical_score: number | null
           timeline: string
+          usecase_score: number | null
+          workflow_complexity: string | null
         }
         Insert: {
           budget_readiness: string
+          compliance_requirements?: string | null
           created_at?: string | null
+          cultural_score?: number | null
+          current_ai_adoption?: string | null
+          data_infrastructure?: string | null
           email: string
           id?: string
           manual_hours_per_week: number
+          primary_processes?: string[] | null
           process_documentation: string
           readiness_score: number
+          team_ai_readiness?: string | null
           team_size: number
           tech_stack_maturity: string
+          technical_score?: number | null
           timeline: string
+          usecase_score?: number | null
+          workflow_complexity?: string | null
         }
         Update: {
           budget_readiness?: string
+          compliance_requirements?: string | null
           created_at?: string | null
+          cultural_score?: number | null
+          current_ai_adoption?: string | null
+          data_infrastructure?: string | null
           email?: string
           id?: string
           manual_hours_per_week?: number
+          primary_processes?: string[] | null
           process_documentation?: string
           readiness_score?: number
+          team_ai_readiness?: string | null
           team_size?: number
           tech_stack_maturity?: string
+          technical_score?: number | null
           timeline?: string
+          usecase_score?: number | null
+          workflow_complexity?: string | null
         }
         Relationships: []
       }
