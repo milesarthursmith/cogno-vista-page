@@ -52,7 +52,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-20 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-delayed">
+              <div className="absolute bottom-20 left-12 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-delayed">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <Wrench className="w-5 h-5 text-foreground" />
