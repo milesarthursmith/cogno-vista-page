@@ -287,9 +287,9 @@ const QuizPage = () => {
   const currentQuestion = quizSteps[currentStep];
 
   const calculateDimensionalScores = () => {
-    // Cultural: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
-    // Technical: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
-    // Use Case: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
+    // Culture: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
+    // Technology: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
+    // Process: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
     
     const culturalIndices = [6, 9, 11, 12];
     const technicalIndices = [4, 8, 10];
@@ -324,9 +324,9 @@ const QuizPage = () => {
   };
 
   const getScoreLevel = (score: number) => {
-    if (score >= 70) return { level: "Agent Ready", color: "text-green-600", description: "You have the infrastructure and culture to scale AI agents" };
-    if (score >= 40) return { level: "Agent Pilot", color: "text-blue-600", description: "Ready for structured pilots and proof-of-concepts" };
-    return { level: "Agent Explorer", color: "text-orange-600", description: "Early exploration phase - building foundations" };
+    if (score >= 70) return { level: "AI Ready", color: "text-green-600", description: "You have the infrastructure and culture to scale AI automation" };
+    if (score >= 40) return { level: "AI Pilot", color: "text-blue-600", description: "Ready for structured pilots and proof-of-concepts" };
+    return { level: "AI Explorer", color: "text-orange-600", description: "Early exploration phase - building foundations" };
   };
 
   if (showResults) {
@@ -366,15 +366,18 @@ const QuizPage = () => {
                   <div className="grid grid-cols-3 gap-4 mt-6">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">{dimensions.cultural}%</div>
-                      <div className="text-xs text-muted-foreground font-serif">Cultural</div>
+                      <div className="text-xs text-muted-foreground font-serif">Culture</div>
+                      <div className="text-[10px] text-muted-foreground font-serif">Team readiness & buy-in</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">{dimensions.technical}%</div>
-                      <div className="text-xs text-muted-foreground font-serif">Technical</div>
+                      <div className="text-xs text-muted-foreground font-serif">Technology</div>
+                      <div className="text-[10px] text-muted-foreground font-serif">Infrastructure & integration</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">{dimensions.useCase}%</div>
-                      <div className="text-xs text-muted-foreground font-serif">Use Case</div>
+                      <div className="text-xs text-muted-foreground font-serif">Process</div>
+                      <div className="text-[10px] text-muted-foreground font-serif">Opportunity mapping</div>
                     </div>
                   </div>
                 </div>
@@ -429,15 +432,18 @@ const QuizPage = () => {
                   <div className="grid grid-cols-3 gap-4 mt-6">
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">{dimensions.cultural}%</div>
-                      <div className="text-xs text-muted-foreground font-serif">Cultural</div>
+                      <div className="text-xs text-muted-foreground font-serif">Culture</div>
+                      <div className="text-[10px] text-muted-foreground font-serif">Team readiness & buy-in</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">{dimensions.technical}%</div>
-                      <div className="text-xs text-muted-foreground font-serif">Technical</div>
+                      <div className="text-xs text-muted-foreground font-serif">Technology</div>
+                      <div className="text-[10px] text-muted-foreground font-serif">Infrastructure & integration</div>
                     </div>
                     <div className="text-center">
                       <div className="text-2xl font-bold text-primary">{dimensions.useCase}%</div>
-                      <div className="text-xs text-muted-foreground font-serif">Use Case</div>
+                      <div className="text-xs text-muted-foreground font-serif">Process</div>
+                      <div className="text-[10px] text-muted-foreground font-serif">Opportunity mapping</div>
                     </div>
                   </div>
                 </div>
@@ -520,7 +526,7 @@ const QuizPage = () => {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-serif font-normal mb-4">
-                Agent Readiness Assessment
+                AI Readiness Assessment
               </h1>
               <p className="text-lg text-muted-foreground font-serif">
                 Get your personalized automation roadmap with ROI estimates and tool recommendations

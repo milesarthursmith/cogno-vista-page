@@ -8,9 +8,9 @@ interface RadarChartProps {
 
 export const RadarChart = ({ cultural, technical, useCase }: RadarChartProps) => {
   const data = [
-    { dimension: "Cultural", score: cultural },
-    { dimension: "Technical", score: technical },
-    { dimension: "Use Case", score: useCase },
+    { dimension: "Culture", score: cultural },
+    { dimension: "Technology", score: technical },
+    { dimension: "Process", score: useCase },
   ];
 
   return (
