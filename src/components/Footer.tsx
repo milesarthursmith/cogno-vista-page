@@ -1,13 +1,16 @@
-import { Linkedin, Twitter, Github } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="border-t border-border bg-background py-16">
       <div className="container mx-auto px-6">
-        <div className="grid gap-12 md:grid-cols-4 max-w-7xl mx-auto">
+        <div className="grid gap-12 md:grid-cols-3 max-w-7xl mx-auto">
           <div>
-            <span className="font-mono font-medium text-xl">humanstuff.ai</span>
-            <p className="text-sm text-muted-foreground leading-relaxed mt-4 font-serif">
+            <div className="flex items-center gap-2 mb-4">
+              <img src={logo} alt="humanstuff.ai logo" className="h-8 w-8" />
+              <span className="font-mono font-medium text-xl">humanstuff.ai</span>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed font-serif">
               AI consulting for practical, production-ready systems.
             </p>
           </div>
@@ -28,30 +31,6 @@ const Footer = () => {
               <li><a href="#services" className="hover:text-foreground transition-colors">Services</a></li>
               <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="mb-4 font-medium font-mono">Follow Us</h4>
-            <div className="flex gap-3">
-              <a 
-                href="#" 
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
-              >
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a 
-                href="#" 
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
-              >
-                <Twitter className="h-4 w-4" />
-              </a>
-              <a 
-                href="#" 
-                className="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-secondary hover:bg-muted transition-colors"
-              >
-                <Github className="h-4 w-4" />
-              </a>
-            </div>
           </div>
         </div>
 
