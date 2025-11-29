@@ -488,96 +488,403 @@ function generateEmailHTML(data: {
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your ${data.businessType} AI Readiness Results</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
-    .container { background: white; border-radius: 8px; padding: 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .header { text-align: center; margin-bottom: 30px; }
-    .score-badge { font-size: 48px; font-weight: bold; color: ${data.stage.color}; margin: 20px 0; }
-    .stage-name { font-size: 24px; font-weight: 600; color: ${data.stage.color}; margin-bottom: 10px; }
-    .section { margin: 30px 0; padding: 20px; background: #f9fafb; border-radius: 6px; border-left: 4px solid ${data.stage.color}; }
-    .section-title { font-size: 20px; font-weight: 600; margin-bottom: 15px; color: #111; }
-    .dimension-scores { display: flex; justify-content: space-between; gap: 15px; margin: 20px 0; }
-    .dimension { flex: 1; text-align: center; padding: 15px; background: white; border-radius: 6px; }
-    .dimension-label { font-size: 12px; text-transform: uppercase; color: #6b7280; margin-bottom: 8px; }
-    .dimension-score { font-size: 28px; font-weight: bold; color: ${data.stage.color}; }
-    .opportunity { margin: 20px 0; padding: 15px; background: white; border-radius: 6px; border: 1px solid #e5e7eb; }
-    .opportunity-title { font-weight: 600; color: #111; margin-bottom: 8px; }
-    .cta-button { display: inline-block; padding: 14px 28px; background: ${data.stage.color}; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; margin: 20px 0; }
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Crimson+Pro:wght@400;500;600&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background-color: #fafafa;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 2px;
+      overflow: hidden;
+      border: 1px solid #e5e5e5;
+    }
+    
+    .header {
+      background: #ffffff;
+      padding: 48px 32px 32px;
+      text-align: center;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .logo {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    
+    .score-container {
+      margin: 32px 0;
+    }
+    
+    .score-badge {
+      font-size: 72px;
+      font-weight: 600;
+      color: ${data.stage.color};
+      line-height: 1;
+      margin-bottom: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    
+    .stage-name {
+      font-size: 24px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+    
+    .stage-description {
+      font-size: 16px;
+      color: #666;
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .content {
+      padding: 32px;
+    }
+    
+    .section {
+      margin-bottom: 40px;
+    }
+    
+    .section-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #e5e5e5;
+      letter-spacing: -0.01em;
+    }
+    
+    .dimensions-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+    
+    .dimension-card {
+      background: #fafafa;
+      padding: 20px 16px;
+      border: 1px solid #e5e5e5;
+      border-radius: 2px;
+      text-align: center;
+    }
+    
+    .dimension-score {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 32px;
+      font-weight: 600;
+      color: ${data.stage.color};
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    
+    .dimension-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #666;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    
+    .dimension-description {
+      font-size: 11px;
+      color: #999;
+      line-height: 1.4;
+    }
+    
+    .roi-grid {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 2px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+    
+    .roi-item {
+      margin-bottom: 16px;
+    }
+    
+    .roi-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .roi-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #666;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    
+    .roi-value {
+      font-size: 20px;
+      font-weight: 600;
+      color: #1a1a1a;
+    }
+    
+    .roi-details {
+      font-size: 13px;
+      color: #666;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #e5e5e5;
+    }
+    
+    .opportunity-card {
+      background: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 2px;
+      padding: 20px;
+      margin-bottom: 12px;
+    }
+    
+    .opportunity-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    
+    .opportunity-description {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    
+    .opportunity-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: #999;
+      padding-top: 12px;
+      border-top: 1px solid #f0f0f0;
+    }
+    
+    .action-plan {
+      background: #fafafa;
+      border: 1px solid #e5e5e5;
+      border-radius: 2px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+    
+    .action-plan h3 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 24px 0 12px 0;
+      letter-spacing: -0.01em;
+    }
+    
+    .action-plan h3:first-child {
+      margin-top: 0;
+    }
+    
+    .action-plan ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .action-plan li {
+      font-size: 14px;
+      color: #666;
+      padding: 8px 0 8px 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+    
+    .action-plan li:before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: ${data.stage.color};
+      font-weight: 600;
+    }
+    
+    .cta-section {
+      text-align: center;
+      padding: 40px 32px;
+      background: #fafafa;
+      border-top: 1px solid #e5e5e5;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: ${data.stage.color};
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: 2px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      transition: opacity 0.2s;
+    }
+    
+    .cta-button:hover {
+      opacity: 0.9;
+    }
+    
+    .footer {
+      text-align: center;
+      padding: 32px;
+      color: #999;
+      font-size: 13px;
+      border-top: 1px solid #e5e5e5;
+    }
+    
+    .footer a {
+      color: ${data.stage.color};
+      text-decoration: none;
+    }
+    
+    @media only screen and (max-width: 600px) {
+      .dimensions-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .content {
+        padding: 24px 20px;
+      }
+      
+      .header {
+        padding: 32px 20px 24px;
+      }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>${data.businessType} AI Readiness Results</h1>
-      <div class="score-badge">${data.score}%</div>
-      <div class="stage-name">${data.stage.name}</div>
-      <p>${data.stage.description}</p>
+      <div class="logo">humanstuff.ai</div>
+      <h1 class="stage-description">${data.businessType} AI Readiness Assessment</h1>
+      <div class="score-container">
+        <div class="score-badge">${data.score}%</div>
+        <div class="stage-name">${data.stage.name}</div>
+        <p class="stage-description">${data.stage.description}</p>
+      </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">📊 Readiness Breakdown</div>
-      <div class="dimension-scores">
-        <div class="dimension">
-          <div class="dimension-label">Culture</div>
-          <div class="dimension-score">${data.dimensions.cultural}%</div>
-          <p style="font-size: 10px; color: #6b7280; margin-top: 4px;">Team readiness & buy-in</p>
+    <div class="content">
+      <div class="section">
+        <h2 class="section-title">Readiness Breakdown</h2>
+        <div class="dimensions-grid">
+          <div class="dimension-card">
+            <div class="dimension-score">${data.dimensions.cultural}%</div>
+            <div class="dimension-label">Culture</div>
+            <div class="dimension-description">Team readiness & buy-in</div>
+          </div>
+          <div class="dimension-card">
+            <div class="dimension-score">${data.dimensions.technical}%</div>
+            <div class="dimension-label">Technology</div>
+            <div class="dimension-description">Infrastructure & integration</div>
+          </div>
+          <div class="dimension-card">
+            <div class="dimension-score">${data.dimensions.useCase}%</div>
+            <div class="dimension-label">Process</div>
+            <div class="dimension-description">Opportunity mapping</div>
+          </div>
         </div>
-        <div class="dimension">
-          <div class="dimension-label">Technology</div>
-          <div class="dimension-score">${data.dimensions.technical}%</div>
-          <p style="font-size: 10px; color: #6b7280; margin-top: 4px;">Infrastructure & integration</p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Projected ROI</h2>
+        <div class="roi-grid">
+          <div class="roi-item">
+            <div class="roi-label">Time Saved</div>
+            <div class="roi-value">${data.roiEstimates.weeklyHoursSaved}</div>
+          </div>
+          <div class="roi-item">
+            <div class="roi-label">Annual Savings</div>
+            <div class="roi-value">${data.roiEstimates.annualCostSavings}</div>
+          </div>
+          <div class="roi-item">
+            <div class="roi-label">Payback Period</div>
+            <div class="roi-value">${data.roiEstimates.paybackPeriod}</div>
+          </div>
+          <div class="roi-details">${data.roiEstimates.details}</div>
         </div>
-        <div class="dimension">
-          <div class="dimension-label">Process</div>
-          <div class="dimension-score">${data.dimensions.useCase}%</div>
-          <p style="font-size: 10px; color: #6b7280; margin-top: 4px;">Opportunity mapping</p>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">${data.businessType} Automation Opportunities</h2>
+        ${data.opportunities.map(opp => `
+          <div class="opportunity-card">
+            <div class="opportunity-title">${opp.title}</div>
+            <div class="opportunity-description">${opp.description}</div>
+            <div class="opportunity-meta">Impact: ${opp.impact} • Effort: ${opp.effort}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Recommended Tools</h2>
+        ${data.toolRecommendations.map(tool => `
+          <div class="opportunity-card">
+            <div class="opportunity-title">${tool.name}</div>
+            <div class="opportunity-description">${tool.use_case}</div>
+            <div class="opportunity-meta">${tool.pricing} • ${tool.complexity} complexity</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Your 90-Day Action Plan</h2>
+        <div class="action-plan">
+          <h3>Start Immediately</h3>
+          <ul>
+            ${data.stageRecommendations.immediate.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+          
+          <h3>Next 30 Days</h3>
+          <ul>
+            ${data.stageRecommendations.next30Days.map(r => `<li>${r}</li>`).join('')}
+          </ul>
+          
+          <h3>Next 90 Days</h3>
+          <ul>
+            ${data.stageRecommendations.next90Days.map(r => `<li>${r}</li>`).join('')}
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="section">
-      <div class="section-title">💰 Projected ROI</div>
-      <p><strong>Time Saved:</strong> ${data.roiEstimates.weeklyHoursSaved}</p>
-      <p><strong>Annual Savings:</strong> ${data.roiEstimates.annualCostSavings}</p>
-      <p><strong>Payback Period:</strong> ${data.roiEstimates.paybackPeriod}</p>
-      <p style="font-size: 13px; color: #6b7280;">${data.roiEstimates.details}</p>
-    </div>
-
-    <div class="section">
-      <div class="section-title">🎯 ${data.businessType}-Specific Automation Opportunities</div>
-      ${data.opportunities.map(opp => `
-        <div class="opportunity">
-          <div class="opportunity-title">${opp.title}</div>
-          <p style="font-size: 14px;">${opp.description}</p>
-          <p style="font-size: 12px; color: #6b7280;"><strong>Impact:</strong> ${opp.impact} | <strong>Effort:</strong> ${opp.effort}</p>
-        </div>
-      `).join('')}
-    </div>
-
-    <div class="section">
-      <div class="section-title">🛠️ Recommended Tools</div>
-      ${data.toolRecommendations.map(tool => `
-        <div class="opportunity">
-          <div class="opportunity-title">${tool.name}</div>
-          <p style="font-size: 13px;">${tool.use_case}</p>
-          <p style="font-size: 12px; color: #6b7280;">${tool.pricing} | ${tool.complexity} complexity</p>
-        </div>
-      `).join('')}
-    </div>
-
-    <div class="section">
-      <div class="section-title">📅 Your 90-Day Action Plan</div>
-      <h3>🚀 Start Immediately</h3>
-      <ul>${data.stageRecommendations.immediate.map(r => `<li>${r}</li>`).join('')}</ul>
-      <h3>📈 Next 30 Days</h3>
-      <ul>${data.stageRecommendations.next30Days.map(r => `<li>${r}</li>`).join('')}</ul>
-      <h3>🎯 Next 90 Days</h3>
-      <ul>${data.stageRecommendations.next90Days.map(r => `<li>${r}</li>`).join('')}</ul>
-    </div>
-
-    <div style="text-align: center;">
+    <div class="cta-section">
       <a href="https://humanstuff.ai/#contact" class="cta-button">Book Your Strategy Session</a>
+    </div>
+
+    <div class="footer">
+      <p>Questions? Reply to this email or visit <a href="https://humanstuff.ai">humanstuff.ai</a></p>
+      <p style="margin-top: 12px; color: #bbb;">Automate the boring stuff so you can focus on the human stuff</p>
     </div>
   </div>
 </body>
