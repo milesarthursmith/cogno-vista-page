@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress";
 import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { RadarChart } from "@/components/quiz/RadarChart";
@@ -334,9 +335,10 @@ const QuizPage = () => {
     const dimensions = calculateDimensionalScores();
     
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen relative">
+        <AbstractBackground />
         <Header />
-        <section className="py-24 pt-32">
+        <section className="py-24 pt-32 relative z-10">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto text-center">
               <CheckCircle className="w-16 h-16 mx-auto mb-6 text-primary" />
@@ -407,9 +409,10 @@ const QuizPage = () => {
     const dimensions = calculateDimensionalScores();
     
     return (
-      <div className="min-h-screen">
+      <div className="min-h-screen relative">
+        <AbstractBackground />
         <Header />
-        <section className="py-24 pt-32">
+        <section className="py-24 pt-32 relative z-10">
           <div className="container mx-auto px-6">
             <div className="max-w-2xl mx-auto">
               <Card className="border border-border p-8 text-center mb-8">
@@ -519,9 +522,10 @@ const QuizPage = () => {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <AbstractBackground />
       <Header />
-      <section className="py-24 pt-32">
+      <section className="py-24 pt-32 relative z-10">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
