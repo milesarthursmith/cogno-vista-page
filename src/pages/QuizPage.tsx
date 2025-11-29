@@ -11,6 +11,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { RadarChart } from "@/components/quiz/RadarChart";
 
 type QuizStep = {
   question: string;
@@ -19,6 +20,22 @@ type QuizStep = {
 };
 
 const quizSteps: QuizStep[] = [
+  {
+    question: "What type of business are you in?",
+    type: "radio",
+    options: [
+      { value: "saas", label: "SaaS / Software", points: 0 },
+      { value: "ecommerce", label: "E-commerce / Retail", points: 0 },
+      { value: "professional_services", label: "Professional Services / Consulting", points: 0 },
+      { value: "healthcare", label: "Healthcare / Medical", points: 0 },
+      { value: "finance", label: "Finance / Insurance", points: 0 },
+      { value: "education", label: "Education / Training", points: 0 },
+      { value: "manufacturing", label: "Manufacturing / Supply Chain", points: 0 },
+      { value: "real_estate", label: "Real Estate / Property", points: 0 },
+      { value: "marketing", label: "Marketing / Agency", points: 0 },
+      { value: "other", label: "Other", points: 0 },
+    ],
+  },
   {
     question: "How many people are on your team?",
     type: "radio",
@@ -218,23 +235,24 @@ const QuizPage = () => {
       const score = calculateScore();
       
       // Prepare answers for database
-      const primaryProcesses = Array.isArray(answers[2]) ? answers[2] : [];
+      const primaryProcesses = Array.isArray(answers[3]) ? answers[3] : [];
       
       // Store quiz response
       const { error: dbError } = await supabase.from("quiz_responses").insert({
         email,
-        team_size: parseInt((answers[0] as string).split("-")[0]) || 0,
-        manual_hours_per_week: parseInt((answers[1] as string).split("-")[0]) || 0,
+        business_type: answers[0] as string,
+        team_size: parseInt((answers[1] as string).split("-")[0]) || 0,
+        manual_hours_per_week: parseInt((answers[2] as string).split("-")[0]) || 0,
         primary_processes: primaryProcesses,
-        data_infrastructure: answers[3] as string,
-        current_ai_adoption: answers[4] as string,
-        team_ai_readiness: answers[5] as string,
-        workflow_complexity: answers[6] as string,
-        tech_stack_maturity: answers[7] as string,
-        process_documentation: answers[8] as string,
-        compliance_requirements: answers[9] as string,
-        budget_readiness: answers[10] as string,
-        timeline: answers[11] as string,
+        data_infrastructure: answers[4] as string,
+        current_ai_adoption: answers[5] as string,
+        team_ai_readiness: answers[6] as string,
+        workflow_complexity: answers[7] as string,
+        tech_stack_maturity: answers[8] as string,
+        process_documentation: answers[9] as string,
+        compliance_requirements: answers[10] as string,
+        budget_readiness: answers[11] as string,
+        timeline: answers[12] as string,
         readiness_score: score,
       });
 
@@ -268,6 +286,43 @@ const QuizPage = () => {
   const progress = ((currentStep + 1) / quizSteps.length) * 100;
   const currentQuestion = quizSteps[currentStep];
 
+  const calculateDimensionalScores = () => {
+    // Cultural: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
+    // Technical: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
+    // Use Case: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
+    
+    const culturalIndices = [6, 9, 11, 12];
+    const technicalIndices = [4, 8, 10];
+    const useCaseIndices = [1, 2, 3, 7];
+    
+    const calculateDimension = (indices: number[]) => {
+      let total = 0;
+      let max = 0;
+      indices.forEach(i => {
+        const answer = answers[i];
+        const step = quizSteps[i];
+        if (Array.isArray(answer)) {
+          answer.forEach(val => {
+            const opt = step.options.find(o => o.value === val);
+            if (opt) total += opt.points;
+          });
+          max += Math.max(...step.options.map(o => o.points)) * 2;
+        } else if (typeof answer === "string") {
+          const opt = step.options.find(o => o.value === answer);
+          if (opt) total += opt.points;
+          max += Math.max(...step.options.map(o => o.points));
+        }
+      });
+      return max > 0 ? Math.round((total / max) * 100) : 0;
+    };
+    
+    return {
+      cultural: calculateDimension(culturalIndices),
+      technical: calculateDimension(technicalIndices),
+      useCase: calculateDimension(useCaseIndices),
+    };
+  };
+
   const getScoreLevel = (score: number) => {
     if (score >= 70) return { level: "Agent Ready", color: "text-green-600", description: "You have the infrastructure and culture to scale AI agents" };
     if (score >= 40) return { level: "Agent Pilot", color: "text-blue-600", description: "Ready for structured pilots and proof-of-concepts" };
@@ -276,6 +331,8 @@ const QuizPage = () => {
 
   if (showResults) {
     const scoreLevel = getScoreLevel(score);
+    const dimensions = calculateDimensionalScores();
+    
     return (
       <div className="min-h-screen">
         <Header />
@@ -291,14 +348,35 @@ const QuizPage = () => {
               </p>
 
               <Card className="border border-border p-8 mb-8">
-                <div className="mb-4">
+                <div className="mb-6">
                   <div className="text-6xl font-bold mb-2">{score}%</div>
                   <div className={`text-2xl font-serif mb-2 ${scoreLevel.color}`}>
                     {scoreLevel.level}
                   </div>
-                  <p className="text-sm text-muted-foreground font-serif">
+                  <p className="text-sm text-muted-foreground font-serif mb-6">
                     {scoreLevel.description}
                   </p>
+                  
+                  <RadarChart 
+                    cultural={dimensions.cultural}
+                    technical={dimensions.technical}
+                    useCase={dimensions.useCase}
+                  />
+                  
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{dimensions.cultural}%</div>
+                      <div className="text-xs text-muted-foreground font-serif">Cultural</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{dimensions.technical}%</div>
+                      <div className="text-xs text-muted-foreground font-serif">Technical</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{dimensions.useCase}%</div>
+                      <div className="text-xs text-muted-foreground font-serif">Use Case</div>
+                    </div>
+                  </div>
                 </div>
                 <p className="text-muted-foreground font-serif">
                   Check your email for your complete automation roadmap including specific use cases, tool recommendations, and ROI estimates.
@@ -323,6 +401,8 @@ const QuizPage = () => {
 
   if (showEmailGate) {
     const scoreLevel = getScoreLevel(score);
+    const dimensions = calculateDimensionalScores();
+    
     return (
       <div className="min-h-screen">
         <Header />
@@ -336,9 +416,30 @@ const QuizPage = () => {
                   <div className={`text-2xl font-serif mb-2 ${scoreLevel.color}`}>
                     {scoreLevel.level}
                   </div>
-                  <p className="text-sm text-muted-foreground font-serif">
+                  <p className="text-sm text-muted-foreground font-serif mb-6">
                     {scoreLevel.description}
                   </p>
+                  
+                  <RadarChart 
+                    cultural={dimensions.cultural}
+                    technical={dimensions.technical}
+                    useCase={dimensions.useCase}
+                  />
+                  
+                  <div className="grid grid-cols-3 gap-4 mt-6">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{dimensions.cultural}%</div>
+                      <div className="text-xs text-muted-foreground font-serif">Cultural</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{dimensions.technical}%</div>
+                      <div className="text-xs text-muted-foreground font-serif">Technical</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-primary">{dimensions.useCase}%</div>
+                      <div className="text-xs text-muted-foreground font-serif">Use Case</div>
+                    </div>
+                  </div>
                 </div>
                 <p className="text-muted-foreground font-serif">
                   Unlock your detailed automation roadmap with specific opportunities, tool recommendations, and ROI projections.
