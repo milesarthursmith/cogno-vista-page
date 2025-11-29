@@ -31,6 +31,21 @@ const Hero = () => {
           </div>
 
           <div className="relative hidden lg:block">
+            {/* Thin connecting lines between cards */}
+            <svg className="absolute left-0 top-0 w-full h-full pointer-events-none" style={{
+            zIndex: 0
+          }} viewBox="0 0 100 100" preserveAspectRatio="none">
+              <defs>
+                <marker id="arrow-small" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
+                  <polygon points="0 0, 4 2, 0 4" fill="hsl(var(--border))" />
+                </marker>
+              </defs>
+              {/* Line from left top card to right middle card */}
+              <line x1="32" y1="20" x2="68" y2="50" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
+              {/* Line from left bottom card to right middle card */}
+              <line x1="32" y1="75" x2="68" y2="50" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
+            </svg>
+
             <div className="relative w-full aspect-square mx-0">
               {/* Floating cards simulation */}
               <div className="absolute top-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float">
