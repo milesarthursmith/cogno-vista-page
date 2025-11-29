@@ -18,6 +18,9 @@ const Header = () => {
             <a href="/agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Agent Examples
             </a>
+            <a href="/roi-calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              ROI Calculator
+            </a>
             <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Contact
             </a>
