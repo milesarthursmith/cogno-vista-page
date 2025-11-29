@@ -14,7 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      quiz_responses: {
+        Row: {
+          budget_readiness: string
+          created_at: string | null
+          email: string
+          id: string
+          manual_hours_per_week: number
+          process_documentation: string
+          readiness_score: number
+          team_size: number
+          tech_stack_maturity: string
+          timeline: string
+        }
+        Insert: {
+          budget_readiness: string
+          created_at?: string | null
+          email: string
+          id?: string
+          manual_hours_per_week: number
+          process_documentation: string
+          readiness_score: number
+          team_size: number
+          tech_stack_maturity: string
+          timeline: string
+        }
+        Update: {
+          budget_readiness?: string
+          created_at?: string | null
+          email?: string
+          id?: string
+          manual_hours_per_week?: number
+          process_documentation?: string
+          readiness_score?: number
+          team_size?: number
+          tech_stack_maturity?: string
+          timeline?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
