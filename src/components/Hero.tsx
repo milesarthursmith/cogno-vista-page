@@ -4,9 +4,11 @@ import AbstractBackground from "@/components/AbstractBackground";
 import airopsLogo from "@/assets/airops.png";
 import clayLogo from "@/assets/clay.png";
 import googleAdsLogo from "@/assets/google_ads.png";
+import googleCloudLogo from "@/assets/google_cloud.png";
 import metaAdsLogo from "@/assets/meta_ads.png";
 import n8nLogo from "@/assets/n8n.png";
 import relevanceAiLogo from "@/assets/relevance_ai.png";
+import salesforceLogo from "@/assets/salesforce.png";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
       <AbstractBackground variant="hero" />
@@ -94,12 +96,14 @@ const Hero = () => {
         <div className="mt-32 pt-12 border-t border-border">
           <p className="text-center text-sm text-muted-foreground mb-8 font-serif">Tools & platforms we work with</p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            <img src={relevanceAiLogo} alt="Relevance AI" className="h-8 object-contain border-none border-0" />
-            <img src={n8nLogo} alt="n8n" className="h-8 object-fill" />
-            <img src={clayLogo} alt="Clay" className="h-8 object-contain rounded-lg" />
+            <img src={relevanceAiLogo} alt="Relevance AI" className="h-8 object-contain" />
+            <img src={n8nLogo} alt="n8n" className="h-8 object-contain" />
+            <img src={clayLogo} alt="Clay" className="h-8 object-contain" />
             <img src={airopsLogo} alt="AirOps" className="h-8 object-contain" />
             <img src={googleAdsLogo} alt="Google Ads" className="h-8 object-contain" />
-            
+            <img src={googleCloudLogo} alt="Google Cloud" className="h-8 object-contain" />
+            <img src={metaAdsLogo} alt="Meta Ads" className="h-8 object-contain" />
+            <img src={salesforceLogo} alt="Salesforce" className="h-8 object-contain" />
             <span className="text-sm text-muted-foreground font-mono">+ more</span>
           </div>
         </div>
