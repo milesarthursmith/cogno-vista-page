@@ -16,7 +16,7 @@ const agentExamples = [
       "A/B testing of messaging",
       "Automated follow-ups based on engagement",
     ],
-    techStack: ["Relevance AI", "Salesforce", "Gmail API", "Twilio", "Clay", "GPT-4"],
+    techStack: ["Relevance AI", "Salesforce", "Gmail API", "Twilio", "Clay", "GPT-5"],
   },
   {
     icon: Search,
@@ -29,7 +29,7 @@ const agentExamples = [
       "Sentiment analysis",
       "Custom report generation",
     ],
-    techStack: ["n8n", "GPT-4", "Perplexity API", "Google Cloud", "BigQuery", "Slack"],
+    techStack: ["n8n", "GPT-5", "Perplexity API", "Google Cloud", "BigQuery", "Slack"],
   },
   {
     icon: Database,
@@ -55,7 +55,7 @@ const agentExamples = [
       "Competitor mention tracking",
       "Automated meeting notes",
     ],
-    techStack: ["Gong", "Salesforce", "GPT-4", "BigQuery", "Looker", "Slack"],
+    techStack: ["Gong", "Salesforce", "GPT-5", "BigQuery", "Looker", "Slack"],
   },
   {
     icon: FileText,
@@ -68,7 +68,7 @@ const agentExamples = [
       "SEO-optimized blog drafts",
       "A/B variant generation",
     ],
-    techStack: ["GPT-4", "Claude", "Brand guidelines API", "Google Ads API", "HubSpot", "Airtable"],
+    techStack: ["GPT-5", "Claude", "Brand guidelines API", "Google Ads API", "HubSpot", "Airtable"],
   },
   {
     icon: BarChart,
@@ -81,7 +81,7 @@ const agentExamples = [
       "Natural language insights",
       "Scheduled report distribution",
     ],
-    techStack: ["BigQuery", "Looker", "GPT-4", "Google Sheets API", "Slack", "n8n"],
+    techStack: ["BigQuery", "Looker", "GPT-5", "Google Sheets API", "Slack", "n8n"],
   },
   {
     icon: Bot,
@@ -94,7 +94,7 @@ const agentExamples = [
       "Multi-document synthesis",
       "Access control enforcement",
     ],
-    techStack: ["Pinecone", "GPT-4", "LangChain", "Notion API", "Confluence API", "Slack"],
+    techStack: ["Pinecone", "GPT-5", "LangChain", "Notion API", "Confluence API", "Slack"],
   },
   {
     icon: Zap,
@@ -121,7 +121,7 @@ const AgentExamples = () => {
           {/* Header Section */}
           <div className="max-w-3xl mx-auto text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-serif font-medium mb-6">
-              AI Agent Examples
+              Examples
             </h1>
             <p className="text-xl text-muted-foreground font-serif">
               Real-world agent use cases built with production-ready tools and integrations
