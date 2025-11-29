@@ -31,11 +31,16 @@ const Hero = () => {
           </div>
 
           <div className="relative hidden lg:block">
-            {/* Animated growth line - jagged like TrendingUp icon */}
+            {/* Animated growth line with arrow - thinner */}
             <svg className="absolute left-0 top-0 w-full h-full pointer-events-none" style={{
             zIndex: 0
           }} viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 50 L 55 50 L 55 40 L 65 40 L 65 30 L 75 30 L 75 20 L 85 20 L 85 10 L 95 10" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="1.5" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" className="animate-draw-line" />
+              <defs>
+                <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+                  <polygon points="0 0, 6 3, 0 6" fill="hsl(225, 100%, 60%)" opacity="0.5" />
+                </marker>
+              </defs>
+              <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 50 L 55 50 L 55 40 L 65 40 L 65 30 L 75 30 L 75 20 L 85 20 L 85 10 L 95 10" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="0.8" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" markerEnd="url(#arrowhead)" className="animate-draw-line" />
             </svg>
 
             <div className="relative w-full aspect-square mx-0">
