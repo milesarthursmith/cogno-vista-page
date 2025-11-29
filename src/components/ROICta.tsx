@@ -9,9 +9,9 @@ const ROICta = () => {
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-border text-muted-foreground mb-6 text-sm">
-              <Calculator className="w-4 h-4" />
-              ROI Calculator
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card mb-6">
+              <Calculator className="w-4 h-4 text-primary" />
+              <span className="text-sm font-mono text-muted-foreground">ROI Calculator</span>
             </div>
             <h2 className="text-4xl md:text-5xl font-serif font-normal tracking-tight mb-4">
               How much could you save?
