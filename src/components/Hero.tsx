@@ -47,7 +47,7 @@ const Hero = () => {
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 01</div>
-                    <div className="text-sm font-medium">AI Agents & Workflows</div>
+                    <div className="text-sm font-medium">AI Agent Development</div>
                   </div>
                 </div>
               </div>
@@ -59,19 +59,19 @@ const Hero = () => {
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 02</div>
-                    <div className="text-sm font-medium">GTM Engineering</div>
+                    <div className="text-sm font-medium">Revenue Operations</div>
                   </div>
                 </div>
               </div>
 
-              <div className="absolute top-1/2 -translate-y-1/2 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-slow">
+              <div className="absolute top-[40%] -translate-y-1/2 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-slow">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="w-5 h-5 text-foreground" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Service 03</div>
-                    <div className="text-sm font-medium">AI-Powered Growth Marketing</div>
+                    <div className="text-sm font-medium">Growth Marketing Automation</div>
                   </div>
                 </div>
               </div>
