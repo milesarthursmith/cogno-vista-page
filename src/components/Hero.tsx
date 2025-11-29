@@ -40,7 +40,7 @@ const Hero = () => {
 
             <div className="relative w-full aspect-square">
               {/* Floating cards simulation */}
-              <div className="absolute top-8 right-12 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float">
+              <div className="absolute top-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <Bot className="w-5 h-5 text-foreground" />
@@ -52,7 +52,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="absolute top-1/2 left-1/3 -translate-y-1/2 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-delayed">
+              <div className="absolute bottom-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-delayed">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <Wrench className="w-5 h-5 text-foreground" />
@@ -64,7 +64,7 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-16 left-4 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-slow">
+              <div className="absolute top-1/2 -translate-y-1/2 right-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-slow">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <TrendingUp className="w-5 h-5 text-foreground" />
