@@ -79,7 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
       body: JSON.stringify({
         from: "humanstuff.ai <onboarding@resend.dev>",
         to: [email],
-        subject: `Your ${businessTypeLabel} Agent Readiness Score: ${score}% - ${stage.name}`,
+        subject: `Your ${businessTypeLabel} AI Readiness Score: ${score}% - ${stage.name}`,
         html: htmlContent,
       }),
     });
@@ -215,9 +215,9 @@ function calculateDimensionalScores(
   answers: Record<number, string | string[]>,
   quizSteps: QuizAnswers["quizSteps"]
 ): { cultural: number; technical: number; useCase: number } {
-  // Cultural: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
-  // Technical: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
-  // Use Case: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
+  // Culture: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
+  // Technology: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
+  // Process: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
   
   const culturalIndices = [6, 9, 11, 12];
   const technicalIndices = [4, 8, 10];
@@ -390,20 +390,20 @@ function calculateROIEstimates(
 function getStage(score: number): { name: string; description: string; color: string } {
   if (score >= 70) {
     return {
-      name: "Agent Ready",
-      description: "You have the infrastructure and culture to scale AI agents.",
+      name: "AI Ready",
+      description: "You have the infrastructure and culture to scale AI automation.",
       color: "#22c55e",
     };
   }
   if (score >= 40) {
     return {
-      name: "Agent Pilot",
+      name: "AI Pilot",
       description: "Ready for structured pilots and proof-of-concepts.",
       color: "#3b82f6",
     };
   }
   return {
-    name: "Agent Explorer",
+    name: "AI Explorer",
     description: "Early exploration phase - focus on building foundations.",
     color: "#f97316",
   };
@@ -419,7 +419,7 @@ function getStageRecommendations(
     next90Days: [] as string[],
   };
   
-  if (stage.name === "Agent Explorer") {
+  if (stage.name === "AI Explorer") {
     recommendations.immediate = [
       "Start with simple email/calendar automation",
       "Identify 2-3 repetitive tasks for quick wins",
@@ -435,7 +435,7 @@ function getStageRecommendations(
       "Create process documentation standards",
       "Plan data integration roadmap",
     ];
-  } else if (stage.name === "Agent Pilot") {
+  } else if (stage.name === "AI Pilot") {
     recommendations.immediate = [
       "Launch 2-3 structured pilots",
       "Establish ROI tracking metrics",
@@ -488,7 +488,7 @@ function generateEmailHTML(data: {
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Your ${data.businessType} Agent Readiness Results</title>
+  <title>Your ${data.businessType} AI Readiness Results</title>
   <style>
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
     .container { background: white; border-radius: 8px; padding: 40px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
@@ -509,7 +509,7 @@ function generateEmailHTML(data: {
 <body>
   <div class="container">
     <div class="header">
-      <h1>${data.businessType} Agent Readiness Results</h1>
+      <h1>${data.businessType} AI Readiness Results</h1>
       <div class="score-badge">${data.score}%</div>
       <div class="stage-name">${data.stage.name}</div>
       <p>${data.stage.description}</p>
@@ -519,16 +519,19 @@ function generateEmailHTML(data: {
       <div class="section-title">📊 Readiness Breakdown</div>
       <div class="dimension-scores">
         <div class="dimension">
-          <div class="dimension-label">Cultural</div>
+          <div class="dimension-label">Culture</div>
           <div class="dimension-score">${data.dimensions.cultural}%</div>
+          <p style="font-size: 10px; color: #6b7280; margin-top: 4px;">Team readiness & buy-in</p>
         </div>
         <div class="dimension">
-          <div class="dimension-label">Technical</div>
+          <div class="dimension-label">Technology</div>
           <div class="dimension-score">${data.dimensions.technical}%</div>
+          <p style="font-size: 10px; color: #6b7280; margin-top: 4px;">Infrastructure & integration</p>
         </div>
         <div class="dimension">
-          <div class="dimension-label">Use Case</div>
+          <div class="dimension-label">Process</div>
           <div class="dimension-score">${data.dimensions.useCase}%</div>
+          <p style="font-size: 10px; color: #6b7280; margin-top: 4px;">Opportunity mapping</p>
         </div>
       </div>
     </div>
