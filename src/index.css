@@ -177,13 +177,13 @@ All colors MUST be HSL.
 @layer utilities {
   @keyframes blob-float {
     0%, 100% { 
-      transform: translate(0, 0) scale(1); 
+      transform: translate(0, 0) scale(1) rotate(0deg);
     }
     33% { 
-      transform: translate(10px, -10px) scale(1.02); 
+      transform: translate(30px, -30px) scale(1.05) rotate(2deg);
     }
     66% { 
-      transform: translate(-5px, 5px) scale(0.98); 
+      transform: translate(-20px, 20px) scale(0.98) rotate(-2deg);
     }
   }
 
@@ -192,10 +192,10 @@ All colors MUST be HSL.
   }
 
   .animate-blob-float-slow {
-    animation: blob-float 25s ease-in-out infinite;
+    animation: blob-float 25s ease-in-out infinite reverse;
   }
 
   .animate-blob-float-delayed {
-    animation: blob-float 18s ease-in-out 2s infinite;
+    animation: blob-float 22s ease-in-out infinite 2s;
   }
 }
