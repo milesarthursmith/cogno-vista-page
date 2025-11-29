@@ -12,14 +12,14 @@ const Header = () => {
           </a>
           
           <nav className="hidden md:flex items-center gap-8">
+            <a href="/quiz" className="text-sm text-primary hover:text-primary/80 transition-colors font-mono font-medium">
+              Free Audit
+            </a>
             <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono">
               Services
             </a>
             <a href="/agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono">
               Examples
-            </a>
-            <a href="/quiz" className="text-sm text-primary hover:text-primary/80 transition-colors font-mono font-medium">
-              Free Audit
             </a>
             <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono">
               Contact
