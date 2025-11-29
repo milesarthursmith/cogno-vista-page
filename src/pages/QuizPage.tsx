@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
 import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from "lucide-react";
 import Header from "@/components/Header";
@@ -13,12 +14,14 @@ import { useToast } from "@/hooks/use-toast";
 
 type QuizStep = {
   question: string;
+  type: "radio" | "checkbox";
   options: { value: string; label: string; points: number }[];
 };
 
 const quizSteps: QuizStep[] = [
   {
     question: "How many people are on your team?",
+    type: "radio",
     options: [
       { value: "1-5", label: "1-5 people", points: 20 },
       { value: "6-15", label: "6-15 people", points: 40 },
@@ -28,6 +31,7 @@ const quizSteps: QuizStep[] = [
   },
   {
     question: "How many hours per week does your team spend on repetitive manual tasks?",
+    type: "radio",
     options: [
       { value: "0-5", label: "0-5 hours", points: 20 },
       { value: "5-15", label: "5-15 hours", points: 40 },
@@ -36,7 +40,60 @@ const quizSteps: QuizStep[] = [
     ],
   },
   {
-    question: "How would you describe your current tech stack and integration capabilities?",
+    question: "Which processes consume the most time for your team? (Select all that apply)",
+    type: "checkbox",
+    options: [
+      { value: "customer_support", label: "Customer support & communication", points: 15 },
+      { value: "document_generation", label: "Document generation & reporting", points: 15 },
+      { value: "data_entry", label: "Data entry & processing", points: 15 },
+      { value: "research", label: "Research & information gathering", points: 10 },
+      { value: "scheduling", label: "Scheduling & coordination", points: 10 },
+      { value: "quality_assurance", label: "Quality assurance & testing", points: 10 },
+    ],
+  },
+  {
+    question: "How would you describe your data infrastructure?",
+    type: "radio",
+    options: [
+      { value: "siloed", label: "Disconnected systems & data silos", points: 20 },
+      { value: "partial", label: "Some systems integrated, many manual exports", points: 40 },
+      { value: "integrated", label: "Most systems integrated with APIs available", points: 70 },
+      { value: "unified", label: "Unified data platform with real-time access", points: 90 },
+    ],
+  },
+  {
+    question: "What's your current AI adoption level?",
+    type: "radio",
+    options: [
+      { value: "none", label: "No AI tools in use", points: 10 },
+      { value: "experimenting", label: "Individual employees experimenting", points: 30 },
+      { value: "pilots", label: "Running structured pilots", points: 60 },
+      { value: "production", label: "Multiple AI tools in production", points: 90 },
+    ],
+  },
+  {
+    question: "How would you describe your team's AI readiness?",
+    type: "radio",
+    options: [
+      { value: "skeptical", label: "Skeptical or resistant to AI", points: 15 },
+      { value: "curious", label: "Curious but inexperienced", points: 40 },
+      { value: "champions", label: "Some AI champions leading adoption", points: 70 },
+      { value: "native", label: "AI-native culture with strong expertise", points: 95 },
+    ],
+  },
+  {
+    question: "How complex are your typical workflows and approval processes?",
+    type: "radio",
+    options: [
+      { value: "simple", label: "Simple, few dependencies", points: 80 },
+      { value: "moderate", label: "Moderate complexity, some approvals needed", points: 60 },
+      { value: "complex", label: "Complex with multiple stakeholders", points: 40 },
+      { value: "very_complex", label: "Highly complex, regulatory constraints", points: 25 },
+    ],
+  },
+  {
+    question: "How would you describe your current tech stack?",
+    type: "radio",
     options: [
       { value: "basic", label: "Basic - mostly manual tools", points: 20 },
       { value: "moderate", label: "Moderate - some connected tools", points: 50 },
@@ -46,6 +103,7 @@ const quizSteps: QuizStep[] = [
   },
   {
     question: "How well documented are your current processes?",
+    type: "radio",
     options: [
       { value: "none", label: "Not documented", points: 20 },
       { value: "some", label: "Some key processes documented", points: 50 },
@@ -54,7 +112,18 @@ const quizSteps: QuizStep[] = [
     ],
   },
   {
+    question: "What's your compliance and security requirements level?",
+    type: "radio",
+    options: [
+      { value: "minimal", label: "Minimal compliance requirements", points: 80 },
+      { value: "moderate", label: "Moderate (GDPR, basic security)", points: 60 },
+      { value: "high", label: "High (SOC 2, HIPAA, or similar)", points: 40 },
+      { value: "critical", label: "Critical (Financial, Healthcare, Gov)", points: 25 },
+    ],
+  },
+  {
     question: "What's your budget readiness for automation investment?",
+    type: "radio",
     options: [
       { value: "exploring", label: "Just exploring options", points: 20 },
       { value: "small", label: "Small pilot budget available", points: 50 },
@@ -64,6 +133,7 @@ const quizSteps: QuizStep[] = [
   },
   {
     question: "What's your timeline for implementation?",
+    type: "radio",
     options: [
       { value: "researching", label: "Still researching (6+ months)", points: 20 },
       { value: "planning", label: "Planning phase (3-6 months)", points: 50 },
@@ -75,7 +145,7 @@ const quizSteps: QuizStep[] = [
 
 const QuizPage = () => {
   const [currentStep, setCurrentStep] = useState(0);
-  const [answers, setAnswers] = useState<Record<number, string>>({});
+  const [answers, setAnswers] = useState<Record<number, string | string[]>>({});
   const [email, setEmail] = useState("");
   const [showResults, setShowResults] = useState(false);
   const [showEmailGate, setShowEmailGate] = useState(false);
@@ -83,17 +153,39 @@ const QuizPage = () => {
   const { toast } = useToast();
 
   const handleAnswer = (value: string) => {
-    setAnswers({ ...answers, [currentStep]: value });
+    const currentQuestion = quizSteps[currentStep];
+    if (currentQuestion.type === "checkbox") {
+      const currentAnswers = (answers[currentStep] as string[]) || [];
+      const newAnswers = currentAnswers.includes(value)
+        ? currentAnswers.filter(v => v !== value)
+        : [...currentAnswers, value];
+      setAnswers({ ...answers, [currentStep]: newAnswers });
+    } else {
+      setAnswers({ ...answers, [currentStep]: value });
+    }
   };
 
   const calculateScore = () => {
     let totalPoints = 0;
+    let maxPoints = 0;
+    
     Object.entries(answers).forEach(([stepIndex, answer]) => {
       const step = quizSteps[parseInt(stepIndex)];
-      const option = step.options.find((opt) => opt.value === answer);
-      if (option) totalPoints += option.points;
+      
+      if (step.type === "checkbox" && Array.isArray(answer)) {
+        answer.forEach(val => {
+          const option = step.options.find((opt) => opt.value === val);
+          if (option) totalPoints += option.points;
+        });
+        maxPoints += Math.max(...step.options.map(opt => opt.points)) * 2;
+      } else if (typeof answer === "string") {
+        const option = step.options.find((opt) => opt.value === answer);
+        if (option) totalPoints += option.points;
+        maxPoints += Math.max(...step.options.map(opt => opt.points));
+      }
     });
-    return Math.round((totalPoints / 600) * 100);
+    
+    return Math.round((totalPoints / maxPoints) * 100);
   };
 
   const handleNext = () => {
@@ -125,15 +217,24 @@ const QuizPage = () => {
     try {
       const score = calculateScore();
       
+      // Prepare answers for database
+      const primaryProcesses = Array.isArray(answers[2]) ? answers[2] : [];
+      
       // Store quiz response
       const { error: dbError } = await supabase.from("quiz_responses").insert({
         email,
-        team_size: parseInt(answers[0].split("-")[0]) || 0,
-        manual_hours_per_week: parseInt(answers[1].split("-")[0]) || 0,
-        tech_stack_maturity: answers[2],
-        process_documentation: answers[3],
-        budget_readiness: answers[4],
-        timeline: answers[5],
+        team_size: parseInt((answers[0] as string).split("-")[0]) || 0,
+        manual_hours_per_week: parseInt((answers[1] as string).split("-")[0]) || 0,
+        primary_processes: primaryProcesses,
+        data_infrastructure: answers[3] as string,
+        current_ai_adoption: answers[4] as string,
+        team_ai_readiness: answers[5] as string,
+        workflow_complexity: answers[6] as string,
+        tech_stack_maturity: answers[7] as string,
+        process_documentation: answers[8] as string,
+        compliance_requirements: answers[9] as string,
+        budget_readiness: answers[10] as string,
+        timeline: answers[11] as string,
         readiness_score: score,
       });
 
@@ -141,7 +242,7 @@ const QuizPage = () => {
 
       // Send results email
       const { error: emailError } = await supabase.functions.invoke("send-quiz-results", {
-        body: { email, score, answers },
+        body: { email, score, answers, quizSteps },
       });
 
       if (emailError) throw emailError;
@@ -168,10 +269,9 @@ const QuizPage = () => {
   const currentQuestion = quizSteps[currentStep];
 
   const getScoreLevel = (score: number) => {
-    if (score >= 80) return { level: "Highly Ready", color: "text-green-600" };
-    if (score >= 60) return { level: "Ready", color: "text-blue-600" };
-    if (score >= 40) return { level: "Moderately Ready", color: "text-yellow-600" };
-    return { level: "Early Stage", color: "text-orange-600" };
+    if (score >= 70) return { level: "Agent Ready", color: "text-green-600", description: "You have the infrastructure and culture to scale AI agents" };
+    if (score >= 40) return { level: "Agent Pilot", color: "text-blue-600", description: "Ready for structured pilots and proof-of-concepts" };
+    return { level: "Agent Explorer", color: "text-orange-600", description: "Early exploration phase - building foundations" };
   };
 
   if (showResults) {
@@ -193,12 +293,15 @@ const QuizPage = () => {
               <Card className="border border-border p-8 mb-8">
                 <div className="mb-4">
                   <div className="text-6xl font-bold mb-2">{score}%</div>
-                  <div className={`text-2xl font-serif ${scoreLevel.color}`}>
+                  <div className={`text-2xl font-serif mb-2 ${scoreLevel.color}`}>
                     {scoreLevel.level}
                   </div>
+                  <p className="text-sm text-muted-foreground font-serif">
+                    {scoreLevel.description}
+                  </p>
                 </div>
                 <p className="text-muted-foreground font-serif">
-                  Check your email for your complete automation readiness report including specific use cases and next steps.
+                  Check your email for your complete automation roadmap including specific use cases, tool recommendations, and ROI estimates.
                 </p>
               </Card>
 
@@ -230,12 +333,15 @@ const QuizPage = () => {
                 <h2 className="text-3xl font-serif font-normal mb-4">Your Readiness Score</h2>
                 <div className="mb-6">
                   <div className="text-6xl font-bold mb-2">{score}%</div>
-                  <div className={`text-2xl font-serif ${scoreLevel.color}`}>
+                  <div className={`text-2xl font-serif mb-2 ${scoreLevel.color}`}>
                     {scoreLevel.level}
                   </div>
+                  <p className="text-sm text-muted-foreground font-serif">
+                    {scoreLevel.description}
+                  </p>
                 </div>
                 <p className="text-muted-foreground font-serif">
-                  Great start! To unlock your detailed analysis and personalized automation recommendations, enter your email below.
+                  Unlock your detailed automation roadmap with specific opportunities, tool recommendations, and ROI projections.
                 </p>
               </Card>
 
@@ -244,13 +350,14 @@ const QuizPage = () => {
                   Get Your Full Readiness Report
                 </h3>
                 <p className="text-sm text-muted-foreground font-serif mb-6">
-                  Your detailed report will include:
+                  Your personalized automation blueprint includes:
                 </p>
                 <ul className="text-sm text-muted-foreground font-serif mb-6 space-y-2 text-left">
-                  <li>• Specific automation opportunities for your team</li>
-                  <li>• Estimated time and cost savings breakdown</li>
-                  <li>• Recommended starting points based on your answers</li>
-                  <li>• Implementation timeline and resource requirements</li>
+                  <li>• Department-specific automation opportunities</li>
+                  <li>• ROI estimates and projected time savings</li>
+                  <li>• Tool and platform recommendations (n8n, Make, Clay, etc.)</li>
+                  <li>• Prioritized 90-day implementation roadmap</li>
+                  <li>• Cultural, technical, and use-case readiness scores</li>
                 </ul>
 
                 <div className="space-y-4">
@@ -312,10 +419,10 @@ const QuizPage = () => {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-serif font-normal mb-4">
-                Agent Readiness Quiz
+                Agent Readiness Assessment
               </h1>
               <p className="text-lg text-muted-foreground font-serif">
-                Discover if your team is ready for AI automation in just 2 minutes
+                Get your personalized automation roadmap with ROI estimates and tool recommendations
               </p>
             </div>
 
@@ -329,31 +436,62 @@ const QuizPage = () => {
             <Card className="border border-border p-8">
               <h2 className="text-2xl font-serif font-normal mb-6">{currentQuestion.question}</h2>
 
-              <RadioGroup
-                value={answers[currentStep] || ""}
-                onValueChange={handleAnswer}
-                className="space-y-4"
-              >
-                {currentQuestion.options.map((option) => (
-                  <div
-                    key={option.value}
-                    className={`flex items-center space-x-3 p-4 rounded-lg border transition-colors cursor-pointer ${
-                      answers[currentStep] === option.value
-                        ? "border-primary bg-primary/5"
-                        : "border-border hover:border-primary/50"
-                    }`}
-                    onClick={() => handleAnswer(option.value)}
-                  >
-                    <RadioGroupItem value={option.value} id={option.value} />
-                    <Label
-                      htmlFor={option.value}
-                      className="flex-1 cursor-pointer font-serif"
+              {currentQuestion.type === "radio" ? (
+                <RadioGroup
+                  value={answers[currentStep] as string || ""}
+                  onValueChange={handleAnswer}
+                  className="space-y-4"
+                >
+                  {currentQuestion.options.map((option) => (
+                    <div
+                      key={option.value}
+                      className={`flex items-center space-x-3 p-4 rounded-lg border transition-colors cursor-pointer ${
+                        answers[currentStep] === option.value
+                          ? "border-primary bg-primary/5"
+                          : "border-border hover:border-primary/50"
+                      }`}
+                      onClick={() => handleAnswer(option.value)}
                     >
-                      {option.label}
-                    </Label>
-                  </div>
-                ))}
-              </RadioGroup>
+                      <RadioGroupItem value={option.value} id={option.value} />
+                      <Label
+                        htmlFor={option.value}
+                        className="flex-1 cursor-pointer font-serif"
+                      >
+                        {option.label}
+                      </Label>
+                    </div>
+                  ))}
+                </RadioGroup>
+              ) : (
+                <div className="space-y-4">
+                  {currentQuestion.options.map((option) => {
+                    const isChecked = (answers[currentStep] as string[] || []).includes(option.value);
+                    return (
+                      <div
+                        key={option.value}
+                        className={`flex items-center space-x-3 p-4 rounded-lg border transition-colors cursor-pointer ${
+                          isChecked
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/50"
+                        }`}
+                        onClick={() => handleAnswer(option.value)}
+                      >
+                        <Checkbox
+                          checked={isChecked}
+                          id={option.value}
+                          onCheckedChange={() => handleAnswer(option.value)}
+                        />
+                        <Label
+                          htmlFor={option.value}
+                          className="flex-1 cursor-pointer font-serif"
+                        >
+                          {option.label}
+                        </Label>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
 
               <div className="flex gap-4 mt-8">
                 <Button
@@ -367,7 +505,7 @@ const QuizPage = () => {
                 </Button>
                 <Button
                   onClick={handleNext}
-                  disabled={!answers[currentStep]}
+                  disabled={!answers[currentStep] || (Array.isArray(answers[currentStep]) && (answers[currentStep] as string[]).length === 0)}
                   className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   {currentStep === quizSteps.length - 1 ? "See Results" : "Next"}
