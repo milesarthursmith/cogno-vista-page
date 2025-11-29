@@ -33,21 +33,6 @@ const Services = () => {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3 max-w-7xl relative">
-          {/* Connecting lines between service cards */}
-          <svg className="hidden lg:block absolute left-0 top-0 w-full h-full pointer-events-none" style={{
-            zIndex: 0
-          }} viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <marker id="arrow-services" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
-                <polygon points="0 0, 4 2, 0 4" fill="hsl(var(--muted-foreground))" opacity="0.4" />
-              </marker>
-            </defs>
-            {/* Line from first to second card */}
-            <line x1="33" y1="12" x2="50" y2="12" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-services)" />
-            {/* Line from second to third card */}
-            <line x1="66" y1="12" x2="83" y2="12" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-services)" />
-          </svg>
-          
           {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow relative z-10">
               <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
                 <service.icon className="h-6 w-6" />
