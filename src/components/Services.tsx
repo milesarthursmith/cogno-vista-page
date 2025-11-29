@@ -43,9 +43,9 @@ const Services = () => {
               </marker>
             </defs>
             {/* Line from first to second card */}
-            <line x1="33" y1="30" x2="50" y2="30" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-services)" />
+            <line x1="33" y1="12" x2="50" y2="12" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-services)" />
             {/* Line from second to third card */}
-            <line x1="66" y1="30" x2="83" y2="30" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-services)" />
+            <line x1="66" y1="12" x2="83" y2="12" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-services)" />
           </svg>
           
           {services.map((service, index) => <Card key={index} className="border border-border bg-card rounded-xl p-8 hover:shadow-md transition-shadow relative z-10">
