@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Progress } from "@/components/ui/progress";
-import { ArrowRight, ArrowLeft, CheckCircle, Loader2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, CheckCircle, Loader2, TrendingUp } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AbstractBackground from "@/components/AbstractBackground";
@@ -330,9 +330,73 @@ const QuizPage = () => {
     return { level: "AI Explorer", color: "text-orange-600", description: "Early exploration phase - building foundations" };
   };
 
+  const getQuickWins = () => {
+    const wins: Array<{ title: string; description: string; impact: string }> = [];
+    const processes = Array.isArray(answers[3]) ? answers[3] : [];
+    const manualHours = answers[2] as string || "0-5";
+    const dataInfra = answers[4] as string || "siloed";
+    
+    // Customer Support automation
+    if (processes.includes("customer_support")) {
+      wins.push({
+        title: "AI Customer Support Agent",
+        description: "Automate tier-1 support tickets and FAQs to reduce response time and support volume",
+        impact: "40-60% reduction in support tickets"
+      });
+    }
+    
+    // Document generation
+    if (processes.includes("document_generation")) {
+      wins.push({
+        title: "Automated Document Generation",
+        description: "Generate reports, proposals, and documents from templates automatically",
+        impact: manualHours.startsWith("30+") || manualHours.startsWith("15-30") ? "10-20 hours saved per week" : "5-10 hours saved per week"
+      });
+    }
+    
+    // Data entry automation
+    if (processes.includes("data_entry")) {
+      wins.push({
+        title: "Intelligent Data Processing",
+        description: "Extract data from emails, PDFs, and forms automatically using AI",
+        impact: "70-90% reduction in manual data entry"
+      });
+    }
+    
+    // Email automation for high manual hours
+    if (wins.length < 3 && (manualHours.startsWith("15-30") || manualHours.startsWith("30+"))) {
+      wins.push({
+        title: "Email & Communication Automation",
+        description: "Draft responses, categorize emails, and handle routine communications automatically",
+        impact: "5-10 hours saved per week per person"
+      });
+    }
+    
+    // Research automation
+    if (wins.length < 3 && processes.includes("research")) {
+      wins.push({
+        title: "AI Research Assistant",
+        description: "Monitor industry news and synthesize research reports automatically",
+        impact: "5-15 hours saved per week"
+      });
+    }
+    
+    // Default workflow automation if we don't have enough
+    if (wins.length === 0) {
+      wins.push({
+        title: "Workflow Automation",
+        description: "Connect your tools and automate repetitive tasks between systems",
+        impact: "Start saving time immediately"
+      });
+    }
+    
+    return wins.slice(0, 3);
+  };
+
   if (showResults) {
     const scoreLevel = getScoreLevel(score);
     const dimensions = calculateDimensionalScores();
+    const quickWins = getQuickWins();
     
     return (
       <div className="min-h-screen relative">
@@ -343,10 +407,10 @@ const QuizPage = () => {
             <div className="max-w-2xl mx-auto text-center">
               <CheckCircle className="w-16 h-16 mx-auto mb-6 text-primary" />
               <h1 className="text-4xl md:text-5xl font-serif font-normal mb-4">
-                Your Results Are On The Way!
+                Your AI Readiness Audit Results
               </h1>
               <p className="text-lg text-muted-foreground font-serif mb-8">
-                We've sent a detailed breakdown to <strong>{email}</strong> with personalized recommendations based on your readiness score.
+                Here's your readiness score and top automation opportunities. We've sent detailed recommendations to <strong>{email}</strong>.
               </p>
 
               <Card className="border border-border p-8 mb-8">
@@ -383,10 +447,28 @@ const QuizPage = () => {
                     </div>
                   </div>
                 </div>
-                <p className="text-muted-foreground font-serif">
-                  Check your email for your complete automation roadmap including specific use cases, tool recommendations, and ROI estimates.
-                </p>
               </Card>
+
+              {quickWins.length > 0 && (
+                <Card className="border border-border p-8 mb-8 text-left">
+                  <h2 className="text-2xl font-serif font-medium mb-6 text-center">Top Automation Opportunities</h2>
+                  <div className="space-y-6">
+                    {quickWins.map((win, index) => (
+                      <div key={index} className="border-b border-border last:border-0 pb-6 last:pb-0">
+                        <h3 className="text-lg font-mono font-medium mb-2">{win.title}</h3>
+                        <p className="text-sm text-muted-foreground font-serif mb-2">{win.description}</p>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">
+                          <TrendingUp className="w-3 h-3" />
+                          {win.impact}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground font-serif mt-6 text-center">
+                    Check your email for detailed implementation steps, tool recommendations, and ROI estimates.
+                  </p>
+                </Card>
+              )}
 
               <Button
                 size="lg"
@@ -457,17 +539,17 @@ const QuizPage = () => {
 
               <Card className="border border-border p-8">
                 <h3 className="text-xl font-medium mb-4 font-mono">
-                  Get Your Full Readiness Report
+                  Get Your Free Audit Results
                 </h3>
                 <p className="text-sm text-muted-foreground font-serif mb-6">
-                  Your personalized automation blueprint includes:
+                  Receive your complete AI readiness report with:
                 </p>
                 <ul className="text-sm text-muted-foreground font-serif mb-6 space-y-2 text-left">
-                  <li>• Department-specific automation opportunities</li>
-                  <li>• ROI estimates and projected time savings</li>
-                  <li>• Tool and platform recommendations (n8n, Make, Clay, etc.)</li>
-                  <li>• Prioritized 90-day implementation roadmap</li>
-                  <li>• Cultural, technical, and use-case readiness scores</li>
+                  <li>• Custom automation use cases for your industry</li>
+                  <li>• ROI estimates and time savings projections</li>
+                  <li>• Tool and platform recommendations</li>
+                  <li>• 90-day implementation roadmap</li>
+                  <li>• Cultural, technical, and process readiness breakdown</li>
                 </ul>
 
                 <div className="space-y-4">
@@ -530,10 +612,10 @@ const QuizPage = () => {
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl md:text-5xl font-serif font-normal mb-4">
-                AI Readiness Assessment
+                Free AI Readiness Audit
               </h1>
               <p className="text-lg text-muted-foreground font-serif">
-                Get your personalized automation roadmap with ROI estimates and tool recommendations
+                2-minute assessment • Instant results • Custom automation opportunities for your business
               </p>
             </div>
 
