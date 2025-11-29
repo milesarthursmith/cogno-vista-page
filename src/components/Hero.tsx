@@ -38,7 +38,7 @@ const Hero = () => {
               <path d="M 5 95 L 15 95 L 15 85 L 25 85 L 25 75 L 35 75 L 35 65 L 45 65 L 45 50 L 55 50 L 55 40 L 65 40 L 65 30 L 75 30 L 75 20 L 85 20 L 85 10 L 95 10" fill="none" stroke="hsl(225, 100%, 60%)" strokeWidth="1.5" opacity="0.4" strokeDasharray="300" strokeDashoffset="300" className="animate-draw-line" />
             </svg>
 
-            <div className="relative w-full aspect-square">
+            <div className="relative w-full aspect-square mx-0">
               {/* Floating cards simulation */}
               <div className="absolute top-12 left-0 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float">
                 <div className="flex items-center gap-3">
@@ -52,8 +52,8 @@ const Hero = () => {
                 </div>
               </div>
 
-              <div className="absolute bottom-20 left-12 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-delayed">
-                <div className="flex items-center gap-3">
+              <div className="absolute bottom-20 left-12 bg-card border border-border rounded-xl p-4 shadow-sm w-64 animate-float-delayed px-[20px]">
+                <div className="flex items-center justify-start gap-[12px] mx-0 px-0">
                   <div className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center flex-shrink-0">
                     <Wrench className="w-5 h-5 text-foreground" />
                   </div>
