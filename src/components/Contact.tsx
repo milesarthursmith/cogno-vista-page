@@ -1,10 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import AbstractBackground from "@/components/AbstractBackground";
 const Contact = () => {
-  return <section id="contact" className="py-24 bg-background">
+  return <section id="contact" className="py-24 bg-background relative overflow-hidden">
+      <AbstractBackground variant="contact" />
       
-      <div className="container mx-auto px-6">
+      <div className="container relative z-10 mx-auto px-6">
         <div className="mx-auto max-w-2xl">
           <div className="mb-12">
             <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">Ready to take the busywork off your plate?</h2>

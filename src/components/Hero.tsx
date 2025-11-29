@@ -1,7 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Bot, Wrench, TrendingUp } from "lucide-react";
+import AbstractBackground from "@/components/AbstractBackground";
 const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
+      <AbstractBackground variant="hero" />
       
       <div className="container relative z-10 mx-auto px-6 py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
