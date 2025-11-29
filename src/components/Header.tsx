@@ -12,27 +12,26 @@ const Header = () => {
           </a>
           
           <nav className="hidden md:flex items-center gap-8">
-            <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/#services" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono">
               Services
             </a>
-            <a href="/agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/agents" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono">
               Examples
             </a>
-            <a href="/quiz" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              AI Readiness Quiz
+            <a href="/quiz" className="text-sm text-primary hover:text-primary/80 transition-colors font-mono font-medium">
+              Free Audit
             </a>
-            <a href="/roi-calculator" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              ROI Calculator
-            </a>
-            <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+            <a href="/#contact" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono">
               Contact
             </a>
           </nav>
 
           <div className="flex items-center gap-4">
-            <Button size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg">
-              Get Started
-            </Button>
+            <a href="/#contact">
+              <Button size="sm" className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-mono">
+                Get Started
+              </Button>
+            </a>
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-6 w-6" />
             </Button>
