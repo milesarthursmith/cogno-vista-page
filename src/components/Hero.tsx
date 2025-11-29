@@ -85,14 +85,15 @@ const Hero = () => {
         <div className="mt-32 pt-12 border-t border-border">
           <p className="text-center text-sm text-muted-foreground mb-8 font-serif">Tools & platforms we work with</p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
-            <img src={relevanceAiLogo} alt="Relevance AI" className="h-8 object-contain" />
-            <img src={n8nLogo} alt="n8n" className="h-8 object-contain" />
-            <img src={googleCloudLogo} alt="Google Cloud" className="h-8 object-contain" />
-            <img src={clayLogo} alt="Clay" className="h-8 object-contain" />
-            <img src={salesforceLogo} alt="Salesforce" className="h-8 object-contain" />
-            <img src={airopsLogo} alt="AirOps" className="h-8 object-contain" />
-            <img src={googleAdsLogo} alt="Google Ads" className="h-10 object-contain" />
-            <img src={metaAdsLogo} alt="Meta" className="h-8 object-contain" />
+            <img src={relevanceAiLogo} alt="Relevance AI" className="h-7 object-contain" />
+            <img src={n8nLogo} alt="n8n" className="h-7 object-contain" />
+            <img src={googleCloudLogo} alt="Google Cloud" className="h-7 object-contain" />
+            <img src={clayLogo} alt="Clay" className="h-7 object-contain" />
+            <img src={salesforceLogo} alt="Salesforce" className="h-7 object-contain" />
+            <img src={airopsLogo} alt="AirOps" className="h-7 object-contain" />
+            <img src={googleAdsLogo} alt="Google Ads" className="h-9 object-contain" />
+            <img src={metaAdsLogo} alt="Meta" className="h-7 object-contain" />
+            <span className="text-sm text-muted-foreground font-mono">+ more</span>
           </div>
         </div>
       </div>
