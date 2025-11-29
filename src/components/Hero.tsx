@@ -37,15 +37,15 @@ const Hero = () => {
           }} viewBox="0 0 100 100" preserveAspectRatio="none">
               <defs>
                 <marker id="arrow-small" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
-                  <polygon points="0 0, 4 2, 0 4" fill="hsl(var(--border))" />
+                  <polygon points="0 0, 4 2, 0 4" fill="hsl(var(--muted-foreground))" opacity="0.4" />
                 </marker>
               </defs>
               {/* Line from automation to engineering (left side) */}
-              <line x1="16" y1="25" x2="16" y2="70" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
+              <line x1="16" y1="25" x2="16" y2="70" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-small)" />
               {/* Line from automation to growth (top left to right) */}
-              <line x1="32" y1="20" x2="68" y2="50" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
+              <line x1="32" y1="20" x2="68" y2="50" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-small)" />
               {/* Line from engineering to growth (bottom left to right) */}
-              <line x1="32" y1="75" x2="68" y2="50" stroke="hsl(var(--border))" strokeWidth="0.3" markerEnd="url(#arrow-small)" />
+              <line x1="32" y1="75" x2="68" y2="50" stroke="hsl(var(--muted-foreground))" strokeWidth="0.3" opacity="0.4" markerEnd="url(#arrow-small)" />
             </svg>
 
             <div className="relative w-full aspect-square mx-0">
