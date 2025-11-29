@@ -100,7 +100,6 @@ const Hero = () => {
             <img src={n8nLogo} alt="n8n" className="h-8 object-contain" />
             <img src={clayLogo} alt="Clay" className="h-8 object-contain" />
             <img src={airopsLogo} alt="AirOps" className="h-8 object-contain" />
-            <img src={salesforceLogo} alt="Salesforce" className="h-8 object-contain" />
             <img src={googleCloudLogo} alt="Google Cloud" className="h-8 object-contain" />
             <span className="text-sm text-muted-foreground font-mono">+ more</span>
           </div>
