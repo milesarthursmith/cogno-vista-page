@@ -14,9 +14,9 @@ export const RadarChart = ({ cultural, technical, useCase }: RadarChartProps) =>
   ];
 
   return (
-    <div className="w-full h-[300px] flex items-center justify-center">
+    <div className="w-full h-[350px] flex items-center justify-center">
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsRadar data={data}>
+        <RechartsRadar data={data} margin={{ top: 40, right: 30, bottom: 20, left: 30 }}>
           <PolarGrid stroke="hsl(var(--border))" strokeWidth={1} />
           <PolarAngleAxis 
             dataKey="dimension" 
