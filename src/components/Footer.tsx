@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid gap-12 md:grid-cols-3 max-w-7xl mx-auto">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src={logo} alt="humanstuff.ai logo" className="h-8 w-8" />
+              <img src={logo} alt="humanstuff.ai logo" className="h-20 w-auto object-contain" />
               <span className="font-mono font-medium text-xl">humanstuff.ai</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed font-serif">
@@ -18,18 +18,42 @@ const Footer = () => {
           <div>
             <h4 className="mb-4 font-medium font-mono">Services</h4>
             <ul className="space-y-3 text-sm text-muted-foreground font-serif">
-              <li><a href="#" className="hover:text-foreground transition-colors">AI Agents & Workflows</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">GTM Engineering</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">AI-Powered Marketing</a></li>
+              <li>
+                <a href="#" className="hover:text-foreground transition-colors">
+                  AI Agents & Workflows
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-foreground transition-colors">
+                  GTM Engineering
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-foreground transition-colors">
+                  AI-Powered Marketing
+                </a>
+              </li>
             </ul>
           </div>
 
           <div>
             <h4 className="mb-4 font-medium font-mono">Company</h4>
             <ul className="space-y-3 text-sm text-muted-foreground font-serif">
-              <li><a href="#about" className="hover:text-foreground transition-colors">About Us</a></li>
-              <li><a href="#services" className="hover:text-foreground transition-colors">Services</a></li>
-              <li><a href="#contact" className="hover:text-foreground transition-colors">Contact</a></li>
+              <li>
+                <a href="#about" className="hover:text-foreground transition-colors">
+                  About Us
+                </a>
+              </li>
+              <li>
+                <a href="#services" className="hover:text-foreground transition-colors">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-foreground transition-colors">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
         </div>
