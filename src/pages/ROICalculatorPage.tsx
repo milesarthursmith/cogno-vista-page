@@ -285,7 +285,11 @@ const ROICalculatorPage = () => {
                 Book a 15-minute consultation to discuss your specific automation needs and get a custom implementation plan.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono">
+                <Button 
+                  size="lg" 
+                  onClick={() => (window.location.href = "/ai-strategy-call")}
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono"
+                >
                   Book a call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
