@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import AgentExamples from "./pages/AgentExamples";
 import ROICalculatorPage from "./pages/ROICalculatorPage";
 import QuizPage from "./pages/QuizPage";
+import CaseStudies from "./pages/CaseStudies";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/agents" element={<AgentExamples />} />
           <Route path="/roi-calculator" element={<ROICalculatorPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
