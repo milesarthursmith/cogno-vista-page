@@ -47,7 +47,7 @@ const ReEngagement = () => {
               <div>
                 <h2 className="text-3xl font-bold mb-4">About the company</h2>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  A SaaS company with 20,000+ Closed Lost / No Decision accounts, limited BDR capacity, and risky CRM data quality issues. Leadership wanted a safe, controlled way to test AI-driven re-engagement without disrupting existing sales operations.
+                  A SaaS company had 20,000+ Closed Lost / No Decision opportunities from the past 3–4 years. Their BDR team was unable to manually re-engage the long tail. Data quality issues—duplicate accounts, stale contacts, unclear ownership—made automation risky. Leadership needed controlled AI outreach without disrupting reps.
                 </p>
               </div>
             </div>
@@ -82,6 +82,17 @@ const ReEngagement = () => {
           <section>
             <h2 className="text-3xl font-bold mb-8">What we built</h2>
             
+            {/* Tech Stack Logos */}
+            <div className="mb-12">
+              <div className="text-xs font-mono text-muted-foreground mb-4">TECH STACK</div>
+              <div className="flex flex-wrap items-center gap-8">
+                <img src="/src/assets/relevance_ai.png" alt="Relevance AI" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/src/assets/salesforce.png" alt="Salesforce" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <div className="text-sm text-muted-foreground font-mono">+ Zapier</div>
+                <div className="text-sm text-muted-foreground font-mono">+ Gmail API</div>
+              </div>
+            </div>
+
             <div className="space-y-8">
               <div className="border rounded-xl p-8 bg-card">
                 <div className="flex items-start gap-4 mb-4">
@@ -93,19 +104,23 @@ const ReEngagement = () => {
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Identified eligible accounts based on age, engagement history, and data quality</span>
+                        <span>Using Relevance AI, Zapier, Salesforce, and Gmail API—connected RelevanceAI to Salesforce using SOQL</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Generated personalised outreach using company and contact context</span>
+                        <span>Deep research step (industry, tech, size, history) before writing outreach</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Logged all activity into CRM with proper attribution</span>
+                        <span>AI-generated personalised outreach emails sent programmatically through Gmail integration</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Notified human reps via Slack when prospects replied</span>
+                        <span>Logged emails + activity back to Salesforce with Slack alerts when replies or signals of interest occurred</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Agent has the ability to handle replies as well</span>
                       </li>
                     </ul>
                   </div>
@@ -122,19 +137,19 @@ const ReEngagement = () => {
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Created or updated leads with proper account linkage</span>
+                        <span>Created/updated Leads in Salesforce and linked them to the correct Account</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Updated ownership based on territory rules</span>
+                        <span>Updated ownership + assignment rules</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Enrolled records into reporting campaigns for visibility</span>
+                        <span>Ensured interactions flowed into the correct Campaign & Reporting structure</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Ensured every AI → human handoff was fully traceable</span>
+                        <span>Enabled end-to-end tracking from outreach → response → SQL → Closed Won</span>
                       </li>
                     </ul>
                   </div>
@@ -151,15 +166,11 @@ const ReEngagement = () => {
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>AI-powered duplicate checking across thousands of records</span>
+                        <span>Real-time rep activity monitor checked for human touches in the last 7–14 days before outreach</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Real-time rep activity monitor to avoid human conflicts</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary mt-1">•</span>
-                        <span>Ownership and eligibility controls with override capabilities</span>
+                        <span>Guardrails: prevent contacting active customers, prevent double-sends, prevent conflicting ownership</span>
                       </li>
                     </ul>
                   </div>
@@ -208,42 +219,42 @@ const ReEngagement = () => {
             <h2 className="text-3xl font-bold mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
-                <Users className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">300+</div>
-                  <div className="font-semibold mb-2">Emails sent daily</div>
-                  <p className="text-sm text-muted-foreground">
-                    Scaled from pilot to hundreds of personalized AI emails
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Target className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">15+</div>
-                  <div className="font-semibold mb-2">SQLs generated</div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Multiple</div>
+                  <div className="font-semibold mb-2">SQLs and Closed Won deals</div>
                   <p className="text-sm text-muted-foreground">
-                    Created qualified leads and closed won opportunities
+                    Drove multiple qualified leads and closed won opportunities
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <TrendingDown className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">42%</div>
-                  <div className="font-semibold mb-2">Lower cost per SQL</div>
+                  <div className="text-3xl font-bold text-foreground mb-1">~42%</div>
+                  <div className="font-semibold mb-2">Reduced cost per SQL</div>
                   <p className="text-sm text-muted-foreground">
-                    More efficient than traditional outbound methods
+                    Lower cost per SQL vs traditional outbound
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <CheckCircle2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">0</div>
-                  <div className="font-semibold mb-2">Human conflicts</div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Safe</div>
+                  <div className="font-semibold mb-2">AI-human partnership</div>
                   <p className="text-sm text-muted-foreground">
-                    Proved AI can run safely alongside sales teams
+                    Demonstrated AI can safely partner with sales when ownership rules are engineered correctly
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Users className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">20k+</div>
+                  <div className="font-semibold mb-2">Dormant accounts engaged</div>
+                  <p className="text-sm text-muted-foreground">
+                    Systematically re-engaged thousands of closed lost opportunities
                   </p>
                 </div>
               </div>

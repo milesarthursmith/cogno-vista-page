@@ -47,7 +47,7 @@ const ContentSummarization = () => {
               <div>
                 <h2 className="text-3xl font-bold mb-4">About the company</h2>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  Like many GTM leaders, this client struggled with endless newsletters, long YouTube content, overwhelming article volume, and no way to store or reuse insights. They wanted the signal, without the noise.
+                  Client overwhelmed with 30+ newsletters/week, long YouTube content (20+ min videos), articles from teams & industry feeds—with no structured way to store or reuse insights. The challenge was turning information overload into a searchable, actionable knowledge base.
                 </p>
               </div>
             </div>
@@ -82,6 +82,17 @@ const ContentSummarization = () => {
           <section>
             <h2 className="text-3xl font-bold mb-8">What we built</h2>
             
+            {/* Tech Stack Logos */}
+            <div className="mb-12">
+              <div className="text-xs font-mono text-muted-foreground mb-4">TECH STACK</div>
+              <div className="flex flex-wrap items-center gap-8">
+                <img src="/src/assets/n8n.png" alt="n8n" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/src/assets/google_cloud.png" alt="Google Cloud" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <div className="text-sm text-muted-foreground font-mono">+ Notion</div>
+                <div className="text-sm text-muted-foreground font-mono">+ OpenAI</div>
+              </div>
+            </div>
+            
             <div className="space-y-8">
               <div className="border rounded-xl p-8 bg-card">
                 <div className="flex items-start gap-4 mb-4">
@@ -90,20 +101,20 @@ const ContentSummarization = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3">Content Ingestion</h3>
-                    <div className="grid grid-cols-3 gap-3 mb-3">
-                      <div className="border rounded-lg p-3 bg-background text-sm flex items-center gap-2">
-                        <span>📧</span> Email newsletters
-                      </div>
-                      <div className="border rounded-lg p-3 bg-background text-sm flex items-center gap-2">
-                        <span>📺</span> YouTube channels
-                      </div>
-                      <div className="border rounded-lg p-3 bg-background text-sm flex items-center gap-2">
-                        <span>📰</span> RSS feeds
-                      </div>
-                    </div>
-                    <p className="text-muted-foreground text-sm">
-                      All content automatically converted to a common text format for processing
-                    </p>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Using n8n + Gmail API + YouTube API—ingested newsletters via Gmail search filters</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Pulled video transcripts from YouTube channels & playlists</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Normalised everything into text</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -115,19 +126,18 @@ const ContentSummarization = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3">Summarisation & Tagging</h3>
-                    <p className="text-muted-foreground mb-3">AI generated for each piece of content:</p>
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Bullet point summaries highlighting key points</span>
+                        <span>Using GPT-4o / GPT-5 to generate summaries (150–250 chars)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Main takeaways and actionable insights</span>
+                        <span>Extracted key takeaways (bulleted)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Topic tags (AI, GTM, product, growth, sales, marketing, etc.)</span>
+                        <span>Auto-tags: AI, GTM, growth, product, martech, sales</span>
                       </li>
                     </ul>
                   </div>
@@ -141,19 +151,14 @@ const ContentSummarization = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3">Storage & Retrieval</h3>
-                    <p className="text-muted-foreground mb-3">Built a searchable knowledge base with:</p>
                     <ul className="space-y-2 text-muted-foreground">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Source links to original content</span>
+                        <span>Stored to Google Sheets / Notion / Drive with topic tags, source links, date, relevance ranking</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Smart tagging for easy filtering</span>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <span className="text-primary mt-1">•</span>
-                        <span>Filters by topic, source, and recency</span>
+                        <span>Created searchable archive</span>
                       </li>
                     </ul>
                   </div>
@@ -167,9 +172,16 @@ const ContentSummarization = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3">Digest Delivery</h3>
-                    <p className="text-muted-foreground">
-                      Automated daily or weekly digest email with the top content, curated based on relevance and importance. Team members get only what matters to them.
-                    </p>
+                    <ul className="space-y-2 text-muted-foreground">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Automated weekly digest email with top 10 items ranked by relevance</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Delivered as a skimmable summary</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -219,42 +231,42 @@ const ContentSummarization = () => {
             <h2 className="text-3xl font-bold mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
-                <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
-                <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">90%</div>
-                  <div className="font-semibold mb-2">Content filtered</div>
-                  <p className="text-sm text-muted-foreground">
-                    Converted overwhelming feed into valuable, actionable insights
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">8 hrs</div>
+                  <div className="text-3xl font-bold text-foreground mb-1">3–5 hrs</div>
                   <div className="font-semibold mb-2">Saved per week</div>
                   <p className="text-sm text-muted-foreground">
-                    Team spends time on decisions, not content scanning
+                    Time previously spent manually reading newsletters and videos
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Database className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">500+</div>
-                  <div className="font-semibold mb-2">Items archived</div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Searchable</div>
+                  <div className="font-semibold mb-2">Research archive created</div>
                   <p className="text-sm text-muted-foreground">
-                    Built a searchable knowledge base for future reference
+                    Built a knowledge repository of industry insights
                   </p>
                 </div>
               </div>
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Zap className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">24/7</div>
-                  <div className="font-semibold mb-2">Automated processing</div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Actionable</div>
+                  <div className="font-semibold mb-2">Long-form content made usable</div>
                   <p className="text-sm text-muted-foreground">
-                    Demonstrated power of quiet, continuous AI work
+                    Transformed lengthy content into skimmable summaries
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Background</div>
+                  <div className="font-semibold mb-2">AI-powered research</div>
+                  <p className="text-sm text-muted-foreground">
+                    Demonstrated how AI agents can handle continuous background research
                   </p>
                 </div>
               </div>
