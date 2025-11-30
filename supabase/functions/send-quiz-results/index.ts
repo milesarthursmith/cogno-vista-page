@@ -1,9 +1,16 @@
+````ts
+// deno-lint-ignore-file no-explicit-any
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers":
+    "authorization, x-client-info, apikey, content-type",
 };
+
+// Public URL where your header/footer logo is hosted
+// Update this if your logo lives somewhere else.
+const LOGO_URL = "https://humanstuff.ai/logo.png";
 
 interface QuizAnswers {
   email: string;
@@ -26,14 +33,16 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Get business type and prepare context for AI
     const businessType = answers[0] as string;
-    const businessTypeLabel = quizSteps[0].options.find(o => o.value === businessType)?.label || businessType;
-    
+    const businessTypeLabel =
+      quizSteps[0].options.find((o) => o.value === businessType)?.label ||
+      businessType;
+
     // Calculate dimensional scores
     const dimensions = calculateDimensionalScores(answers, quizSteps);
-    
+
     // Generate base opportunities
     const opportunities = generateAutomationOpportunities(answers, quizSteps);
-    
+
     // Use AI to enhance opportunities with business-specific insights
     const enhancedOpportunities = await getAIEnhancedSuggestions(
       businessTypeLabel,
@@ -41,16 +50,15 @@ const handler = async (req: Request): Promise<Response> => {
       opportunities,
       dimensions,
       score,
-      quizSteps
+      quizSteps,
     );
-    
-    // Generate tool recommendations
-    const toolRecommendations = generateToolRecommendations(answers, opportunities);
-    
-    // Calculate ROI estimates
+
+    // Tool recommendations & 90-day plan are still computed but no longer shown
+    const toolRecommendations = generateToolRecommendations(
+      answers,
+      opportunities,
+    );
     const roiEstimates = calculateROIEstimates(answers, quizSteps);
-    
-    // Generate stage-specific recommendations
     const stage = getStage(score);
     const stageRecommendations = getStageRecommendations(stage, dimensions);
 
@@ -118,7 +126,7 @@ const handler = async (req: Request): Promise<Response> => {
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
-      }
+      },
     );
   }
 };
@@ -126,11 +134,20 @@ const handler = async (req: Request): Promise<Response> => {
 async function getAIEnhancedSuggestions(
   businessType: string,
   answers: Record<number, string | string[]>,
-  baseOpportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>,
+  baseOpportunities: Array<{
+    title: string;
+    description: string;
+    impact: string;
+    effort: string;
+    category: string;
+  }>,
   dimensions: { cultural: number; technical: number; useCase: number },
   score: number,
-  quizSteps: QuizAnswers["quizSteps"]
-): Promise<Array<{ title: string; description: string; impact: string; effort: string; category: string }>> {
+  quizSteps: QuizAnswers["quizSteps"],
+): Promise<
+  Array<{ title: string; description: string; impact: string; effort: string;
+    category: string }>
+> {
   try {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) {
@@ -141,12 +158,16 @@ async function getAIEnhancedSuggestions(
     const processes = Array.isArray(answers[4]) ? answers[4] : [];
     const systems = Array.isArray(answers[3]) ? answers[3] : [];
     const goal = answers[5] as string;
-    const painPoint = answers[15] as string || "general repetitive work";
+    const painPoint = (answers[15] as string) || "general repetitive work";
     const manualHours = answers[2] as string;
-    
-    const goalLabel = quizSteps[5]?.options?.find(o => o.value === goal)?.label || goal;
-    const systemsLabels = systems.map(s => quizSteps[3]?.options?.find(o => o.value === s)?.label || s);
-    
+
+    const goalLabel =
+      quizSteps[5]?.options?.find((o) => o.value === goal)?.label || goal;
+    const systemsLabels = systems.map(
+      (s) =>
+        quizSteps[3]?.options?.find((o) => o.value === s)?.label || s,
+    );
+
     const prompt = `You are an AI automation consultant specializing in ${businessType} businesses.
 
 Business Context:
@@ -159,7 +180,9 @@ Business Context:
 - Readiness Score: ${score}/100 (Cultural: ${dimensions.cultural}%, Technical: ${dimensions.technical}%, Use Case: ${dimensions.useCase}%)
 
 Base automation opportunities identified:
-${baseOpportunities.map((opp, i) => `${i + 1}. ${opp.title}: ${opp.description}`).join("\n")}
+${baseOpportunities.map((opp, i) =>
+      `${i + 1}. ${opp.title}: ${opp.description}`,
+    ).join("\n")}
 
 Task: Enhance these automation opportunities with specific, actionable examples relevant to ${businessType} companies. For each opportunity:
 1. Reference their specific goal (${goalLabel}) and pain point in the description
@@ -178,28 +201,32 @@ Return ONLY a JSON array with this structure (no markdown, no code blocks):
   }
 ]`;
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://ai.gateway.lovable.dev/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash",
+          messages: [
+            {
+              role: "system",
+              content:
+                "You are an expert AI automation consultant. Always respond with valid JSON only, no markdown formatting.",
+            },
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+          temperature: 0.7,
+          max_tokens: 2000,
+        }),
       },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          {
-            role: "system",
-            content: "You are an expert AI automation consultant. Always respond with valid JSON only, no markdown formatting."
-          },
-          {
-            role: "user",
-            content: prompt
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 2000,
-      }),
-    });
+    );
 
     if (!response.ok) {
       console.error("AI API error:", response.status, await response.text());
@@ -208,7 +235,7 @@ Return ONLY a JSON array with this structure (no markdown, no code blocks):
 
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content;
-    
+
     if (!content) {
       console.warn("No content from AI, using base opportunities");
       return baseOpportunities;
@@ -219,14 +246,15 @@ Return ONLY a JSON array with this structure (no markdown, no code blocks):
       .replace(/```json\n?/g, "")
       .replace(/```\n?/g, "")
       .trim();
-    
+
     const enhancedOpportunities = JSON.parse(cleanedContent);
-    
+
     // Validate structure
-    if (Array.isArray(enhancedOpportunities) && enhancedOpportunities.length > 0) {
+    if (Array.isArray(enhancedOpportunities) &&
+      enhancedOpportunities.length > 0) {
       return enhancedOpportunities;
     }
-    
+
     return baseOpportunities;
   } catch (error) {
     console.error("Error enhancing with AI:", error);
@@ -236,41 +264,41 @@ Return ONLY a JSON array with this structure (no markdown, no code blocks):
 
 function calculateDimensionalScores(
   answers: Record<number, string | string[]>,
-  quizSteps: QuizAnswers["quizSteps"]
+  quizSteps: QuizAnswers["quizSteps"],
 ): { cultural: number; technical: number; useCase: number } {
   // Culture: questions 8, 11, 13, 14 (team AI readiness, documentation, budget, timeline)
   // Technology: questions 6, 10, 12 (data infrastructure, tech stack, compliance)
   // Process: questions 1, 2, 4, 9 (team size, manual hours, processes, workflow complexity)
-  
+
   const culturalIndices = [8, 11, 13, 14];
   const technicalIndices = [6, 10, 12];
   const useCaseIndices = [1, 2, 4, 9];
-  
-    const calculateDimension = (indices: number[]) => {
-      let total = 0;
-      let max = 0;
-      indices.forEach(i => {
-        const answer = answers[i];
-        const step = quizSteps[i];
-        
-        // Skip if step doesn't exist or is text type
-        if (!step || step.type === "text") return;
-        
-        if (Array.isArray(answer)) {
-          answer.forEach(val => {
-            const opt = step.options?.find(o => o.value === val);
-            if (opt) total += opt.points;
-          });
-          max += Math.max(...(step.options?.map(o => o.points) || [0])) * 2;
-        } else if (typeof answer === "string") {
-          const opt = step.options?.find(o => o.value === answer);
+
+  const calculateDimension = (indices: number[]) => {
+    let total = 0;
+    let max = 0;
+    indices.forEach((i) => {
+      const answer = answers[i];
+      const step = quizSteps[i];
+
+      // Skip if step doesn't exist or is text type
+      if (!step || step.type === "text") return;
+
+      if (Array.isArray(answer)) {
+        answer.forEach((val) => {
+          const opt = step.options?.find((o) => o.value === val);
           if (opt) total += opt.points;
-          max += Math.max(...(step.options?.map(o => o.points) || [0]));
-        }
-      });
-      return max > 0 ? Math.round((total / max) * 100) : 0;
-    };
-  
+        });
+        max += Math.max(...(step.options?.map((o) => o.points) || [0])) * 2;
+      } else if (typeof answer === "string") {
+        const opt = step.options?.find((o) => o.value === answer);
+        if (opt) total += opt.points;
+        max += Math.max(...(step.options?.map((o) => o.points) || [0]));
+      }
+    });
+    return max > 0 ? Math.round((total / max) * 100) : 0;
+  };
+
   return {
     cultural: calculateDimension(culturalIndices),
     technical: calculateDimension(technicalIndices),
@@ -280,133 +308,179 @@ function calculateDimensionalScores(
 
 function generateAutomationOpportunities(
   answers: Record<number, string | string[]>,
-  quizSteps: QuizAnswers["quizSteps"]
-): Array<{ title: string; description: string; impact: string; effort: string; category: string }> {
-  const opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }> = [];
-  
+  quizSteps: QuizAnswers["quizSteps"],
+): Array<{
+  title: string;
+  description: string;
+  impact: string;
+  effort: string;
+  category: string;
+}> {
+  const opportunities: Array<{
+    title: string;
+    description: string;
+    impact: string;
+    effort: string;
+    category: string;
+  }> = [];
+
   // Get primary processes (question 4)
-  const processes = answers[4] as string[] || [];
-  const manualHours = answers[2] as string || "0-5";
-  const dataInfra = answers[6] as string || "siloed";
-  
+  const processes = (answers[4] as string[]) || [];
+  const manualHours = (answers[2] as string) || "0-5";
+  const dataInfra = (answers[6] as string) || "siloed";
+
   // Customer Support automation
   if (processes.includes("customer_support")) {
     opportunities.push({
       title: "AI-Powered Customer Support Agent",
-      description: "Deploy an AI agent to handle tier-1 support tickets, FAQs, and routine inquiries. Integrates with ticketing systems to respond automatically.",
+      description:
+        "Deploy an AI agent to handle tier-1 support tickets, FAQs, and routine inquiries. Integrates with ticketing systems to respond automatically.",
       impact: "High - Reduce support volume by 40-60%",
-      effort: dataInfra === "unified" || dataInfra === "integrated" ? "Medium" : "High",
+      effort: dataInfra === "unified" || dataInfra === "integrated"
+        ? "Medium"
+        : "High",
       category: "Customer Support",
     });
   }
-  
+
   // Document generation automation
   if (processes.includes("document_generation")) {
     opportunities.push({
       title: "Automated Report & Document Generation",
-      description: "Create AI agents that generate reports, proposals, and documents from templates and data sources.",
-      impact: manualHours.startsWith("30+") || manualHours.startsWith("15-30") ? "Very High - Save 10-20 hours/week" : "High - Save 5-10 hours/week",
+      description:
+        "Create AI agents that generate reports, proposals, and documents from templates and data sources.",
+      impact: manualHours.startsWith("30+") ||
+          manualHours.startsWith("15-30")
+        ? "Very High - Save 10-20 hours/week"
+        : "High - Save 5-10 hours/week",
       effort: "Medium",
       category: "Document Processing",
     });
   }
-  
+
   // Data entry automation
   if (processes.includes("data_entry")) {
     opportunities.push({
       title: "Intelligent Data Entry & Processing",
-      description: "Automate data extraction from emails, PDFs, and forms. Use OCR and AI to parse unstructured data.",
+      description:
+        "Automate data extraction from emails, PDFs, and forms. Use OCR and AI to parse unstructured data.",
       impact: "Very High - Eliminate 70-90% of manual data entry",
-      effort: dataInfra === "siloed" ? "High - Requires integration" : "Medium",
+      effort: dataInfra === "siloed" ? "High - Requires integration"
+        : "Medium",
       category: "Data Processing",
     });
   }
-  
+
   // Research automation
   if (processes.includes("research")) {
     opportunities.push({
       title: "AI Research Assistant",
-      description: "Deploy agents that monitor industry news, gather competitive intelligence, and synthesize research reports.",
+      description:
+        "Deploy agents that monitor industry news, gather competitive intelligence, and synthesize research reports.",
       impact: "High - Save 5-15 hours/week",
       effort: "Low - Quick to implement",
       category: "Research & Analysis",
     });
   }
-  
+
   // Always include at least one email automation
   if (manualHours.startsWith("15-30") || manualHours.startsWith("30+")) {
     opportunities.push({
       title: "Email & Communication Automation",
-      description: "Deploy AI agents to draft responses, categorize emails, and handle routine communications.",
+      description:
+        "Deploy AI agents to draft responses, categorize emails, and handle routine communications.",
       impact: "Very High - Save 5-10 hours/week per person",
       effort: "Low - Quick wins available",
       category: "Communications",
     });
   }
-  
+
   return opportunities.slice(0, 5);
 }
 
 function generateToolRecommendations(
   answers: Record<number, string | string[]>,
-  opportunities: Array<{ category: string }>
+  opportunities: Array<{ category: string }>,
 ): Array<{ name: string; use_case: string; pricing: string; complexity: string }> {
-  const tools: Array<{ name: string; use_case: string; pricing: string; complexity: string }> = [];
-  const categories = new Set(opportunities.map(o => o.category));
-  
-  const techStack = answers[10] as string || "basic";
-  
+  const tools: Array<{
+    name: string;
+    use_case: string;
+    pricing: string;
+    complexity: string;
+  }> = [];
+  const categories = new Set(opportunities.map((o) => o.category));
+
+  const techStack = (answers[10] as string) || "basic";
+
   // Always recommend n8n for workflow automation
   tools.push({
     name: "n8n",
-    use_case: "Workflow automation connecting 400+ apps. Great for data workflows, custom automations, and connecting systems.",
+    use_case:
+      "Workflow automation connecting 400+ apps. Great for data workflows, custom automations, and connecting systems.",
     pricing: "Free self-hosted, Cloud from $20/mo",
     complexity: techStack === "basic" ? "Medium" : "Low",
   });
-  
+
   // Recommend Relevance AI for customer support and AI agent use cases
-  if (categories.has("Customer Support") || categories.has("Research & Analysis") || categories.has("Communications")) {
+  if (
+    categories.has("Customer Support") ||
+    categories.has("Research & Analysis") ||
+    categories.has("Communications")
+  ) {
     tools.push({
       name: "Relevance AI",
-      use_case: "Build custom AI agents for customer support, research, and communication workflows without code.",
+      use_case:
+        "Build custom AI agents for customer support, research, and communication workflows without code.",
       pricing: "Contact for pricing",
       complexity: "Low",
     });
   }
-  
+
   return tools;
 }
 
 function calculateROIEstimates(
   answers: Record<number, string | string[]>,
-  quizSteps: QuizAnswers["quizSteps"]
-): { weeklyHoursSaved: string; annualCostSavings: string; paybackPeriod: string; details: string } {
+  quizSteps: QuizAnswers["quizSteps"],
+): {
+  weeklyHoursSaved: string;
+  annualCostSavings: string;
+  paybackPeriod: string;
+  details: string;
+} {
   const teamSize = parseInt((answers[1] as string).split("-")[0]) || 1;
-  const manualHoursStr = answers[2] as string || "0-5";
+  const manualHoursStr = (answers[2] as string) || "0-5";
   const manualHours = parseInt(manualHoursStr.split("-")[0]) || 0;
-  
+
   const automationRate = 0.5;
   const hoursSavedPerWeek = Math.round(manualHours * automationRate * teamSize);
   const hourlyCost = 50;
   const annualSavings = hoursSavedPerWeek * 52 * hourlyCost;
-  
-  const budget = answers[13] as string || "exploring";
+
+  const budget = (answers[13] as string) || "exploring";
   let implementationCost = 15000;
   if (budget === "small") implementationCost = 10000;
   if (budget === "medium") implementationCost = 25000;
   if (budget === "large") implementationCost = 40000;
-  
+
   const paybackMonths = Math.ceil(implementationCost / (annualSavings / 12));
-  
+
   return {
-    weeklyHoursSaved: `${hoursSavedPerWeek}-${Math.round(hoursSavedPerWeek * 1.2)} hours/week`,
-    annualCostSavings: `$${Math.round(annualSavings / 1000)}k - $${Math.round(annualSavings * 1.3 / 1000)}k/year`,
+    weeklyHoursSaved:
+      `${hoursSavedPerWeek}-${Math.round(hoursSavedPerWeek * 1.2)} hours/week`,
+    annualCostSavings:
+      `$${Math.round(annualSavings / 1000)}k - $${
+        Math.round(annualSavings * 1.3 / 1000)
+      }k/year`,
     paybackPeriod: `${paybackMonths} months`,
-    details: `Based on ${teamSize}+ team members spending ${manualHoursStr} hours/week on manual tasks.`,
+    details:
+      `Based on ${teamSize}+ team members spending ${manualHoursStr} hours/week on manual tasks.`,
   };
 }
 
-function getStage(score: number): { name: string; description: string; color: string } {
+function getStage(
+  score: number,
+): { name: string; description: string; color: string } {
   if (score >= 70) {
     return {
       name: "AI Ready",
@@ -430,14 +504,14 @@ function getStage(score: number): { name: string; description: string; color: st
 
 function getStageRecommendations(
   stage: { name: string },
-  dimensions: { cultural: number; technical: number; useCase: number }
+  dimensions: { cultural: number; technical: number; useCase: number },
 ): { immediate: string[]; next30Days: string[]; next90Days: string[] } {
   const recommendations = {
     immediate: [] as string[],
     next30Days: [] as string[],
     next90Days: [] as string[],
   };
-  
+
   if (stage.name === "AI Explorer") {
     recommendations.immediate = [
       "Start with simple email/calendar automation",
@@ -487,19 +561,43 @@ function getStageRecommendations(
       "Establish innovation pipeline",
     ];
   }
-  
+
   return recommendations;
 }
 
+/**
+ * UPDATED: no tools section, no 90-day action plan, no payback in ROI,
+ * logo in header and footer, and no P.S. / quiz link.
+ */
 function generatePlainTextEmail(data: {
   email: string;
   score: number;
   stage: { name: string; description: string; color: string };
   dimensions: { cultural: number; technical: number; useCase: number };
-  opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>;
-  toolRecommendations: Array<{ name: string; use_case: string; pricing: string; complexity: string }>;
-  roiEstimates: { weeklyHoursSaved: string; annualCostSavings: string; paybackPeriod: string; details: string };
-  stageRecommendations: { immediate: string[]; next30Days: string[]; next90Days: string[] };
+  opportunities: Array<{
+    title: string;
+    description: string;
+    impact: string;
+    effort: string;
+    category: string;
+  }>;
+  toolRecommendations: Array<{
+    name: string;
+    use_case: string;
+    pricing: string;
+    complexity: string;
+  }>;
+  roiEstimates: {
+    weeklyHoursSaved: string;
+    annualCostSavings: string;
+    paybackPeriod: string;
+    details: string;
+  };
+  stageRecommendations: {
+    immediate: string[];
+    next30Days: string[];
+    next90Days: string[];
+  };
   businessType: string;
 }): string {
   return `
@@ -522,7 +620,6 @@ PROJECTED ROI
 -------------
 Time Saved: ${data.roiEstimates.weeklyHoursSaved}
 Annual Savings: ${data.roiEstimates.annualCostSavings}
-Payback Period: ${data.roiEstimates.paybackPeriod}
 
 ${data.roiEstimates.details}
 
@@ -532,27 +629,7 @@ ${data.opportunities.map((opp, i) => `
 ${i + 1}. ${opp.title}
    ${opp.description}
    Impact: ${opp.impact} | Effort: ${opp.effort}
-`).join('\n')}
-
-RECOMMENDED TOOLS
------------------
-${data.toolRecommendations.map((tool, i) => `
-${i + 1}. ${tool.name}
-   ${tool.use_case}
-   ${tool.pricing} | ${tool.complexity} complexity
-`).join('\n')}
-
-YOUR 90-DAY ACTION PLAN
------------------------
-
-Start Immediately:
-${data.stageRecommendations.immediate.map(r => `• ${r}`).join('\n')}
-
-Next 30 Days:
-${data.stageRecommendations.next30Days.map(r => `• ${r}`).join('\n')}
-
-Next 90 Days:
-${data.stageRecommendations.next90Days.map(r => `• ${r}`).join('\n')}
+`).join("\n")}
 
 ---
 
@@ -563,9 +640,6 @@ https://humanstuff.ai/ai-strategy-call
 
 (Optional – no obligation)
 
-P.S. If you haven't completed the audit yet for a future call, you can do that here:
-https://humanstuff.ai/quiz
-
 ---
 humanstuff.ai
 Automate the boring stuff so you can focus on the human stuff
@@ -574,15 +648,44 @@ Questions? Reply to this email.
   `.trim();
 }
 
+/**
+ * UPDATED HTML:
+ * - Logo in header and footer
+ * - Compact readiness breakdown
+ * - ROI without payback period row
+ * - No tools section
+ * - No 90-day action plan section
+ * - Button text forced to white, no P.S./quiz link under CTA
+ */
 function generateEmailHTML(data: {
   email: string;
   score: number;
   stage: { name: string; description: string; color: string };
   dimensions: { cultural: number; technical: number; useCase: number };
-  opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>;
-  toolRecommendations: Array<{ name: string; use_case: string; pricing: string; complexity: string }>;
-  roiEstimates: { weeklyHoursSaved: string; annualCostSavings: string; paybackPeriod: string; details: string };
-  stageRecommendations: { immediate: string[]; next30Days: string[]; next90Days: string[] };
+  opportunities: Array<{
+    title: string;
+    description: string;
+    impact: string;
+    effort: string;
+    category: string;
+  }>;
+  toolRecommendations: Array<{
+    name: string;
+    use_case: string;
+    pricing: string;
+    complexity: string;
+  }>;
+  roiEstimates: {
+    weeklyHoursSaved: string;
+    annualCostSavings: string;
+    paybackPeriod: string;
+    details: string;
+  };
+  stageRecommendations: {
+    immediate: string[];
+    next30Days: string[];
+    next90Days: string[];
+  };
   businessType: string;
 }): string {
   return `
@@ -620,43 +723,38 @@ function generateEmailHTML(data: {
     
     .header {
       background: #ffffff;
-      padding: 48px 32px 32px;
+      padding: 32px 32px 24px;
       text-align: center;
       border-bottom: 1px solid #e5e5e5;
     }
     
     .logo {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 16px;
-      font-weight: 500;
-      color: #1a1a1a;
-      margin-bottom: 24px;
-      letter-spacing: -0.02em;
+      margin-bottom: 16px;
     }
     
     .score-container {
-      margin: 32px 0;
+      margin: 24px 0;
     }
     
     .score-badge {
-      font-size: 72px;
+      font-size: 64px;
       font-weight: 600;
       color: ${data.stage.color};
       line-height: 1;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       font-family: 'IBM Plex Mono', monospace;
     }
     
     .stage-name {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 500;
       color: #1a1a1a;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       letter-spacing: -0.01em;
     }
     
     .stage-description {
-      font-size: 16px;
+      font-size: 15px;
       color: #666;
       max-width: 400px;
       margin: 0 auto;
@@ -664,33 +762,33 @@ function generateEmailHTML(data: {
     }
     
     .content {
-      padding: 32px;
+      padding: 24px 32px 32px;
     }
     
     .section {
-      margin-bottom: 40px;
+      margin-bottom: 32px;
     }
     
     .section-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       color: #1a1a1a;
-      margin-bottom: 20px;
-      padding-bottom: 12px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
       border-bottom: 1px solid #e5e5e5;
       letter-spacing: -0.01em;
     }
     
     .dimensions-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 20px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
     }
     
     .dimension-card {
-      background: #fafafa;
-      padding: 20px 16px;
+      background: #ffffff;
+      padding: 12px 8px;
       border: 1px solid #e5e5e5;
       border-radius: 2px;
       text-align: center;
@@ -698,38 +796,38 @@ function generateEmailHTML(data: {
     
     .dimension-score {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 32px;
+      font-size: 24px;
       font-weight: 600;
       color: ${data.stage.color};
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
     }
     
     .dimension-label {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       color: #666;
       letter-spacing: 0.05em;
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     
     .dimension-description {
       font-size: 11px;
       color: #999;
-      line-height: 1.4;
+      line-height: 1.3;
     }
     
     .roi-grid {
       background: #fafafa;
       border: 1px solid #e5e5e5;
       border-radius: 2px;
-      padding: 24px;
-      margin-top: 20px;
+      padding: 20px;
+      margin-top: 16px;
     }
     
     .roi-item {
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
     
     .roi-item:last-child {
@@ -746,7 +844,7 @@ function generateEmailHTML(data: {
     }
     
     .roi-value {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 600;
       color: #1a1a1a;
     }
@@ -763,15 +861,15 @@ function generateEmailHTML(data: {
       background: #ffffff;
       border: 1px solid #e5e5e5;
       border-radius: 2px;
-      padding: 20px;
-      margin-bottom: 12px;
+      padding: 16px;
+      margin-bottom: 10px;
     }
     
     .opportunity-title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: #1a1a1a;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       letter-spacing: -0.01em;
     }
     
@@ -779,70 +877,29 @@ function generateEmailHTML(data: {
       font-size: 14px;
       color: #666;
       line-height: 1.6;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     
     .opportunity-meta {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 11px;
       color: #999;
-      padding-top: 12px;
+      padding-top: 8px;
       border-top: 1px solid #f0f0f0;
-    }
-    
-    .action-plan {
-      background: #fafafa;
-      border: 1px solid #e5e5e5;
-      border-radius: 2px;
-      padding: 24px;
-      margin-top: 20px;
-    }
-    
-    .action-plan h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: #1a1a1a;
-      margin: 24px 0 12px 0;
-      letter-spacing: -0.01em;
-    }
-    
-    .action-plan h3:first-child {
-      margin-top: 0;
-    }
-    
-    .action-plan ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .action-plan li {
-      font-size: 14px;
-      color: #666;
-      padding: 8px 0 8px 20px;
-      position: relative;
-      line-height: 1.6;
-    }
-    
-    .action-plan li:before {
-      content: "→";
-      position: absolute;
-      left: 0;
-      color: ${data.stage.color};
-      font-weight: 600;
     }
     
     .cta-section {
       text-align: center;
-      padding: 40px 32px;
+      padding: 32px;
       background: #fafafa;
       border-top: 1px solid #e5e5e5;
     }
     
     .cta-button {
       display: inline-block;
-      padding: 16px 32px;
+      padding: 14px 28px;
       background: ${data.stage.color};
-      color: #ffffff;
+      color: #ffffff !important;
       text-decoration: none;
       border-radius: 2px;
       font-family: 'IBM Plex Mono', monospace;
@@ -875,11 +932,11 @@ function generateEmailHTML(data: {
       }
       
       .content {
-        padding: 24px 20px;
+        padding: 20px 20px 28px;
       }
       
       .header {
-        padding: 32px 20px 24px;
+        padding: 28px 20px 20px;
       }
     }
   </style>
@@ -887,9 +944,18 @@ function generateEmailHTML(data: {
 <body>
   <div class="container">
     <div class="header">
-      <div class="logo">humanstuff.ai</div>
+      <div class="logo">
+        <a href="https://humanstuff.ai" style="text-decoration:none;">
+          <img
+            src="${LOGO_URL}"
+            alt="humanstuff.ai logo"
+            width="140"
+            style="display:block;margin:0 auto;height:auto;"
+          />
+        </a>
+      </div>
       <h1 class="stage-description">${data.businessType} AI Readiness Assessment</h1>
-      <p style="font-size: 13px; color: #666; margin: 16px auto 0; max-width: 500px;">
+      <p style="font-size: 13px; color: #666; margin: 12px auto 0; max-width: 500px;">
         You're receiving this because you completed the AI Readiness Assessment on humanstuff.ai and chose to have your results emailed to you.
       </p>
       <div class="score-container">
@@ -906,12 +972,12 @@ function generateEmailHTML(data: {
           <div class="dimension-card">
             <div class="dimension-score">${data.dimensions.cultural}%</div>
             <div class="dimension-label">Culture</div>
-            <div class="dimension-description">Team readiness & buy-in</div>
+            <div class="dimension-description">Team readiness &amp; buy-in</div>
           </div>
           <div class="dimension-card">
             <div class="dimension-score">${data.dimensions.technical}%</div>
             <div class="dimension-label">Technology</div>
-            <div class="dimension-description">Infrastructure & integration</div>
+            <div class="dimension-description">Infrastructure &amp; integration</div>
           </div>
           <div class="dimension-card">
             <div class="dimension-score">${data.dimensions.useCase}%</div>
@@ -932,68 +998,47 @@ function generateEmailHTML(data: {
             <div class="roi-label">Annual Savings</div>
             <div class="roi-value">${data.roiEstimates.annualCostSavings}</div>
           </div>
-          <div class="roi-item">
-            <div class="roi-label">Payback Period</div>
-            <div class="roi-value">${data.roiEstimates.paybackPeriod}</div>
-          </div>
           <div class="roi-details">${data.roiEstimates.details}</div>
         </div>
       </div>
 
       <div class="section">
         <h2 class="section-title">${data.businessType} Automation Opportunities</h2>
-        ${data.opportunities.map(opp => `
+        ${data.opportunities.map((opp) => `
           <div class="opportunity-card">
             <div class="opportunity-title">${opp.title}</div>
             <div class="opportunity-description">${opp.description}</div>
             <div class="opportunity-meta">Impact: ${opp.impact} • Effort: ${opp.effort}</div>
           </div>
-        `).join('')}
-      </div>
-
-      <div class="section">
-        <h2 class="section-title">Recommended Tools</h2>
-        ${data.toolRecommendations.map(tool => `
-          <div class="opportunity-card">
-            <div class="opportunity-title">${tool.name}</div>
-            <div class="opportunity-description">${tool.use_case}</div>
-            <div class="opportunity-meta">${tool.pricing} • ${tool.complexity} complexity</div>
-          </div>
-        `).join('')}
-      </div>
-
-      <div class="section">
-        <h2 class="section-title">Your 90-Day Action Plan</h2>
-        <div class="action-plan">
-          <h3>Start Immediately</h3>
-          <ul>
-            ${data.stageRecommendations.immediate.map(r => `<li>${r}</li>`).join('')}
-          </ul>
-          
-          <h3>Next 30 Days</h3>
-          <ul>
-            ${data.stageRecommendations.next30Days.map(r => `<li>${r}</li>`).join('')}
-          </ul>
-          
-          <h3>Next 90 Days</h3>
-          <ul>
-            ${data.stageRecommendations.next90Days.map(r => `<li>${r}</li>`).join('')}
-          </ul>
-        </div>
+        `).join("")}
       </div>
     </div>
 
     <div class="cta-section">
-      <p style="margin-bottom: 20px; font-size: 15px; color: #666;">Want to walk through these results and identify 1–3 concrete automation opportunities for your team?</p>
-      <a href="https://humanstuff.ai/ai-strategy-call" class="cta-button">Book a Free 30-Minute AI Strategy Call</a>
-      <p style="margin-top: 16px; font-size: 13px; color: #999;">(Optional – no obligation)</p>
-      <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5; font-size: 13px; color: #999;">
-        P.S. If you haven't completed the audit yet for a future call, you can do that here: <a href="https://humanstuff.ai/quiz" style="color: ${data.stage.color}; text-decoration: none;">https://humanstuff.ai/quiz</a>
+      <p style="margin-bottom: 20px; font-size: 15px; color: #666;">
+        Want to walk through these results and identify 1–3 concrete automation opportunities for your team?
+      </p>
+      <a
+        href="https://humanstuff.ai/ai-strategy-call"
+        class="cta-button"
+        style="background:${data.stage.color};color:#ffffff !important;text-decoration:none;border-radius:2px;padding:14px 28px;display:inline-block;font-family:'IBM Plex Mono', monospace;font-size:14px;font-weight:500;letter-spacing:-0.02em;"
+      >
+        Book a Free 30-Minute AI Strategy Call
+      </a>
+      <p style="margin-top: 16px; font-size: 13px; color: #999;">
+        (Optional – no obligation)
       </p>
     </div>
 
     <div class="footer">
-      <p style="margin-bottom: 12px;"><strong>humanstuff.ai</strong></p>
+      <a href="https://humanstuff.ai" style="display:inline-block;margin-bottom:12px;text-decoration:none;">
+        <img
+          src="${LOGO_URL}"
+          alt="humanstuff.ai logo"
+          width="100"
+          style="display:block;margin:0 auto;height:auto;"
+        />
+      </a>
       <p style="margin-bottom: 8px;">Automate the boring stuff so you can focus on the human stuff</p>
       <p>Questions? Reply to this email.</p>
     </div>
@@ -1004,3 +1049,4 @@ function generateEmailHTML(data: {
 }
 
 serve(handler);
+````
