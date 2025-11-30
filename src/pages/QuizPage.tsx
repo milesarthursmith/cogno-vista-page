@@ -179,7 +179,11 @@ const QuizPage = () => {
         : [...currentAnswers, value];
       setAnswers({ ...answers, [currentStep]: newAnswers });
     } else {
+      // Single-select: update answer and auto-advance after short delay
       setAnswers({ ...answers, [currentStep]: value });
+      setTimeout(() => {
+        handleNext();
+      }, 300);
     }
   };
 
