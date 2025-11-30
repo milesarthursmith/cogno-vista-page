@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="container mx-auto px-6">
-        <div className="flex h-20 items-center justify-between">
+        <div className="flex h-25 items-center justify-between">
           <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
             <img src={logo} alt="humanstuff.ai logo" className="h-20 w-auto object-contain" />
           </a>
