@@ -6,9 +6,8 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid gap-12 md:grid-cols-3 max-w-7xl mx-auto">
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="mb-4">
               <img src={logo} alt="humanstuff.ai logo" className="h-20 w-auto object-contain" />
-              <span className="font-mono font-medium text-xl">humanstuff.ai</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed font-serif">
               AI consulting for practical, production-ready systems.
