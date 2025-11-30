@@ -341,35 +341,27 @@ function generateToolRecommendations(
   const tools: Array<{ name: string; use_case: string; pricing: string; complexity: string }> = [];
   const categories = new Set(opportunities.map(o => o.category));
   
-  const budget = answers[11] as string || "exploring";
   const techStack = answers[8] as string || "basic";
   
-  if (budget !== "exploring") {
-    tools.push({
-      name: "n8n",
-      use_case: "Workflow automation connecting 400+ apps. Great for data workflows and custom automations.",
-      pricing: "Free self-hosted, Cloud from $20/mo",
-      complexity: techStack === "basic" ? "Medium" : "Low",
-    });
-  }
+  // Always recommend n8n for workflow automation
+  tools.push({
+    name: "n8n",
+    use_case: "Workflow automation connecting 400+ apps. Great for data workflows, custom automations, and connecting systems.",
+    pricing: "Free self-hosted, Cloud from $20/mo",
+    complexity: techStack === "basic" ? "Medium" : "Low",
+  });
   
-  if (categories.has("Customer Support")) {
+  // Recommend Relevance AI for customer support and AI agent use cases
+  if (categories.has("Customer Support") || categories.has("Research & Analysis") || categories.has("Communications")) {
     tools.push({
       name: "Relevance AI",
-      use_case: "Build custom AI agents for customer support without code.",
+      use_case: "Build custom AI agents for customer support, research, and communication workflows without code.",
       pricing: "Contact for pricing",
       complexity: "Low",
     });
   }
   
-  tools.push({
-    name: "Make (Integromat)",
-    use_case: "Visual automation platform for multi-step workflows.",
-    pricing: "Free tier, Pro from $9/mo",
-    complexity: "Low",
-  });
-  
-  return tools.slice(0, 5);
+  return tools;
 }
 
 function calculateROIEstimates(
