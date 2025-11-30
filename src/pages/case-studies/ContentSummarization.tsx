@@ -35,7 +35,7 @@ const ContentSummarization = () => {
             </div>
           </div>
         
-        <div className="space-y-16 mt-16">
+        <div className="space-y-24 mt-20">
           
           {/* About the Company */}
           <section>
