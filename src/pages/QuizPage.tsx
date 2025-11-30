@@ -679,7 +679,6 @@ const QuizPage = () => {
                           id={option.value}
                         />
                         <Label
-                          htmlFor={option.value}
                           className="flex-1 cursor-pointer font-serif"
                         >
                           {option.label}
