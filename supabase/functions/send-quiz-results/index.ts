@@ -40,7 +40,8 @@ const handler = async (req: Request): Promise<Response> => {
       answers,
       opportunities,
       dimensions,
-      score
+      score,
+      quizSteps
     );
     
     // Generate tool recommendations
@@ -127,7 +128,8 @@ async function getAIEnhancedSuggestions(
   answers: Record<number, string | string[]>,
   baseOpportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>,
   dimensions: { cultural: number; technical: number; useCase: number },
-  score: number
+  score: number,
+  quizSteps: QuizAnswers["quizSteps"]
 ): Promise<Array<{ title: string; description: string; impact: string; effort: string; category: string }>> {
   try {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -136,33 +138,40 @@ async function getAIEnhancedSuggestions(
       return baseOpportunities;
     }
 
-    const processes = Array.isArray(answers[3]) ? answers[3] : [];
+    const processes = Array.isArray(answers[4]) ? answers[4] : [];
+    const systems = Array.isArray(answers[3]) ? answers[3] : [];
+    const goal = answers[5] as string;
+    const painPoint = answers[15] as string || "general repetitive work";
     const manualHours = answers[2] as string;
+    
+    const goalLabel = quizSteps[5]?.options?.find(o => o.value === goal)?.label || goal;
+    const systemsLabels = systems.map(s => quizSteps[3]?.options?.find(o => o.value === s)?.label || s);
     
     const prompt = `You are an AI automation consultant specializing in ${businessType} businesses.
 
 Business Context:
 - Industry: ${businessType}
+- Main goal: ${goalLabel}
 - Team processes: ${processes.join(", ") || "general operations"}
+- Systems used: ${systemsLabels.join(", ") || "various tools"}
+- Main pain point: "${painPoint}"
 - Manual hours per week: ${manualHours}
 - Readiness Score: ${score}/100 (Cultural: ${dimensions.cultural}%, Technical: ${dimensions.technical}%, Use Case: ${dimensions.useCase}%)
 
 Base automation opportunities identified:
 ${baseOpportunities.map((opp, i) => `${i + 1}. ${opp.title}: ${opp.description}`).join("\n")}
 
-Task: Enhance these automation opportunities with specific, actionable examples relevant to ${businessType} companies. For each opportunity, provide:
-1. Industry-specific use cases and examples
-2. Concrete ROI metrics typical for ${businessType} businesses
-3. Common tools/platforms used in ${businessType} industry
-4. Real implementation considerations for ${businessType} context
-
-Keep descriptions concise (2-3 sentences) and focus on practical, business-specific insights.
+Task: Enhance these automation opportunities with specific, actionable examples relevant to ${businessType} companies. For each opportunity:
+1. Reference their specific goal (${goalLabel}) and pain point in the description
+2. Mention relevant systems they use (${systemsLabels.join(", ")})
+3. Provide concrete ROI metrics typical for ${businessType} businesses
+4. Keep descriptions concise (2-3 sentences) and practical
 
 Return ONLY a JSON array with this structure (no markdown, no code blocks):
 [
   {
     "title": "Original title",
-    "description": "Enhanced business-specific description with concrete ${businessType} examples",
+    "description": "Enhanced description referencing their goal, pain point, and systems",
     "impact": "Specific impact with ${businessType} metrics",
     "effort": "Low/Medium/High",
     "category": "Original category"
@@ -229,34 +238,38 @@ function calculateDimensionalScores(
   answers: Record<number, string | string[]>,
   quizSteps: QuizAnswers["quizSteps"]
 ): { cultural: number; technical: number; useCase: number } {
-  // Culture: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
-  // Technology: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
-  // Process: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
+  // Culture: questions 8, 11, 13, 14 (team AI readiness, documentation, budget, timeline)
+  // Technology: questions 6, 10, 12 (data infrastructure, tech stack, compliance)
+  // Process: questions 1, 2, 4, 9 (team size, manual hours, processes, workflow complexity)
   
-  const culturalIndices = [6, 9, 11, 12];
-  const technicalIndices = [4, 8, 10];
-  const useCaseIndices = [1, 2, 3, 7];
+  const culturalIndices = [8, 11, 13, 14];
+  const technicalIndices = [6, 10, 12];
+  const useCaseIndices = [1, 2, 4, 9];
   
-  const calculateDimension = (indices: number[]) => {
-    let total = 0;
-    let max = 0;
-    indices.forEach(i => {
-      const answer = answers[i];
-      const step = quizSteps[i];
-      if (Array.isArray(answer)) {
-        answer.forEach(val => {
-          const opt = step.options.find(o => o.value === val);
+    const calculateDimension = (indices: number[]) => {
+      let total = 0;
+      let max = 0;
+      indices.forEach(i => {
+        const answer = answers[i];
+        const step = quizSteps[i];
+        
+        // Skip if step doesn't exist or is text type
+        if (!step || step.type === "text") return;
+        
+        if (Array.isArray(answer)) {
+          answer.forEach(val => {
+            const opt = step.options?.find(o => o.value === val);
+            if (opt) total += opt.points;
+          });
+          max += Math.max(...(step.options?.map(o => o.points) || [0])) * 2;
+        } else if (typeof answer === "string") {
+          const opt = step.options?.find(o => o.value === answer);
           if (opt) total += opt.points;
-        });
-        max += Math.max(...step.options.map(o => o.points)) * 2;
-      } else if (typeof answer === "string") {
-        const opt = step.options.find(o => o.value === answer);
-        if (opt) total += opt.points;
-        max += Math.max(...step.options.map(o => o.points));
-      }
-    });
-    return max > 0 ? Math.round((total / max) * 100) : 0;
-  };
+          max += Math.max(...(step.options?.map(o => o.points) || [0]));
+        }
+      });
+      return max > 0 ? Math.round((total / max) * 100) : 0;
+    };
   
   return {
     cultural: calculateDimension(culturalIndices),
@@ -271,10 +284,10 @@ function generateAutomationOpportunities(
 ): Array<{ title: string; description: string; impact: string; effort: string; category: string }> {
   const opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }> = [];
   
-  // Get primary processes (question 3)
-  const processes = answers[3] as string[] || [];
+  // Get primary processes (question 4)
+  const processes = answers[4] as string[] || [];
   const manualHours = answers[2] as string || "0-5";
-  const dataInfra = answers[4] as string || "siloed";
+  const dataInfra = answers[6] as string || "siloed";
   
   // Customer Support automation
   if (processes.includes("customer_support")) {
@@ -341,7 +354,7 @@ function generateToolRecommendations(
   const tools: Array<{ name: string; use_case: string; pricing: string; complexity: string }> = [];
   const categories = new Set(opportunities.map(o => o.category));
   
-  const techStack = answers[8] as string || "basic";
+  const techStack = answers[10] as string || "basic";
   
   // Always recommend n8n for workflow automation
   tools.push({
@@ -377,7 +390,7 @@ function calculateROIEstimates(
   const hourlyCost = 50;
   const annualSavings = hoursSavedPerWeek * 52 * hourlyCost;
   
-  const budget = answers[11] as string || "exploring";
+  const budget = answers[13] as string || "exploring";
   let implementationCost = 15000;
   if (budget === "small") implementationCost = 10000;
   if (budget === "medium") implementationCost = 25000;

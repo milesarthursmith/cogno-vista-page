@@ -16,8 +16,8 @@ import { RadarChart } from "@/components/quiz/RadarChart";
 
 type QuizStep = {
   question: string;
-  type: "radio" | "checkbox";
-  options: { value: string; label: string; points: number }[];
+  type: "radio" | "checkbox" | "text";
+  options?: { value: string; label: string; points: number }[];
 };
 
 const quizSteps: QuizStep[] = [
@@ -58,6 +58,17 @@ const quizSteps: QuizStep[] = [
     ],
   },
   {
+    question: "Which tools hold most of your day-to-day data? (Select all that apply)",
+    type: "checkbox",
+    options: [
+      { value: "gmail", label: "Email (e.g. Gmail / Outlook)", points: 10 },
+      { value: "crm", label: "CRM (e.g. HubSpot, Salesforce)", points: 20 },
+      { value: "spreadsheets", label: "Spreadsheets (e.g. Google Sheets, Excel)", points: 15 },
+      { value: "ticketing", label: "Ticketing / Helpdesk (e.g. Zendesk, Intercom)", points: 20 },
+      { value: "erp", label: "ERP / finance systems", points: 15 },
+    ],
+  },
+  {
     question: "Which processes consume the most time for your team? (Select all that apply)",
     type: "checkbox",
     options: [
@@ -67,6 +78,16 @@ const quizSteps: QuizStep[] = [
       { value: "research", label: "Research & information gathering", points: 10 },
       { value: "scheduling", label: "Scheduling & coordination", points: 10 },
       { value: "quality_assurance", label: "Quality assurance & testing", points: 10 },
+    ],
+  },
+  {
+    question: "What's the main reason you're exploring AI automation?",
+    type: "radio",
+    options: [
+      { value: "save_time", label: "Reduce time spent on repetitive work", points: 60 },
+      { value: "scale_revenue", label: "Scale revenue without adding headcount", points: 80 },
+      { value: "improve_quality", label: "Improve quality / consistency of output", points: 70 },
+      { value: "reduce_costs", label: "Reduce operating costs", points: 75 },
     ],
   },
   {
@@ -159,6 +180,10 @@ const quizSteps: QuizStep[] = [
       { value: "urgent", label: "Need to start immediately", points: 100 },
     ],
   },
+  {
+    question: "In one sentence, what's the most painful, repetitive work in your week?",
+    type: "text",
+  },
 ];
 
 const QuizPage = () => {
@@ -194,16 +219,19 @@ const QuizPage = () => {
     Object.entries(answers).forEach(([stepIndex, answer]) => {
       const step = quizSteps[parseInt(stepIndex)];
       
+      // Skip text questions in scoring
+      if (step.type === "text") return;
+      
       if (step.type === "checkbox" && Array.isArray(answer)) {
         answer.forEach(val => {
-          const option = step.options.find((opt) => opt.value === val);
+          const option = step.options?.find((opt) => opt.value === val);
           if (option) totalPoints += option.points;
         });
-        maxPoints += Math.max(...step.options.map(opt => opt.points)) * 2;
+        maxPoints += Math.max(...(step.options?.map(opt => opt.points) || [0])) * 2;
       } else if (typeof answer === "string") {
-        const option = step.options.find((opt) => opt.value === answer);
+        const option = step.options?.find((opt) => opt.value === answer);
         if (option) totalPoints += option.points;
-        maxPoints += Math.max(...step.options.map(opt => opt.points));
+        maxPoints += Math.max(...(step.options?.map(opt => opt.points) || [0]));
       }
     });
     
@@ -240,7 +268,8 @@ const QuizPage = () => {
       const score = calculateScore();
       
       // Prepare answers for database
-      const primaryProcesses = Array.isArray(answers[3]) ? answers[3] : [];
+      const primaryProcesses = Array.isArray(answers[4]) ? answers[4] : [];
+      const systems = Array.isArray(answers[3]) ? answers[3] : [];
       
       // Store quiz response
       const { error: dbError } = await supabase.from("quiz_responses").insert({
@@ -249,15 +278,15 @@ const QuizPage = () => {
         team_size: parseInt((answers[1] as string).split("-")[0]) || 0,
         manual_hours_per_week: parseInt((answers[2] as string).split("-")[0]) || 0,
         primary_processes: primaryProcesses,
-        data_infrastructure: answers[4] as string,
-        current_ai_adoption: answers[5] as string,
-        team_ai_readiness: answers[6] as string,
-        workflow_complexity: answers[7] as string,
-        tech_stack_maturity: answers[8] as string,
-        process_documentation: answers[9] as string,
-        compliance_requirements: answers[10] as string,
-        budget_readiness: answers[11] as string,
-        timeline: answers[12] as string,
+        data_infrastructure: answers[6] as string,
+        current_ai_adoption: answers[7] as string,
+        team_ai_readiness: answers[8] as string,
+        workflow_complexity: answers[9] as string,
+        tech_stack_maturity: answers[10] as string,
+        process_documentation: answers[11] as string,
+        compliance_requirements: answers[12] as string,
+        budget_readiness: answers[13] as string,
+        timeline: answers[14] as string,
         readiness_score: score,
       });
 
@@ -292,13 +321,13 @@ const QuizPage = () => {
   const currentQuestion = quizSteps[currentStep];
 
   const calculateDimensionalScores = () => {
-    // Culture: questions 6, 9, 11, 12 (team AI readiness, documentation, budget, timeline)
-    // Technology: questions 4, 8, 10 (data infrastructure, tech stack, compliance)
-    // Process: questions 1, 2, 3, 7 (team size, manual hours, processes, workflow complexity)
+    // Culture: questions 8, 11, 13, 14 (team AI readiness, documentation, budget, timeline)
+    // Technology: questions 6, 10, 12 (data infrastructure, tech stack, compliance)
+    // Process: questions 1, 2, 4, 9 (team size, manual hours, processes, workflow complexity)
     
-    const culturalIndices = [6, 9, 11, 12];
-    const technicalIndices = [4, 8, 10];
-    const useCaseIndices = [1, 2, 3, 7];
+    const culturalIndices = [8, 11, 13, 14];
+    const technicalIndices = [6, 10, 12];
+    const useCaseIndices = [1, 2, 4, 9];
     
     const calculateDimension = (indices: number[]) => {
       let total = 0;
@@ -306,16 +335,20 @@ const QuizPage = () => {
       indices.forEach(i => {
         const answer = answers[i];
         const step = quizSteps[i];
+        
+        // Skip text questions
+        if (step.type === "text") return;
+        
         if (Array.isArray(answer)) {
           answer.forEach(val => {
-            const opt = step.options.find(o => o.value === val);
+            const opt = step.options?.find(o => o.value === val);
             if (opt) total += opt.points;
           });
-          max += Math.max(...step.options.map(o => o.points)) * 2;
+          max += Math.max(...(step.options?.map(o => o.points) || [0])) * 2;
         } else if (typeof answer === "string") {
-          const opt = step.options.find(o => o.value === answer);
+          const opt = step.options?.find(o => o.value === answer);
           if (opt) total += opt.points;
-          max += Math.max(...step.options.map(o => o.points));
+          max += Math.max(...(step.options?.map(o => o.points) || [0]));
         }
       });
       return max > 0 ? Math.round((total / max) * 100) : 0;
@@ -334,44 +367,79 @@ const QuizPage = () => {
     return { level: "AI Explorer", color: "text-orange-600", description: "Early exploration phase - building foundations" };
   };
 
+  const getDimensionNarrative = (dim: number, label: string) => {
+    if (dim >= 75) return `${label} is a strength – you're above the typical company we see.`;
+    if (dim >= 45) return `${label} is workable but there are clear gaps to address.`;
+    return `${label} is your main blocker – this is where early investment will pay off fastest.`;
+  };
+
+  const getBenchmarkCopy = (score: number) => {
+    if (score >= 70) return "You're ahead of most businesses we see – only a minority are this ready to scale agents.";
+    if (score >= 40) return "You're roughly in line with the majority: experimenting or running pilots but not fully scaled yet.";
+    return "You're earlier than most on the journey, which is fine – this is the right time to lay foundations.";
+  };
+
+  const getBalanceScore = (dims: { cultural: number; technical: number; useCase: number }) => {
+    const vals = [dims.cultural, dims.technical, dims.useCase];
+    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
+    const variance = vals.reduce((a, b) => a + Math.pow(b - avg, 2), 0) / vals.length;
+    const maxVariance = Math.pow(100, 2);
+    const balance = Math.max(0, 100 - Math.round((variance / maxVariance) * 100));
+    return balance;
+  };
+
   const getQuickWins = () => {
     const wins: Array<{ title: string; description: string; impact: string }> = [];
-    const processes = Array.isArray(answers[3]) ? answers[3] : [];
+    const processes = Array.isArray(answers[4]) ? answers[4] : [];
+    const systems = Array.isArray(answers[3]) ? answers[3] : [];
+    const goal = answers[5] as string || "save_time";
     const manualHours = answers[2] as string || "0-5";
-    const dataInfra = answers[4] as string || "siloed";
+    const dataInfra = answers[6] as string || "siloed";
+    
+    // Build "because" clause
+    const goalMap: Record<string, string> = {
+      save_time: "you want to reduce time spent on repetitive work",
+      scale_revenue: "you want to scale revenue without adding headcount",
+      improve_quality: "you want to improve quality and consistency",
+      reduce_costs: "you want to reduce operating costs",
+    };
+    const becauseClause = goalMap[goal] || "you're exploring automation";
     
     // Customer Support automation
     if (processes.includes("customer_support")) {
       wins.push({
         title: "AI Customer Support Agent",
-        description: "Automate tier-1 support tickets and FAQs to reduce response time and support volume",
-        impact: "40-60% reduction in support tickets"
+        description: `Because ${becauseClause} and you selected customer support as a major time sink, we recommend deploying an AI agent to handle tier-1 tickets and FAQs.`,
+        impact: "40-60% reduction in support tickets once live"
       });
     }
     
     // Document generation
     if (processes.includes("document_generation")) {
+      const systemContext = systems.includes("crm") ? "connected to your CRM" : "using your templates";
       wins.push({
         title: "Automated Document Generation",
-        description: "Generate reports, proposals, and documents from templates automatically",
+        description: `Because ${becauseClause}, automate report and proposal generation ${systemContext} to eliminate manual formatting.`,
         impact: manualHours.startsWith("30+") || manualHours.startsWith("15-30") ? "10-20 hours saved per week" : "5-10 hours saved per week"
       });
     }
     
     // Data entry automation
     if (processes.includes("data_entry")) {
+      const systemContext = systems.includes("spreadsheets") ? "and sync to your spreadsheets" : "into your systems";
       wins.push({
         title: "Intelligent Data Processing",
-        description: "Extract data from emails, PDFs, and forms automatically using AI",
+        description: `Because ${becauseClause}, extract data from emails and PDFs automatically ${systemContext} using AI.`,
         impact: "70-90% reduction in manual data entry"
       });
     }
     
     // Email automation for high manual hours
     if (wins.length < 3 && (manualHours.startsWith("15-30") || manualHours.startsWith("30+"))) {
+      const emailContext = systems.includes("gmail") ? "in Gmail" : "in your inbox";
       wins.push({
         title: "Email & Communication Automation",
-        description: "Draft responses, categorize emails, and handle routine communications automatically",
+        description: `Because ${becauseClause}, automate email drafting and categorization ${emailContext} to save hours daily.`,
         impact: "5-10 hours saved per week per person"
       });
     }
@@ -380,7 +448,7 @@ const QuizPage = () => {
     if (wins.length < 3 && processes.includes("research")) {
       wins.push({
         title: "AI Research Assistant",
-        description: "Monitor industry news and synthesize research reports automatically",
+        description: `Because ${becauseClause}, deploy an agent to monitor industry news and synthesize research reports automatically.`,
         impact: "5-15 hours saved per week"
       });
     }
@@ -389,7 +457,7 @@ const QuizPage = () => {
     if (wins.length === 0) {
       wins.push({
         title: "Workflow Automation",
-        description: "Connect your tools and automate repetitive tasks between systems",
+        description: `Because ${becauseClause}, start by connecting your existing tools to automate repetitive cross-system tasks.`,
         impact: "Start saving time immediately"
       });
     }
@@ -400,6 +468,7 @@ const QuizPage = () => {
   if (showResults) {
     const scoreLevel = getScoreLevel(score);
     const dimensions = calculateDimensionalScores();
+    const balance = getBalanceScore(dimensions);
     const quickWins = getQuickWins();
     
     return (
@@ -423,8 +492,11 @@ const QuizPage = () => {
                   <div className={`text-2xl font-serif mb-2 ${scoreLevel.color}`}>
                     {scoreLevel.level}
                   </div>
-                  <p className="text-sm text-muted-foreground font-serif mb-6">
+                  <p className="text-sm text-muted-foreground font-serif mb-2">
                     {scoreLevel.description}
+                  </p>
+                  <p className="text-xs text-muted-foreground font-serif mb-6">
+                    {getBenchmarkCopy(score)}
                   </p>
                   
                   <RadarChart 
@@ -449,6 +521,23 @@ const QuizPage = () => {
                       <div className="text-xs text-muted-foreground font-serif">Process</div>
                       <div className="text-[10px] text-muted-foreground font-serif">Opportunity mapping</div>
                     </div>
+                  </div>
+                  
+                  <div className="mt-6 space-y-3 text-left text-sm text-muted-foreground font-serif">
+                    <p><strong>Culture:</strong> {getDimensionNarrative(dimensions.cultural, "Culture")}</p>
+                    <p><strong>Technology:</strong> {getDimensionNarrative(dimensions.technical, "Technology")}</p>
+                    <p><strong>Process:</strong> {getDimensionNarrative(dimensions.useCase, "Process & use cases")}</p>
+                  </div>
+                  
+                  <div className="mt-6">
+                    <div className="flex justify-between text-xs text-muted-foreground mb-1 font-mono">
+                      <span>Balanced foundations</span>
+                      <span>{balance}%</span>
+                    </div>
+                    <Progress value={balance} className="h-1.5" />
+                    <p className="text-[11px] text-muted-foreground font-serif mt-1">
+                      A high score here means culture, tech, and processes are developing together rather than one outpacing the others.
+                    </p>
                   </div>
                 </div>
               </Card>
@@ -634,13 +723,22 @@ const QuizPage = () => {
               <h2 className="text-2xl font-serif font-normal mb-6">{currentQuestion.question}</h2>
 
               <div className="flex-1">
-                {currentQuestion.type === "radio" ? (
+                {currentQuestion.type === "text" ? (
+                  <div className="space-y-4">
+                    <Input
+                      value={(answers[currentStep] as string) || ""}
+                      onChange={(e) => setAnswers({ ...answers, [currentStep]: e.target.value })}
+                      placeholder="e.g. Manually updating the CRM after every client meeting"
+                      className="mt-2"
+                    />
+                  </div>
+                ) : currentQuestion.type === "radio" ? (
                 <RadioGroup
                   value={answers[currentStep] as string || ""}
                   onValueChange={handleAnswer}
                   className="space-y-4"
                 >
-                  {currentQuestion.options.map((option) => (
+                  {currentQuestion.options?.map((option) => (
                     <div
                       key={option.value}
                       className={`flex items-center space-x-3 p-4 rounded-lg border transition-colors cursor-pointer ${
@@ -662,7 +760,7 @@ const QuizPage = () => {
                 </RadioGroup>
               ) : (
                 <div className="space-y-4">
-                  {currentQuestion.options.map((option) => {
+                  {currentQuestion.options?.map((option) => {
                     const isChecked = (answers[currentStep] as string[] || []).includes(option.value);
                     return (
                       <div
@@ -702,7 +800,11 @@ const QuizPage = () => {
                 </Button>
                 <Button
                   onClick={handleNext}
-                  disabled={!answers[currentStep] || (Array.isArray(answers[currentStep]) && (answers[currentStep] as string[]).length === 0)}
+                  disabled={
+                    !answers[currentStep] || 
+                    (Array.isArray(answers[currentStep]) && (answers[currentStep] as string[]).length === 0) ||
+                    (currentQuestion.type === "text" && !(answers[currentStep] as string)?.trim())
+                  }
                   className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground"
                 >
                   {currentStep === quizSteps.length - 1 ? "See Results" : "Next"}
