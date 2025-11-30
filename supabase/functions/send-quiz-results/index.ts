@@ -622,7 +622,7 @@ function generateEmailHTML(data: {
     .score-badge {
       font-size: 72px;
       font-weight: 600;
-      color: ${data.stage.color};
+      color: #3b82f6;
       line-height: 1;
       margin-bottom: 16px;
       font-family: 'IBM Plex Mono', monospace;
@@ -681,7 +681,7 @@ function generateEmailHTML(data: {
       font-family: 'IBM Plex Mono', monospace;
       font-size: 28px;
       font-weight: 600;
-      color: ${data.stage.color};
+      color: #3b82f6;
       line-height: 1;
       margin-bottom: 6px;
     }
@@ -808,7 +808,7 @@ function generateEmailHTML(data: {
       content: "→";
       position: absolute;
       left: 0;
-      color: ${data.stage.color};
+      color: #3b82f6;
       font-weight: 600;
     }
     
@@ -822,7 +822,7 @@ function generateEmailHTML(data: {
     .cta-button {
       display: inline-block;
       padding: 16px 32px;
-      background: ${data.stage.color};
+      background: #3b82f6;
       color: #ffffff !important;
       text-decoration: none;
       border-radius: 2px;
@@ -852,7 +852,7 @@ function generateEmailHTML(data: {
     }
     
     .footer a {
-      color: ${data.stage.color};
+      color: #3b82f6;
       text-decoration: none;
     }
     
