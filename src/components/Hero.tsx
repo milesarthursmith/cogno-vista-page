@@ -23,8 +23,12 @@ const Hero = () => {
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-serif">From sales, marketing and ops - we design and build AI agents, automations and workflows that take repetitive work off your team.</p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono">
-                Book a 15-minute call
+              <Button 
+                size="lg" 
+                onClick={() => (window.location.href = "/ai-strategy-call")}
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono"
+              >
+                Book a call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button size="lg" variant="outline" className="rounded-lg px-8 h-12 border-border hover:bg-secondary font-mono">
