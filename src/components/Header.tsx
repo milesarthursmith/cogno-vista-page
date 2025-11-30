@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex items-center hover:opacity-80 transition-opacity">
-            <img src={logo} alt="humanstuff.ai logo" className="h-10 w-auto object-contain" />
+            <img src={logo} alt="humanstuff.ai logo" className="h-16 w-auto object-contain" />
           </a>
           
           <nav className="hidden md:flex items-center gap-8">
