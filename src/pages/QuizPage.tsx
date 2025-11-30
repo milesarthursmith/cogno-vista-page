@@ -104,10 +104,10 @@ const quizSteps: QuizStep[] = [
     question: "What's your current AI adoption level?",
     type: "radio",
     options: [
-      { value: "none", label: "No AI tools in use", points: 10 },
-      { value: "experimenting", label: "Individual employees experimenting", points: 30 },
-      { value: "pilots", label: "Running structured pilots", points: 60 },
-      { value: "production", label: "Multiple AI tools in production", points: 90 },
+      { value: "none", label: "No AI tools in use yet", points: 10 },
+      { value: "experimenting", label: "Experimenting (e.g. ChatGPT for content, Copilot for coding)", points: 30 },
+      { value: "pilots", label: "Running pilots (e.g. AI chatbots, workflow automation)", points: 60 },
+      { value: "production", label: "Multiple AI tools in production at scale", points: 90 },
     ],
   },
   {
@@ -379,15 +379,6 @@ const QuizPage = () => {
     return "You're earlier than most on the journey, which is fine – this is the right time to lay foundations.";
   };
 
-  const getBalanceScore = (dims: { cultural: number; technical: number; useCase: number }) => {
-    const vals = [dims.cultural, dims.technical, dims.useCase];
-    const avg = vals.reduce((a, b) => a + b, 0) / vals.length;
-    const variance = vals.reduce((a, b) => a + Math.pow(b - avg, 2), 0) / vals.length;
-    const maxVariance = Math.pow(100, 2);
-    const balance = Math.max(0, 100 - Math.round((variance / maxVariance) * 100));
-    return balance;
-  };
-
   const getQuickWins = () => {
     const wins: Array<{ title: string; description: string; impact: string }> = [];
     const processes = Array.isArray(answers[4]) ? answers[4] : [];
@@ -468,7 +459,6 @@ const QuizPage = () => {
   if (showResults) {
     const scoreLevel = getScoreLevel(score);
     const dimensions = calculateDimensionalScores();
-    const balance = getBalanceScore(dimensions);
     const quickWins = getQuickWins();
     
     return (
@@ -528,17 +518,6 @@ const QuizPage = () => {
                     <p><strong>Technology:</strong> {getDimensionNarrative(dimensions.technical, "Technology")}</p>
                     <p><strong>Process:</strong> {getDimensionNarrative(dimensions.useCase, "Process & use cases")}</p>
                   </div>
-                  
-                  <div className="mt-6">
-                    <div className="flex justify-between text-xs text-muted-foreground mb-1 font-mono">
-                      <span>Balanced foundations</span>
-                      <span>{balance}%</span>
-                    </div>
-                    <Progress value={balance} className="h-1.5" />
-                    <p className="text-[11px] text-muted-foreground font-serif mt-1">
-                      A high score here means culture, tech, and processes are developing together rather than one outpacing the others.
-                    </p>
-                  </div>
                 </div>
               </Card>
 
@@ -560,6 +539,19 @@ const QuizPage = () => {
                   <p className="text-sm text-muted-foreground font-serif mt-6 text-center">
                     Check your email for detailed implementation steps, tool recommendations, and ROI estimates.
                   </p>
+                  <div className="mt-6 pt-6 border-t border-border text-center">
+                    <p className="text-xs text-muted-foreground font-serif mb-2">
+                      Learn more about AI adoption trends:
+                    </p>
+                    <a 
+                      href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-xs text-primary hover:underline font-mono"
+                    >
+                      McKinsey: The State of AI in 2024 →
+                    </a>
+                  </div>
                 </Card>
               )}
 
@@ -582,6 +574,7 @@ const QuizPage = () => {
   if (showEmailGate) {
     const scoreLevel = getScoreLevel(score);
     const dimensions = calculateDimensionalScores();
+    const quickWins = getQuickWins();
     
     return (
       <div className="min-h-screen relative">
@@ -629,6 +622,36 @@ const QuizPage = () => {
                   Unlock your detailed automation roadmap with specific opportunities, tool recommendations, and ROI projections.
                 </p>
               </Card>
+
+              {/* Blurred preview of automation opportunities */}
+              <div className="relative mb-8">
+                <Card className="border border-border p-8 text-left">
+                  <h2 className="text-2xl font-serif font-medium mb-6 text-center">Top Automation Opportunities</h2>
+                  <div className="space-y-6">
+                    {quickWins.map((win, index) => (
+                      <div key={index} className="border-b border-border last:border-0 pb-6 last:pb-0">
+                        <h3 className="text-lg font-mono font-medium mb-2">{win.title}</h3>
+                        <p className="text-sm text-muted-foreground font-serif mb-2">{win.description}</p>
+                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-mono">
+                          <TrendingUp className="w-3 h-3" />
+                          {win.impact}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </Card>
+                {/* Blur overlay */}
+                <div className="absolute inset-0 backdrop-blur-md bg-background/30 rounded-lg flex items-center justify-center">
+                  <div className="text-center max-w-sm px-6">
+                    <p className="text-lg font-serif text-foreground mb-2">
+                      Enter your email to unlock detailed recommendations
+                    </p>
+                    <p className="text-sm text-muted-foreground font-serif">
+                      Including implementation steps, tool recommendations, and ROI estimates
+                    </p>
+                  </div>
+                </div>
+              </div>
 
               <Card className="border border-border p-8">
                 <h3 className="text-xl font-medium mb-4 font-mono">
