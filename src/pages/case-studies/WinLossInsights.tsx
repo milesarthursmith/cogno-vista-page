@@ -38,6 +38,8 @@ const WinLossInsights = () => {
               <Badge variant="secondary" className="font-mono">Time-series analytics</Badge>
             </div>
           </div>
+        
+        <div className="space-y-24 mt-20">
           
           {/* About the Company */}
           <section>
@@ -269,6 +271,7 @@ const WinLossInsights = () => {
             </div>
           </section>
 
+        </div>
         </div>
         </main>
       </section>
