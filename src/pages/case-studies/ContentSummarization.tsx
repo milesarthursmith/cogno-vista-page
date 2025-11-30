@@ -56,22 +56,22 @@ const ContentSummarization = () => {
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="border-l-4 border-destructive pl-6">
+              <div className="border-l-2 border-primary pl-6">
                 <h3 className="font-semibold text-lg mb-2">Content overload</h3>
                 <p className="text-muted-foreground font-serif">
-                  Hundreds of newsletters, YouTube videos, and articles per week with no filtering
+                  100+ emails, newsletters, YouTube channels, and RSS feeds—impossible to stay on top of emerging trends
                 </p>
               </div>
-              <div className="border-l-4 border-destructive pl-6">
+              <div className="border-l-2 border-primary pl-6">
                 <h3 className="font-semibold text-lg mb-2">Time drain</h3>
                 <p className="text-muted-foreground font-serif">
-                  Hours spent scanning content just to find the few relevant insights
+                  Executives spending 5+ hours per week skimming content and manually identifying what matters
                 </p>
               </div>
-              <div className="border-l-4 border-destructive pl-6">
+              <div className="border-l-2 border-primary pl-6">
                 <h3 className="font-semibold text-lg mb-2">No archive</h3>
                 <p className="text-muted-foreground font-serif">
-                  Valuable insights lost because there was no systematic way to store and retrieve them
+                  Valuable insights scattered across inboxes and tabs, no searchable knowledge base to reference later
                 </p>
               </div>
             </div>
