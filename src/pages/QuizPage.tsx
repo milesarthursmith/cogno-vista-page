@@ -557,10 +557,10 @@ const QuizPage = () => {
 
               <Button
                 size="lg"
-                onClick={() => (window.location.href = "/#contact")}
+                onClick={() => (window.location.href = "/ai-strategy-call")}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono"
               >
-                Book a consultation
+                Book an AI Strategy Call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>

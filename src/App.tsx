@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Examples from "./pages/Examples";
 import ROICalculatorPage from "./pages/ROICalculatorPage";
 import QuizPage from "./pages/QuizPage";
+import AiStrategyCallPage from "./pages/AiStrategyCall";
 import WinLossInsights from "./pages/case-studies/WinLossInsights";
 import ReEngagement from "./pages/case-studies/ReEngagement";
 import MessageIntelligence from "./pages/case-studies/MessageIntelligence";
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/case-studies" element={<Examples />} />
           <Route path="/roi-calculator" element={<ROICalculatorPage />} />
           <Route path="/quiz" element={<QuizPage />} />
+          <Route path="/ai-strategy-call" element={<AiStrategyCallPage />} />
           <Route path="/case-studies/win-loss-insights" element={<WinLossInsights />} />
           <Route path="/case-studies/re-engagement" element={<ReEngagement />} />
           <Route path="/case-studies/message-intelligence" element={<MessageIntelligence />} />

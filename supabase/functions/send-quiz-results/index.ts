@@ -556,9 +556,15 @@ ${data.stageRecommendations.next90Days.map(r => `• ${r}`).join('\n')}
 
 ---
 
-Want help implementing your first automation pilot?
-→ Talk to Miles (https://humanstuff.ai/#contact)
+Want to walk through these results and identify 1–3 concrete automation opportunities for your team?
+
+Book a Free 30-Minute AI Strategy Call:
+https://humanstuff.ai/ai-strategy-call
+
 (Optional – no obligation)
+
+P.S. If you haven't completed the audit yet for a future call, you can do that here:
+https://humanstuff.ai/quiz
 
 ---
 humanstuff.ai
@@ -978,11 +984,12 @@ function generateEmailHTML(data: {
     </div>
 
     <div class="cta-section">
-      <p style="margin-bottom: 16px; font-size: 15px; color: #666;">Want help implementing your first automation pilot?</p>
-      <p style="margin-bottom: 8px; font-size: 14px; color: #666;">
-        → <a href="https://humanstuff.ai/#contact" style="color: ${data.stage.color}; text-decoration: none;">Talk to Miles</a>
+      <p style="margin-bottom: 20px; font-size: 15px; color: #666;">Want to walk through these results and identify 1–3 concrete automation opportunities for your team?</p>
+      <a href="https://humanstuff.ai/ai-strategy-call" class="cta-button">Book a Free 30-Minute AI Strategy Call</a>
+      <p style="margin-top: 16px; font-size: 13px; color: #999;">(Optional – no obligation)</p>
+      <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5; font-size: 13px; color: #999;">
+        P.S. If you haven't completed the audit yet for a future call, you can do that here: <a href="https://humanstuff.ai/quiz" style="color: ${data.stage.color}; text-decoration: none;">https://humanstuff.ai/quiz</a>
       </p>
-      <p style="font-size: 13px; color: #999;">(Optional – no obligation)</p>
     </div>
 
     <div class="footer">
