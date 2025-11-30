@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Building2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import winLossImage from "@/assets/case-study-winloss.jpg";
 
 const WinLossInsights = () => {
   return (
@@ -10,14 +9,10 @@ const WinLossInsights = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-slate-100">
         <div className="absolute inset-0">
-          <img 
-            src={winLossImage} 
-            alt="Win/Loss Analysis" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 to-background/60" />
+          <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-muted/30 blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-muted/20 blur-3xl" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">
