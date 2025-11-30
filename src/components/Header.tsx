@@ -34,7 +34,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <a
               href="/quiz"
-              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-4 py-1.5 text-xs font-mono text-primary hover:bg-primary/5 hover:border-primary/60 transition-colors"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-mono text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary transition-colors"
             >
               Free AI Readiness Audit
             </a>
