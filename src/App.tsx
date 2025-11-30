@@ -4,10 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
-import AgentExamples from "./pages/AgentExamples";
+import Examples from "./pages/Examples";
 import ROICalculatorPage from "./pages/ROICalculatorPage";
 import QuizPage from "./pages/QuizPage";
-import CaseStudies from "./pages/CaseStudies";
 import WinLossInsights from "./pages/case-studies/WinLossInsights";
 import ReEngagement from "./pages/case-studies/ReEngagement";
 import MessageIntelligence from "./pages/case-studies/MessageIntelligence";
@@ -24,10 +23,11 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/agents" element={<AgentExamples />} />
+          <Route path="/examples" element={<Examples />} />
+          <Route path="/agents" element={<Examples />} />
+          <Route path="/case-studies" element={<Examples />} />
           <Route path="/roi-calculator" element={<ROICalculatorPage />} />
           <Route path="/quiz" element={<QuizPage />} />
-          <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/case-studies/win-loss-insights" element={<WinLossInsights />} />
           <Route path="/case-studies/re-engagement" element={<ReEngagement />} />
           <Route path="/case-studies/message-intelligence" element={<MessageIntelligence />} />
