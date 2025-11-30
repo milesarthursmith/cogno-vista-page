@@ -2,7 +2,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ArrowRight, Building2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import contentImage from "@/assets/case-study-content.jpg";
 
 const ContentSummarization = () => {
   return (
@@ -10,14 +9,10 @@ const ContentSummarization = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-zinc-100">
         <div className="absolute inset-0">
-          <img 
-            src={contentImage} 
-            alt="Content Summarization" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 to-background/60" />
+          <div className="absolute top-1/4 left-1/2 w-56 h-56 rounded-full bg-muted/30 blur-3xl" />
+          <div className="absolute bottom-1/4 right-1/2 w-72 h-72 rounded-full bg-muted/20 blur-3xl" />
         </div>
         
         <div className="container mx-auto px-4 relative z-10">

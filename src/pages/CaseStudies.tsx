@@ -1,35 +1,31 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CaseStudyCard from "@/components/case-studies/CaseStudyCard";
-import winLossImage from "@/assets/case-study-winloss.jpg";
-import reEngagementImage from "@/assets/case-study-reengagement.jpg";
-import messagingImage from "@/assets/case-study-messaging.jpg";
-import contentImage from "@/assets/case-study-content.jpg";
 
 const CaseStudies = () => {
   const caseStudies = [
     {
       title: "AI Win/Loss Insights for a Global SaaS GTM Team",
       description: "How we eliminated 100+ hours/month of manual analysis and enabled the first time-series view of decision drivers",
-      image: winLossImage,
+      color: "bg-slate-100",
       link: "/case-studies/win-loss-insights"
     },
     {
       title: "AI Re-Engagement Engine for Closed Lost Opportunities",
       description: "How we scaled from pilot to hundreds of AI emails/day, generating SQLs and Closed Won pipeline safely",
-      image: reEngagementImage,
+      color: "bg-neutral-100",
       link: "/case-studies/re-engagement"
     },
     {
       title: "Message Intelligence Platform for Marketing & Sales",
       description: "How we unified messaging performance across channels and created a feedback loop between marketing and sales",
-      image: messagingImage,
+      color: "bg-stone-100",
       link: "/case-studies/message-intelligence"
     },
     {
       title: "Automated Newsletter & YouTube Summarisation",
       description: "How we converted an overwhelming content feed into a curated intelligence stream, saving hours per week",
-      image: contentImage,
+      color: "bg-zinc-100",
       link: "/case-studies/content-summarization"
     }
   ];
@@ -53,7 +49,7 @@ const CaseStudies = () => {
                 key={index}
                 title={study.title}
                 description={study.description}
-                image={study.image}
+                color={study.color}
                 link={study.link}
               />
             ))}
