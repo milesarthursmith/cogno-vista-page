@@ -12,12 +12,6 @@ const Header = () => {
 
           <nav className="hidden md:flex items-center gap-8">
             <a
-              href="/quiz"
-              className="text-sm text-primary hover:text-primary/80 transition-colors font-mono font-medium"
-            >
-              Free Audit
-            </a>
-            <a
               href="/#services"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors font-mono"
             >
@@ -37,11 +31,17 @@ const Header = () => {
             </a>
           </nav>
 
-          <div className="flex items-center gap-4">
-            <a href="/#contact">
+          <div className="flex items-center gap-3">
+            <a
+              href="/quiz"
+              className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-primary/30 px-4 py-1.5 text-xs font-mono text-primary hover:bg-primary/5 hover:border-primary/60 transition-colors"
+            >
+              Free AI Readiness Audit
+            </a>
+            <a href="/ai-strategy-call">
               <Button
                 size="sm"
-                className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-mono"
+                className="inline-flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-mono px-4 sm:px-5 py-1.5 sm:py-2 text-xs sm:text-sm"
               >
                 Get Started
               </Button>
