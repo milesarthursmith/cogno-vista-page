@@ -3,6 +3,12 @@ import Footer from "@/components/Footer";
 import AbstractBackground from "@/components/AbstractBackground";
 import { ArrowRight, Building2, Clock, TrendingUp, Filter, Database } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import salesforceLogo from "@/assets/salesforce.png";
+import googleCloudLogo from "@/assets/google_cloud.png";
+import gongLogo from "@/assets/gong.png";
+import zendeskLogo from "@/assets/zendesk.png";
+import lookerstudioLogo from "@/assets/lookerstudio.png";
+import openaiLogo from "@/assets/openai.png";
 
 const WinLossInsights = () => {
   return (
@@ -79,11 +85,12 @@ const WinLossInsights = () => {
             <div className="mb-12">
               <div className="text-xs font-mono text-muted-foreground mb-4">TECH STACK</div>
               <div className="flex flex-wrap items-center gap-8">
-                <img src="/src/assets/salesforce.png" alt="Salesforce" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/src/assets/google_cloud.png" alt="Google Cloud" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <div className="text-sm text-muted-foreground font-mono">+ Gong</div>
-                <div className="text-sm text-muted-foreground font-mono">+ Zendesk</div>
-                <div className="text-sm text-muted-foreground font-mono">+ Looker Studio</div>
+                <img src={gongLogo} alt="Gong" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={salesforceLogo} alt="Salesforce" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={zendeskLogo} alt="Zendesk" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={googleCloudLogo} alt="Google Cloud" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={lookerstudioLogo} alt="Looker Studio" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={openaiLogo} alt="OpenAI" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
               </div>
             </div>
             
