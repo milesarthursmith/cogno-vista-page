@@ -20,7 +20,7 @@ const Index = () => {
       <Credibility />
       <Services />
       <ProblemFraming />
-      <ROICta />
+      
       <HowItWorks />
       <Approach />
       

@@ -23,34 +23,20 @@ const Hero = () => {
             <p className="text-lg text-muted-foreground mb-10 leading-relaxed font-serif">From sales, marketing and ops - we design and build AI agents, automations and workflows that take repetitive work off your team.</p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
-                size="lg" 
-                onClick={() => (window.location.href = "/ai-strategy-call")}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 h-12 font-mono"
-              >
+              <Button size="lg" onClick={() => window.location.href = "/ai-strategy-call"} className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 h-12 font-mono">
                 Book a call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                onClick={() => (window.location.href = "/quiz")}
-                className="rounded-full px-8 h-12 border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary font-mono transition-colors"
-              >
+              <Button size="lg" variant="outline" onClick={() => window.location.href = "/quiz"} className="rounded-full px-8 h-12 border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary font-mono transition-colors">
                 Free AI Readiness Audit
               </Button>
             </div>
             
             <div className="mt-6 space-y-2 text-xs md:text-sm text-muted-foreground font-serif max-w-xl">
-              <p>
-                2 minutes. Instant score and recommendations. No credit card required.
-              </p>
+              
               <p>
                 Not sure where to start?{" "}
-                <a
-                  href="/quiz"
-                  className="underline underline-offset-2 decoration-primary/60 hover:decoration-primary"
-                >
+                <a href="/quiz" className="underline underline-offset-2 decoration-primary/60 hover:decoration-primary">
                   Take the Free AI Readiness Audit
                 </a>{" "}
                 to see where automation will have the biggest impact.
