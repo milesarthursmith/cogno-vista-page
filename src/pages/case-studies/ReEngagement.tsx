@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Building2 } from "lucide-react";
+import { ArrowRight, Building2, TrendingDown, Target, CheckCircle2, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const ReEngagement = () => {
@@ -207,33 +207,45 @@ const ReEngagement = () => {
           <section>
             <h2 className="text-3xl font-bold mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">100s</div>
-                <div className="font-semibold mb-2">Emails sent daily</div>
-                <p className="text-sm text-muted-foreground">
-                  Scaled from pilot to hundreds of personalized AI emails
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Users className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">300+</div>
+                  <div className="font-semibold mb-2">Emails sent daily</div>
+                  <p className="text-sm text-muted-foreground">
+                    Scaled from pilot to hundreds of personalized AI emails
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">SQLs</div>
-                <div className="font-semibold mb-2">Pipeline generated</div>
-                <p className="text-sm text-muted-foreground">
-                  Created qualified leads and closed won opportunities
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Target className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">15+</div>
+                  <div className="font-semibold mb-2">SQLs generated</div>
+                  <p className="text-sm text-muted-foreground">
+                    Created qualified leads and closed won opportunities
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Lower</div>
-                <div className="font-semibold mb-2">Cost per SQL</div>
-                <p className="text-sm text-muted-foreground">
-                  More efficient than traditional outbound methods
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <TrendingDown className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">42%</div>
+                  <div className="font-semibold mb-2">Lower cost per SQL</div>
+                  <p className="text-sm text-muted-foreground">
+                    More efficient than traditional outbound methods
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Safe</div>
-                <div className="font-semibold mb-2">Human-AI collaboration</div>
-                <p className="text-sm text-muted-foreground">
-                  Proved AI can run safely alongside sales teams
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <CheckCircle2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">0</div>
+                  <div className="font-semibold mb-2">Human conflicts</div>
+                  <p className="text-sm text-muted-foreground">
+                    Proved AI can run safely alongside sales teams
+                  </p>
+                </div>
               </div>
             </div>
           </section>
