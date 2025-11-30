@@ -60,7 +60,6 @@ const handler = async (req: Request): Promise<Response> => {
       stage,
       dimensions,
       opportunities: enhancedOpportunities,
-      toolRecommendations,
       roiEstimates,
       stageRecommendations,
       businessType: businessTypeLabel,
@@ -72,7 +71,6 @@ const handler = async (req: Request): Promise<Response> => {
       stage,
       dimensions,
       opportunities: enhancedOpportunities,
-      toolRecommendations,
       roiEstimates,
       stageRecommendations,
       businessType: businessTypeLabel,
@@ -497,7 +495,6 @@ function generatePlainTextEmail(data: {
   stage: { name: string; description: string; color: string };
   dimensions: { cultural: number; technical: number; useCase: number };
   opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>;
-  toolRecommendations: Array<{ name: string; use_case: string; pricing: string; complexity: string }>;
   roiEstimates: { weeklyHoursSaved: string; annualCostSavings: string; paybackPeriod: string; details: string };
   stageRecommendations: { immediate: string[]; next30Days: string[]; next90Days: string[] };
   businessType: string;
@@ -522,7 +519,6 @@ PROJECTED ROI
 -------------
 Time Saved: ${data.roiEstimates.weeklyHoursSaved}
 Annual Savings: ${data.roiEstimates.annualCostSavings}
-Payback Period: ${data.roiEstimates.paybackPeriod}
 
 ${data.roiEstimates.details}
 
@@ -532,14 +528,6 @@ ${data.opportunities.map((opp, i) => `
 ${i + 1}. ${opp.title}
    ${opp.description}
    Impact: ${opp.impact} | Effort: ${opp.effort}
-`).join('\n')}
-
-RECOMMENDED TOOLS
------------------
-${data.toolRecommendations.map((tool, i) => `
-${i + 1}. ${tool.name}
-   ${tool.use_case}
-   ${tool.pricing} | ${tool.complexity} complexity
 `).join('\n')}
 
 YOUR 90-DAY ACTION PLAN
@@ -563,9 +551,6 @@ https://humanstuff.ai/ai-strategy-call
 
 (Optional – no obligation)
 
-P.S. If you haven't completed the audit yet for a future call, you can do that here:
-https://humanstuff.ai/quiz
-
 ---
 humanstuff.ai
 Automate the boring stuff so you can focus on the human stuff
@@ -580,7 +565,6 @@ function generateEmailHTML(data: {
   stage: { name: string; description: string; color: string };
   dimensions: { cultural: number; technical: number; useCase: number };
   opportunities: Array<{ title: string; description: string; impact: string; effort: string; category: string }>;
-  toolRecommendations: Array<{ name: string; use_case: string; pricing: string; complexity: string }>;
   roiEstimates: { weeklyHoursSaved: string; annualCostSavings: string; paybackPeriod: string; details: string };
   stageRecommendations: { immediate: string[]; next30Days: string[]; next90Days: string[] };
   businessType: string;
@@ -620,18 +604,15 @@ function generateEmailHTML(data: {
     
     .header {
       background: #ffffff;
-      padding: 48px 32px 32px;
+      padding: 32px 32px 32px;
       text-align: center;
       border-bottom: 1px solid #e5e5e5;
     }
     
     .logo {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 16px;
-      font-weight: 500;
-      color: #1a1a1a;
+      max-width: 200px;
+      height: auto;
       margin-bottom: 24px;
-      letter-spacing: -0.02em;
     }
     
     .score-container {
@@ -684,13 +665,13 @@ function generateEmailHTML(data: {
     .dimensions-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 16px;
     }
     
     .dimension-card {
       background: #fafafa;
-      padding: 20px 16px;
+      padding: 16px 12px;
       border: 1px solid #e5e5e5;
       border-radius: 2px;
       text-align: center;
@@ -698,16 +679,16 @@ function generateEmailHTML(data: {
     
     .dimension-score {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 600;
       color: ${data.stage.color};
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
     
     .dimension-label {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       color: #666;
       letter-spacing: 0.05em;
@@ -715,9 +696,9 @@ function generateEmailHTML(data: {
     }
     
     .dimension-description {
-      font-size: 11px;
+      font-size: 10px;
       color: #999;
-      line-height: 1.4;
+      line-height: 1.3;
     }
     
     .roi-grid {
@@ -726,13 +707,12 @@ function generateEmailHTML(data: {
       border-radius: 2px;
       padding: 24px;
       margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
     }
     
     .roi-item {
-      margin-bottom: 16px;
-    }
-    
-    .roi-item:last-child {
       margin-bottom: 0;
     }
     
@@ -757,6 +737,7 @@ function generateEmailHTML(data: {
       margin-top: 12px;
       padding-top: 12px;
       border-top: 1px solid #e5e5e5;
+      grid-column: 1 / -1;
     }
     
     .opportunity-card {
@@ -842,7 +823,7 @@ function generateEmailHTML(data: {
       display: inline-block;
       padding: 16px 32px;
       background: ${data.stage.color};
-      color: #ffffff;
+      color: #ffffff !important;
       text-decoration: none;
       border-radius: 2px;
       font-family: 'IBM Plex Mono', monospace;
@@ -862,6 +843,12 @@ function generateEmailHTML(data: {
       color: #999;
       font-size: 13px;
       border-top: 1px solid #e5e5e5;
+    }
+    
+    .footer .logo-footer {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 16px;
     }
     
     .footer a {
@@ -887,7 +874,7 @@ function generateEmailHTML(data: {
 <body>
   <div class="container">
     <div class="header">
-      <div class="logo">humanstuff.ai</div>
+      <img src="https://humanstuff.ai/src/assets/logo.png" alt="humanstuff.ai" class="logo" />
       <h1 class="stage-description">${data.businessType} AI Readiness Assessment</h1>
       <p style="font-size: 13px; color: #666; margin: 16px auto 0; max-width: 500px;">
         You're receiving this because you completed the AI Readiness Assessment on humanstuff.ai and chose to have your results emailed to you.
@@ -932,10 +919,6 @@ function generateEmailHTML(data: {
             <div class="roi-label">Annual Savings</div>
             <div class="roi-value">${data.roiEstimates.annualCostSavings}</div>
           </div>
-          <div class="roi-item">
-            <div class="roi-label">Payback Period</div>
-            <div class="roi-value">${data.roiEstimates.paybackPeriod}</div>
-          </div>
           <div class="roi-details">${data.roiEstimates.details}</div>
         </div>
       </div>
@@ -947,17 +930,6 @@ function generateEmailHTML(data: {
             <div class="opportunity-title">${opp.title}</div>
             <div class="opportunity-description">${opp.description}</div>
             <div class="opportunity-meta">Impact: ${opp.impact} • Effort: ${opp.effort}</div>
-          </div>
-        `).join('')}
-      </div>
-
-      <div class="section">
-        <h2 class="section-title">Recommended Tools</h2>
-        ${data.toolRecommendations.map(tool => `
-          <div class="opportunity-card">
-            <div class="opportunity-title">${tool.name}</div>
-            <div class="opportunity-description">${tool.use_case}</div>
-            <div class="opportunity-meta">${tool.pricing} • ${tool.complexity} complexity</div>
           </div>
         `).join('')}
       </div>
@@ -987,13 +959,10 @@ function generateEmailHTML(data: {
       <p style="margin-bottom: 20px; font-size: 15px; color: #666;">Want to walk through these results and identify 1–3 concrete automation opportunities for your team?</p>
       <a href="https://humanstuff.ai/ai-strategy-call" class="cta-button">Book a Free 30-Minute AI Strategy Call</a>
       <p style="margin-top: 16px; font-size: 13px; color: #999;">(Optional – no obligation)</p>
-      <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e5e5e5; font-size: 13px; color: #999;">
-        P.S. If you haven't completed the audit yet for a future call, you can do that here: <a href="https://humanstuff.ai/quiz" style="color: ${data.stage.color}; text-decoration: none;">https://humanstuff.ai/quiz</a>
-      </p>
     </div>
 
     <div class="footer">
-      <p style="margin-bottom: 12px;"><strong>humanstuff.ai</strong></p>
+      <img src="https://humanstuff.ai/src/assets/logo.png" alt="humanstuff.ai" class="logo-footer" />
       <p style="margin-bottom: 8px;">Automate the boring stuff so you can focus on the human stuff</p>
       <p>Questions? Reply to this email.</p>
     </div>
