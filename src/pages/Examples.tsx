@@ -3,7 +3,8 @@ import Footer from "@/components/Footer";
 import AbstractBackground from "@/components/AbstractBackground";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Bot, Mail, Search, Database, BarChart, FileText, Users, Zap, ArrowRight, Building2 } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Bot, Mail, Search, Database, BarChart, FileText, Users, Zap, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const agentExamples = [
@@ -117,54 +118,26 @@ const caseStudies = [
   {
     id: "win-loss-insights",
     title: "AI Win/Loss Insights for a Global SaaS GTM Team",
-    company: "Global SaaS Company",
-    companyInitials: "WL",
-    description: "How we eliminated 100+ hours/month of manual analysis and enabled the first time-series view of decision drivers",
+    description: "Eliminated 100+ hours/month of manual analysis and enabled the first time-series view of decision drivers",
     tags: ["Win/loss analysis", "LLM extraction", "Time-series analytics"],
-    impact: [
-      { metric: "100+", label: "Hours saved monthly" },
-      { metric: "First", label: "Time-series view" },
-      { metric: "Deep", label: "Contextual drill-down" }
-    ]
   },
   {
     id: "re-engagement",
     title: "AI Re-Engagement Engine for Closed Lost Opportunities",
-    company: "SaaS Company",
-    companyInitials: "RE",
-    description: "How we scaled from pilot to hundreds of AI emails/day, generating SQLs and Closed Won pipeline safely",
+    description: "Scaled from pilot to hundreds of AI emails/day, generating SQLs and Closed Won pipeline safely",
     tags: ["Multi-agent system", "CRM automation", "Safety guardrails"],
-    impact: [
-      { metric: "100s", label: "Emails sent daily" },
-      { metric: "SQLs", label: "Pipeline generated" },
-      { metric: "Safe", label: "Human-AI collaboration" }
-    ]
   },
   {
     id: "message-intelligence",
     title: "Message Intelligence Platform for Marketing & Sales",
-    company: "Fast-Growing SaaS",
-    companyInitials: "MI",
-    description: "How we unified messaging performance across channels and created a feedback loop between marketing and sales",
+    description: "Unified messaging performance across channels and created a feedback loop between marketing and sales",
     tags: ["Semantic matching", "Cross-channel analytics", "Content generation"],
-    impact: [
-      { metric: "Unified", label: "Cross-channel view" },
-      { metric: "Retired", label: "Underperforming content" },
-      { metric: "Feedback", label: "Marketing ↔ Sales loop" }
-    ]
   },
   {
     id: "content-summarization",
     title: "Automated Newsletter & YouTube Summarisation",
-    company: "GTM Leadership Team",
-    companyInitials: "CS",
-    description: "How we converted an overwhelming content feed into a curated intelligence stream, saving hours per week",
+    description: "Converted an overwhelming content feed into a curated intelligence stream, saving hours per week",
     tags: ["Content ingestion", "AI summarization", "Knowledge archive"],
-    impact: [
-      { metric: "Curated", label: "Intelligence stream" },
-      { metric: "Hours", label: "Saved per week" },
-      { metric: "Archive", label: "Research library" }
-    ]
   }
 ];
 
@@ -186,121 +159,102 @@ const Examples = () => {
             </p>
           </div>
 
-          {/* Case Studies Section */}
-          <div className="mb-32">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-serif font-medium mb-12 text-center">Case Studies</h2>
-              
-              <div className="grid gap-8 md:grid-cols-2">
-                {caseStudies.map((study) => (
-                  <Link 
-                    key={study.id} 
-                    to={`/case-studies/${study.id}`}
-                    className="group block"
-                  >
-                    <Card className="border border-border bg-card hover:shadow-lg transition-all h-full">
-                      <CardHeader>
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                            <span className="text-sm font-mono font-semibold">{study.companyInitials}</span>
-                          </div>
-                          <span className="font-mono text-xs text-muted-foreground">{study.company}</span>
-                        </div>
-                        <CardTitle className="text-2xl font-serif font-medium mb-3 group-hover:text-primary transition-colors">
-                          {study.title}
-                        </CardTitle>
-                        <CardDescription className="font-serif text-base">
-                          {study.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-6">
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {study.tags.map((tag, idx) => (
-                            <Badge key={idx} variant="secondary" className="font-mono text-xs">
-                              {tag}
-                            </Badge>
-                          ))}
-                        </div>
-
-                        {/* Impact Metrics */}
-                        <div className="grid grid-cols-3 gap-4 pt-4 border-t">
-                          {study.impact.map((item, idx) => (
-                            <div key={idx} className="text-center">
-                              <div className="text-lg font-bold text-primary mb-1">{item.metric}</div>
-                              <div className="text-xs text-muted-foreground font-mono">{item.label}</div>
-                            </div>
-                          ))}
-                        </div>
-
-                        <div className="flex items-center gap-2 text-sm font-mono text-primary pt-4">
-                          Read case study
-                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Agent Examples Section */}
+          {/* Tabs for Case Studies and Agent Examples */}
           <div className="mb-20">
             <div className="max-w-7xl mx-auto">
-              <h2 className="text-3xl font-serif font-medium mb-12 text-center">Agent Examples</h2>
-              
-              <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                {agentExamples.map((agent, index) => (
-                  <Card key={index} className="border border-border bg-card hover:shadow-md transition-shadow">
-                    <CardHeader>
-                      <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
-                        <agent.icon className="h-6 w-6" />
-                      </div>
-                      <CardTitle className="text-2xl font-serif font-medium mb-2">
-                        {agent.name}
-                      </CardTitle>
-                      <CardDescription className="font-serif">
-                        {agent.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent className="space-y-6">
-                      {/* Capabilities */}
-                      <div>
-                        <h4 className="text-sm font-medium font-mono mb-3 text-foreground">
-                          Key Capabilities
-                        </h4>
-                        <ul className="space-y-2">
-                          {agent.capabilities.map((capability, idx) => (
-                            <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2 font-serif">
-                              <span className="text-foreground mt-1">•</span>
-                              <span>{capability}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-
-                      {/* Tech Stack */}
-                      <div>
-                        <h4 className="text-sm font-medium font-mono mb-3 text-foreground">
-                          Tech Stack
-                        </h4>
-                        <div className="flex flex-wrap gap-2">
-                          {agent.techStack.map((tech, idx) => (
-                            <Badge 
-                              key={idx} 
-                              variant="secondary" 
-                              className="font-mono text-xs"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              <Tabs defaultValue="case-studies" className="w-full">
+                <TabsList className="grid w-full max-w-md mx-auto mb-12 grid-cols-2">
+                  <TabsTrigger value="case-studies" className="font-mono">Case Studies</TabsTrigger>
+                  <TabsTrigger value="agent-examples" className="font-mono">Agent Examples</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="case-studies">
+                  <div className="grid gap-8 md:grid-cols-2">
+                    {caseStudies.map((study) => (
+                      <Link 
+                        key={study.id} 
+                        to={`/case-studies/${study.id}`}
+                        className="group block"
+                      >
+                        <Card className="border border-border bg-card hover:shadow-md transition-shadow h-full">
+                          <CardHeader>
+                            <CardTitle className="text-2xl font-serif font-medium mb-2 group-hover:text-primary transition-colors">
+                              {study.title}
+                            </CardTitle>
+                            <CardDescription className="font-serif">
+                              {study.description}
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent className="space-y-4">
+                            <div className="flex flex-wrap gap-2">
+                              {study.tags.map((tag, idx) => (
+                                <Badge key={idx} variant="secondary" className="font-mono text-xs">
+                                  {tag}
+                                </Badge>
+                              ))}
+                            </div>
+                            <div className="flex items-center gap-2 text-sm font-mono text-primary pt-2">
+                              Read case study
+                              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </Link>
+                    ))}
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="agent-examples">
+                  <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+                    {agentExamples.map((agent, index) => (
+                      <Card key={index} className="border border-border bg-card hover:shadow-md transition-shadow">
+                        <CardHeader>
+                          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-secondary text-foreground">
+                            <agent.icon className="h-6 w-6" />
+                          </div>
+                          <CardTitle className="text-2xl font-serif font-medium mb-2">
+                            {agent.name}
+                          </CardTitle>
+                          <CardDescription className="font-serif">
+                            {agent.description}
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-6">
+                          <div>
+                            <h4 className="text-sm font-medium font-mono mb-3 text-foreground">
+                              Key Capabilities
+                            </h4>
+                            <ul className="space-y-2">
+                              {agent.capabilities.map((capability, idx) => (
+                                <li key={idx} className="text-sm text-muted-foreground flex items-start gap-2 font-serif">
+                                  <span className="text-foreground mt-1">•</span>
+                                  <span>{capability}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h4 className="text-sm font-medium font-mono mb-3 text-foreground">
+                              Tech Stack
+                            </h4>
+                            <div className="flex flex-wrap gap-2">
+                              {agent.techStack.map((tech, idx) => (
+                                <Badge 
+                                  key={idx} 
+                                  variant="secondary" 
+                                  className="font-mono text-xs"
+                                >
+                                  {tech}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
 
