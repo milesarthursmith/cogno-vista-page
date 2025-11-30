@@ -231,7 +231,7 @@ const WinLossInsights = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">100+</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">100+</div>
                   <div className="font-semibold mb-2 font-serif">Hours eliminated monthly</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Eliminated manual PMM analysis and transcript copy-pasting
@@ -241,7 +241,7 @@ const WinLossInsights = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <TrendingUp className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">First-ever</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">First-ever</div>
                   <div className="font-semibold mb-2 font-serif">Time-series visibility</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Delivered first-ever visibility of how decision drivers change over time
@@ -251,7 +251,7 @@ const WinLossInsights = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Hard data</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Hard data</div>
                   <div className="font-semibold mb-2 font-serif">Hypothesis validation</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Enabled product & revenue teams to validate hypotheses with data
@@ -261,7 +261,7 @@ const WinLossInsights = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Database className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Reusable</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Reusable</div>
                   <div className="font-semibold mb-2 font-serif">Decision layer created</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Built foundation for future GTM analytics (NPS, product feedback, churn)
