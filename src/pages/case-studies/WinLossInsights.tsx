@@ -23,10 +23,7 @@ const WinLossInsights = () => {
           
           {/* Header */}
           <div className="mb-16">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-lg font-mono font-semibold">WL</span>
-              </div>
+            <div className="mb-6">
               <span className="font-mono text-sm text-muted-foreground">Global SaaS Company</span>
             </div>
             <h1 className="text-5xl font-serif font-medium mb-6">
