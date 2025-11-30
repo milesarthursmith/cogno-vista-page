@@ -118,26 +118,54 @@ const caseStudies = [
   {
     id: "win-loss-insights",
     title: "AI Win/Loss Insights for a Global SaaS GTM Team",
+    company: "Global SaaS Company",
+    companyInitials: "WL",
     description: "Eliminated 100+ hours/month of manual analysis and enabled the first time-series view of decision drivers",
     tags: ["Win/loss analysis", "LLM extraction", "Time-series analytics"],
+    impact: [
+      { metric: "100+", label: "Hours saved monthly" },
+      { metric: "First", label: "Time-series view" },
+      { metric: "Validated", label: "Hypothesis testing" }
+    ]
   },
   {
     id: "re-engagement",
     title: "AI Re-Engagement Engine for Closed Lost Opportunities",
+    company: "SaaS Company",
+    companyInitials: "RE",
     description: "Scaled from pilot to hundreds of AI emails/day, generating SQLs and Closed Won pipeline safely",
     tags: ["Multi-agent system", "CRM automation", "Safety guardrails"],
+    impact: [
+      { metric: "Multiple", label: "SQLs generated" },
+      { metric: "42%", label: "Lower cost per SQL" },
+      { metric: "20k+", label: "Accounts engaged" }
+    ]
   },
   {
     id: "message-intelligence",
     title: "Message Intelligence Platform for Marketing & Sales",
+    company: "Fast-Growing SaaS",
+    companyInitials: "MI",
     description: "Unified messaging performance across channels and created a feedback loop between marketing and sales",
     tags: ["Semantic matching", "Cross-channel analytics", "Content generation"],
+    impact: [
+      { metric: "3", label: "Data sources unified" },
+      { metric: "35%", label: "Performance boost" },
+      { metric: "100%", label: "Team alignment" }
+    ]
   },
   {
     id: "content-summarization",
     title: "Automated Newsletter & YouTube Summarisation",
+    company: "GTM Leadership Team",
+    companyInitials: "CS",
     description: "Converted an overwhelming content feed into a curated intelligence stream, saving hours per week",
     tags: ["Content ingestion", "AI summarization", "Knowledge archive"],
+    impact: [
+      { metric: "3-5hrs", label: "Saved per week" },
+      { metric: "500+", label: "Items archived" },
+      { metric: "24/7", label: "Automated" }
+    ]
   }
 ];
 
@@ -178,6 +206,12 @@ const Examples = () => {
                       >
                         <Card className="border border-border bg-card hover:shadow-md transition-shadow h-full">
                           <CardHeader>
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                                <span className="text-sm font-mono font-semibold">{study.companyInitials}</span>
+                              </div>
+                              <span className="font-mono text-xs text-muted-foreground">{study.company}</span>
+                            </div>
                             <CardTitle className="text-2xl font-serif font-medium mb-2 group-hover:text-primary transition-colors">
                               {study.title}
                             </CardTitle>
@@ -193,6 +227,16 @@ const Examples = () => {
                                 </Badge>
                               ))}
                             </div>
+                            
+                            <div className="grid grid-cols-3 gap-4 pt-4 border-t">
+                              {study.impact.map((item, idx) => (
+                                <div key={idx} className="text-center">
+                                  <div className="text-lg font-bold text-primary mb-1">{item.metric}</div>
+                                  <div className="text-xs text-muted-foreground font-mono">{item.label}</div>
+                                </div>
+                              ))}
+                            </div>
+                            
                             <div className="flex items-center gap-2 text-sm font-mono text-primary pt-2">
                               Read case study
                               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
