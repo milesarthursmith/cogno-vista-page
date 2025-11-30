@@ -1,29 +1,27 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { ArrowRight, Building2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const WinLossInsights = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <AbstractBackground />
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-slate-100">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/3 w-64 h-64 rounded-full bg-muted/30 blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/3 w-80 h-80 rounded-full bg-muted/20 blur-3xl" />
-        </div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
+      <main className="container mx-auto px-4 py-24 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          
+          {/* Header */}
+          <div className="mb-16">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <span className="text-lg font-mono font-semibold">WL</span>
               </div>
               <span className="font-mono text-sm text-muted-foreground">Global SaaS Company</span>
             </div>
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl font-serif font-medium mb-6">
               AI Win/Loss Insights for a Global SaaS GTM Team
             </h1>
             <div className="flex flex-wrap gap-3">
@@ -32,11 +30,6 @@ const WinLossInsights = () => {
               <Badge variant="secondary" className="font-mono">Time-series analytics</Badge>
             </div>
           </div>
-        </div>
-      </section>
-
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-16">
           
           {/* About the Company */}
           <section>
@@ -45,8 +38,8 @@ const WinLossInsights = () => {
                 <Building2 className="w-8 h-8 text-muted-foreground" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">About the company</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <h2 className="text-3xl font-serif font-medium mb-4">About the company</h2>
+                <p className="text-muted-foreground text-lg leading-relaxed font-serif">
                   A global B2B SaaS company with tens of thousands of sales opportunities per year. Their sales data—call recordings, CRM notes, and support tickets—was scattered across multiple tools with no scalable way to understand why they win or lose deals, or how those patterns change over time.
                 </p>
               </div>
@@ -55,7 +48,7 @@ const WinLossInsights = () => {
 
           {/* The Problem Statement */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">The problem statement</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Scattered data</h3>
@@ -71,7 +64,7 @@ const WinLossInsights = () => {
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">No visibility</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   No scalable way to track how win/loss reasons shift over time or across segments
                 </p>
               </div>
@@ -80,7 +73,7 @@ const WinLossInsights = () => {
 
           {/* What We Built */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">What we built</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">What we built</h2>
             
             <div className="space-y-8">
               <div className="border rounded-xl p-8 bg-card">
@@ -89,8 +82,8 @@ const WinLossInsights = () => {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Unified Data Model</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Unified Data Model</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Consolidated sales calls, CRM notes, emails and support interactions</span>
@@ -114,8 +107,8 @@ const WinLossInsights = () => {
                     2
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">AI Extraction & Taxonomy</h3>
-                    <p className="text-muted-foreground mb-3">Used LLMs to extract structured insight from unstructured text:</p>
+                    <h3 className="text-xl font-semibold mb-3 font-serif">AI Extraction & Taxonomy</h3>
+                    <p className="text-muted-foreground mb-3 font-serif">Used LLMs to extract structured insight from unstructured text:</p>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="text-sm border rounded-lg p-3 bg-background">Customer needs</div>
                       <div className="text-sm border rounded-lg p-3 bg-background">Decision drivers</div>
@@ -124,7 +117,7 @@ const WinLossInsights = () => {
                       <div className="text-sm border rounded-lg p-3 bg-background">Competitors mentioned</div>
                       <div className="text-sm border rounded-lg p-3 bg-background">Key quotes</div>
                     </div>
-                    <p className="text-muted-foreground mt-3 text-sm">
+                    <p className="text-muted-foreground mt-3 text-sm font-serif">
                       Created the taxonomy + prompts and iterated with GTM leaders to ensure reliability.
                     </p>
                   </div>
@@ -137,9 +130,9 @@ const WinLossInsights = () => {
                     3
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Insights Dashboard</h3>
-                    <p className="text-muted-foreground mb-3">Built a BI layer that:</p>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Insights Dashboard</h3>
+                    <p className="text-muted-foreground mb-3 font-serif">Built a BI layer that:</p>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Shows how win/loss reasons shift over time</span>
@@ -165,7 +158,7 @@ const WinLossInsights = () => {
 
           {/* System Diagram */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">System architecture</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">System architecture</h2>
             <div className="border rounded-xl p-8 bg-card">
               <div className="flex items-center gap-4 justify-between">
                 <div className="flex flex-col gap-3 flex-1">
@@ -201,33 +194,33 @@ const WinLossInsights = () => {
 
           {/* Impact */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">Impact</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="border rounded-xl p-6 bg-card">
                 <div className="text-4xl font-bold text-primary mb-2">100+</div>
-                <div className="font-semibold mb-2">Hours saved monthly</div>
-                <p className="text-sm text-muted-foreground">
+                <div className="font-semibold mb-2 font-serif">Hours saved monthly</div>
+                <p className="text-sm text-muted-foreground font-serif">
                   Eliminated manual win/loss analysis work
                 </p>
               </div>
               <div className="border rounded-xl p-6 bg-card">
                 <div className="text-4xl font-bold text-primary mb-2">First</div>
-                <div className="font-semibold mb-2">Time-series view</div>
-                <p className="text-sm text-muted-foreground">
+                <div className="font-semibold mb-2 font-serif">Time-series view</div>
+                <p className="text-sm text-muted-foreground font-serif">
                   Enabled tracking of decision drivers over time
                 </p>
               </div>
               <div className="border rounded-xl p-6 bg-card">
                 <div className="text-4xl font-bold text-primary mb-2">Deep</div>
-                <div className="font-semibold mb-2">Contextual drill-down</div>
-                <p className="text-sm text-muted-foreground">
+                <div className="font-semibold mb-2 font-serif">Contextual drill-down</div>
+                <p className="text-sm text-muted-foreground font-serif">
                   Added exploration capabilities that were impossible before
                 </p>
               </div>
               <div className="border rounded-xl p-6 bg-card">
                 <div className="text-4xl font-bold text-primary mb-2">Reusable</div>
-                <div className="font-semibold mb-2">Decision layer</div>
-                <p className="text-sm text-muted-foreground">
+                <div className="font-semibold mb-2 font-serif">Decision layer</div>
+                <p className="text-sm text-muted-foreground font-serif">
                   Created foundation for future GTM analysis
                 </p>
               </div>
