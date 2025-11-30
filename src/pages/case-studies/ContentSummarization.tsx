@@ -1,7 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { ArrowRight, Building2, Filter, Clock, Database, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import n8nLogo from "@/assets/n8n.png";
+import googleCloudLogo from "@/assets/google_cloud.png";
+import gmailLogo from "@/assets/gmail.png";
+import notionLogo from "@/assets/notion.png";
+import openaiLogo from "@/assets/openai.png";
 
 const ContentSummarization = () => {
   return (
@@ -86,10 +92,11 @@ const ContentSummarization = () => {
             <div className="mb-12">
               <div className="text-xs font-mono text-muted-foreground mb-4">TECH STACK</div>
               <div className="flex flex-wrap items-center gap-8">
-                <img src="/src/assets/n8n.png" alt="n8n" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/src/assets/google_cloud.png" alt="Google Cloud" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <div className="text-sm text-muted-foreground font-mono">+ Notion</div>
-                <div className="text-sm text-muted-foreground font-mono">+ OpenAI</div>
+                <img src={n8nLogo} alt="n8n" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={gmailLogo} alt="Gmail" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={notionLogo} alt="Notion" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={openaiLogo} alt="OpenAI" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={googleCloudLogo} alt="Google Cloud" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
               </div>
             </div>
             

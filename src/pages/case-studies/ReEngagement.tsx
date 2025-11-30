@@ -1,7 +1,12 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { ArrowRight, Building2, TrendingDown, Target, CheckCircle2, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import relevanceAiLogo from "@/assets/relevance_ai.png";
+import salesforceLogo from "@/assets/salesforce.png";
+import zapierLogo from "@/assets/zapier.png";
+import gmailLogo from "@/assets/gmail.png";
 
 const ReEngagement = () => {
   return (
@@ -86,10 +91,10 @@ const ReEngagement = () => {
             <div className="mb-12">
               <div className="text-xs font-mono text-muted-foreground mb-4">TECH STACK</div>
               <div className="flex flex-wrap items-center gap-8">
-                <img src="/src/assets/relevance_ai.png" alt="Relevance AI" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <img src="/src/assets/salesforce.png" alt="Salesforce" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
-                <div className="text-sm text-muted-foreground font-mono">+ Zapier</div>
-                <div className="text-sm text-muted-foreground font-mono">+ Gmail API</div>
+                <img src={relevanceAiLogo} alt="Relevance AI" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={salesforceLogo} alt="Salesforce" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={zapierLogo} alt="Zapier" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src={gmailLogo} alt="Gmail" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
               </div>
             </div>
 
