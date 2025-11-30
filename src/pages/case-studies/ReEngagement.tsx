@@ -10,25 +10,21 @@ import gmailLogo from "@/assets/gmail.png";
 
 const ReEngagement = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-neutral-100">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 left-1/4 w-72 h-72 rounded-full bg-muted/30 blur-3xl" />
-          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 rounded-full bg-muted/20 blur-3xl" />
-        </div>
+      <section className="relative min-h-screen overflow-hidden pt-20">
+        <AbstractBackground variant="hero" />
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
+        <main className="container relative z-10 mx-auto px-6 py-32">
+          <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <span className="text-lg font-mono font-semibold">RE</span>
               </div>
               <span className="font-mono text-sm text-muted-foreground">SaaS Company</span>
             </div>
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] mb-6">
               AI Re-Engagement Engine for Closed Lost Opportunities
             </h1>
             <div className="flex flex-wrap gap-3">
@@ -37,11 +33,8 @@ const ReEngagement = () => {
               <Badge variant="secondary" className="font-mono">Safety guardrails</Badge>
             </div>
           </div>
-        </div>
-      </section>
-
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-16">
+        
+        <div className="space-y-16 mt-16">
           
           {/* About the Company */}
           <section>
@@ -50,8 +43,8 @@ const ReEngagement = () => {
                 <Building2 className="w-8 h-8 text-muted-foreground" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">About the company</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <h2 className="text-3xl font-serif font-medium mb-4">About the company</h2>
+                <p className="text-muted-foreground text-lg leading-relaxed font-serif">
                   A SaaS company had 20,000+ Closed Lost / No Decision opportunities from the past 3–4 years. Their BDR team was unable to manually re-engage the long tail. Data quality issues—duplicate accounts, stale contacts, unclear ownership—made automation risky. Leadership needed controlled AI outreach without disrupting reps.
                 </p>
               </div>
@@ -60,23 +53,23 @@ const ReEngagement = () => {
 
           {/* The Problem Statement */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">The problem statement</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Massive opportunity</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   20,000+ closed lost accounts sitting dormant with no systematic re-engagement
                 </p>
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Data quality risks</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   Duplicates, stale ownership, and outdated contact info made automation risky
                 </p>
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Limited capacity</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   BDR team couldn't manually reach this volume while maintaining quality
                 </p>
               </div>
@@ -85,7 +78,7 @@ const ReEngagement = () => {
 
           {/* What We Built */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">What we built</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">What we built</h2>
             
             {/* Tech Stack Logos */}
             <div className="mb-12">
@@ -105,8 +98,8 @@ const ReEngagement = () => {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">End-to-End Agent Workflow</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">End-to-End Agent Workflow</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Using Relevance AI, Zapier, Salesforce, and Gmail API—connected RelevanceAI to Salesforce using SOQL</span>
@@ -138,8 +131,8 @@ const ReEngagement = () => {
                     2
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Attribution & Handoff Automation</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Attribution & Handoff Automation</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Created/updated Leads in Salesforce and linked them to the correct Account</span>
@@ -167,8 +160,8 @@ const ReEngagement = () => {
                     3
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Data Quality & Safety Agents</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Data Quality & Safety Agents</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Real-time rep activity monitor checked for human touches in the last 7–14 days before outreach</span>
@@ -186,7 +179,7 @@ const ReEngagement = () => {
 
           {/* System Diagram */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">System architecture</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">System architecture</h2>
             <div className="border rounded-xl p-8 bg-card">
               <div className="flex items-start gap-4 justify-between">
                 <div className="flex-1">
@@ -221,14 +214,14 @@ const ReEngagement = () => {
 
           {/* Impact */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">Impact</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Target className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">Multiple</div>
-                  <div className="font-semibold mb-2">SQLs and Closed Won deals</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">SQLs and Closed Won deals</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Drove multiple qualified leads and closed won opportunities
                   </p>
                 </div>
@@ -237,8 +230,8 @@ const ReEngagement = () => {
                 <TrendingDown className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">~42%</div>
-                  <div className="font-semibold mb-2">Reduced cost per SQL</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">Reduced cost per SQL</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Lower cost per SQL vs traditional outbound
                   </p>
                 </div>
@@ -247,8 +240,8 @@ const ReEngagement = () => {
                 <CheckCircle2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">Safe</div>
-                  <div className="font-semibold mb-2">AI-human partnership</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">AI-human partnership</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Demonstrated AI can safely partner with sales when ownership rules are engineered correctly
                   </p>
                 </div>
@@ -257,8 +250,8 @@ const ReEngagement = () => {
                 <Users className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">20k+</div>
-                  <div className="font-semibold mb-2">Dormant accounts engaged</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">Dormant accounts engaged</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Systematically re-engaged thousands of closed lost opportunities
                   </p>
                 </div>
@@ -267,7 +260,8 @@ const ReEngagement = () => {
           </section>
 
         </div>
-      </main>
+        </main>
+      </section>
 
       <Footer />
     </div>

@@ -11,25 +11,21 @@ import openaiLogo from "@/assets/openai.png";
 
 const ContentSummarization = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-zinc-100">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/2 w-56 h-56 rounded-full bg-muted/30 blur-3xl" />
-          <div className="absolute bottom-1/4 right-1/2 w-72 h-72 rounded-full bg-muted/20 blur-3xl" />
-        </div>
+      <section className="relative min-h-screen overflow-hidden pt-20">
+        <AbstractBackground variant="hero" />
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
+        <main className="container relative z-10 mx-auto px-6 py-32">
+          <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <span className="text-lg font-mono font-semibold">CS</span>
               </div>
               <span className="font-mono text-sm text-muted-foreground">GTM Leadership Team</span>
             </div>
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] mb-6">
               Automated Newsletter & YouTube Summarisation Workflow
             </h1>
             <div className="flex flex-wrap gap-3">
@@ -38,11 +34,8 @@ const ContentSummarization = () => {
               <Badge variant="secondary" className="font-mono">Knowledge archive</Badge>
             </div>
           </div>
-        </div>
-      </section>
-
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-16">
+        
+        <div className="space-y-16 mt-16">
           
           {/* About the Company */}
           <section>
@@ -51,8 +44,8 @@ const ContentSummarization = () => {
                 <Building2 className="w-8 h-8 text-muted-foreground" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">About the company</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <h2 className="text-3xl font-serif font-medium mb-4">About the company</h2>
+                <p className="text-muted-foreground text-lg leading-relaxed font-serif">
                   Client overwhelmed with 30+ newsletters/week, long YouTube content (20+ min videos), articles from teams & industry feeds—with no structured way to store or reuse insights. The challenge was turning information overload into a searchable, actionable knowledge base.
                 </p>
               </div>
@@ -61,23 +54,23 @@ const ContentSummarization = () => {
 
           {/* The Problem Statement */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">The problem statement</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Content overload</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   Hundreds of newsletters, YouTube videos, and articles per week with no filtering
                 </p>
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Time drain</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   Hours spent scanning content just to find the few relevant insights
                 </p>
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">No archive</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   Valuable insights lost because there was no systematic way to store and retrieve them
                 </p>
               </div>
@@ -86,7 +79,7 @@ const ContentSummarization = () => {
 
           {/* What We Built */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">What we built</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">What we built</h2>
             
             {/* Tech Stack Logos */}
             <div className="mb-12">
@@ -107,8 +100,8 @@ const ContentSummarization = () => {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Content Ingestion</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Content Ingestion</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Using n8n + Gmail API + YouTube API—ingested newsletters via Gmail search filters</span>
@@ -132,8 +125,8 @@ const ContentSummarization = () => {
                     2
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Summarisation & Tagging</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Summarisation & Tagging</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Using GPT-4o / GPT-5 to generate summaries (150–250 chars)</span>
@@ -157,8 +150,8 @@ const ContentSummarization = () => {
                     3
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Storage & Retrieval</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Storage & Retrieval</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Stored to Google Sheets / Notion / Drive with topic tags, source links, date, relevance ranking</span>
@@ -178,8 +171,8 @@ const ContentSummarization = () => {
                     4
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Digest Delivery</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Digest Delivery</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Automated weekly digest email with top 10 items ranked by relevance</span>
@@ -197,7 +190,7 @@ const ContentSummarization = () => {
 
           {/* System Diagram */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">Automated content pipeline</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">Automated content pipeline</h2>
             <div className="border rounded-xl p-8 bg-card">
               <div className="flex items-center gap-4 justify-between">
                 <div className="flex flex-col gap-3 flex-1">
@@ -235,14 +228,14 @@ const ContentSummarization = () => {
 
           {/* Impact */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">Impact</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">3–5 hrs</div>
-                  <div className="font-semibold mb-2">Saved per week</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">Saved per week</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Time previously spent manually reading newsletters and videos
                   </p>
                 </div>
@@ -251,8 +244,8 @@ const ContentSummarization = () => {
                 <Database className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">Searchable</div>
-                  <div className="font-semibold mb-2">Research archive created</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">Research archive created</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Built a knowledge repository of industry insights
                   </p>
                 </div>
@@ -261,8 +254,8 @@ const ContentSummarization = () => {
                 <Zap className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">Actionable</div>
-                  <div className="font-semibold mb-2">Long-form content made usable</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">Long-form content made usable</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Transformed lengthy content into skimmable summaries
                   </p>
                 </div>
@@ -271,8 +264,8 @@ const ContentSummarization = () => {
                 <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
                   <div className="text-3xl font-bold text-foreground mb-1">Background</div>
-                  <div className="font-semibold mb-2">AI-powered research</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="font-semibold mb-2 font-serif">AI-powered research</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Demonstrated how AI agents can handle continuous background research
                   </p>
                 </div>
@@ -281,7 +274,8 @@ const ContentSummarization = () => {
           </section>
 
         </div>
-      </main>
+        </main>
+      </section>
 
       <Footer />
     </div>
