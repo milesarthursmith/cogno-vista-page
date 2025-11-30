@@ -12,11 +12,13 @@ import openaiLogo from "@/assets/openai.png";
 
 const WinLossInsights = () => {
   return (
-    <div className="min-h-screen relative">
-      <AbstractBackground />
+    <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="container mx-auto px-4 py-24 relative z-10">
+      <section className="relative min-h-screen overflow-hidden pt-20">
+        <AbstractBackground variant="hero" />
+        
+        <main className="container relative z-10 mx-auto px-6 py-32">
         <div className="max-w-4xl mx-auto">
           
           {/* Header */}
@@ -268,7 +270,8 @@ const WinLossInsights = () => {
           </section>
 
         </div>
-      </main>
+        </main>
+      </section>
 
       <Footer />
     </div>
