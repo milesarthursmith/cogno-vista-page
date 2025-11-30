@@ -1,29 +1,26 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AbstractBackground from "@/components/AbstractBackground";
 import { Building2, Link2, TrendingUp, Clock, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const MessageIntelligence = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
       
-      {/* Hero Section */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden bg-stone-100">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/3 right-1/3 w-80 h-80 rounded-full bg-muted/30 blur-3xl" />
-          <div className="absolute bottom-1/3 left-1/3 w-64 h-64 rounded-full bg-muted/20 blur-3xl" />
-        </div>
+      <section className="relative min-h-screen overflow-hidden pt-20">
+        <AbstractBackground variant="hero" />
         
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-3xl">
+        <main className="container relative z-10 mx-auto px-6 py-32">
+          <div className="max-w-4xl mx-auto">
             <div className="flex items-center gap-3 mb-6">
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
                 <span className="text-lg font-mono font-semibold">MI</span>
               </div>
               <span className="font-mono text-sm text-muted-foreground">Fast-Growing SaaS</span>
             </div>
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] mb-6">
               Message Intelligence Platform for Marketing & Sales
             </h1>
             <div className="flex flex-wrap gap-3">
@@ -32,11 +29,8 @@ const MessageIntelligence = () => {
               <Badge variant="secondary" className="font-mono">Content generation</Badge>
             </div>
           </div>
-        </div>
-      </section>
-
-      <main className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto space-y-16">
+        
+        <div className="space-y-24 mt-20">
           
           {/* About the Company */}
           <section>
@@ -45,8 +39,8 @@ const MessageIntelligence = () => {
                 <Building2 className="w-8 h-8 text-muted-foreground" />
               </div>
               <div>
-                <h2 className="text-3xl font-bold mb-4">About the company</h2>
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <h2 className="text-3xl font-serif font-medium mb-4">About the company</h2>
+                <p className="text-muted-foreground text-lg leading-relaxed font-serif">
                   A fast-growing SaaS company struggling to understand which messaging performs best across channels, whether sales and marketing were aligned, and which keywords actually resonate with prospects. Their performance data lived in separate tools making it impossible to get a unified view.
                 </p>
               </div>
@@ -55,23 +49,23 @@ const MessageIntelligence = () => {
 
           {/* The Problem Statement */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">The problem statement</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Siloed data</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   Google Ads, call transcripts, and message libraries scattered across different tools
                 </p>
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">No alignment</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   Marketing and sales couldn't tell if they were using consistent messaging
                 </p>
               </div>
               <div className="border-l-4 border-destructive pl-6">
                 <h3 className="font-semibold text-lg mb-2">Guesswork</h3>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground font-serif">
                   No systematic way to track which messages actually drive results
                 </p>
               </div>
@@ -80,7 +74,7 @@ const MessageIntelligence = () => {
 
           {/* What We Built */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">What we built</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">What we built</h2>
             
             <div className="space-y-8">
               <div className="border rounded-xl p-8 bg-card">
@@ -89,7 +83,7 @@ const MessageIntelligence = () => {
                     1
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Data Ingestion</h3>
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Data Ingestion</h3>
                     <div className="grid grid-cols-3 gap-3">
                       <div className="border rounded-lg p-3 bg-background text-sm">
                         Google Ads performance
@@ -111,8 +105,8 @@ const MessageIntelligence = () => {
                     2
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Exact & Semantic Matching</h3>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Exact & Semantic Matching</h3>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>Exact phrase detection for precise tracking</span>
@@ -132,8 +126,8 @@ const MessageIntelligence = () => {
                     3
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Message Impact Scoring</h3>
-                    <p className="text-muted-foreground mb-3">Calculated impact across:</p>
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Message Impact Scoring</h3>
+                    <p className="text-muted-foreground mb-3 font-serif">Calculated impact across:</p>
                     <div className="grid grid-cols-2 gap-3">
                       <div className="border-l-4 border-primary pl-4">
                         <div className="font-semibold text-sm mb-1">Ad Performance</div>
@@ -158,9 +152,9 @@ const MessageIntelligence = () => {
                     4
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold mb-3">Discovery & Content Generation</h3>
-                    <p className="text-muted-foreground mb-3">AI proposed:</p>
-                    <ul className="space-y-2 text-muted-foreground">
+                    <h3 className="text-xl font-semibold mb-3 font-serif">Discovery & Content Generation</h3>
+                    <p className="text-muted-foreground mb-3 font-serif">AI proposed:</p>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
                         <span>New message angles based on performance patterns</span>
@@ -182,7 +176,7 @@ const MessageIntelligence = () => {
 
           {/* Message Impact Visualization */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">Message impact map</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">Message impact map</h2>
             <div className="border rounded-xl p-8 bg-card">
               <div className="relative h-64">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -216,14 +210,14 @@ const MessageIntelligence = () => {
 
           {/* Impact */}
           <section>
-            <h2 className="text-3xl font-bold mb-8">Impact</h2>
+            <h2 className="text-3xl font-serif font-medium mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Link2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">3</div>
-                  <div className="font-semibold mb-2">Data sources unified</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="text-3xl font-medium text-foreground mb-1">3</div>
+                  <div className="font-semibold mb-2 font-serif">Data sources unified</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     First time seeing what messages actually work across ads and calls
                   </p>
                 </div>
@@ -231,9 +225,9 @@ const MessageIntelligence = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <TrendingUp className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">35%</div>
-                  <div className="font-semibold mb-2">Performance improvement</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="text-3xl font-medium text-foreground mb-1">35%</div>
+                  <div className="font-semibold mb-2 font-serif">Performance improvement</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Better ad and call messaging through data-driven insights
                   </p>
                 </div>
@@ -241,9 +235,9 @@ const MessageIntelligence = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">10 hrs</div>
-                  <div className="font-semibold mb-2">Saved per week</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="text-3xl font-medium text-foreground mb-1">10 hrs</div>
+                  <div className="font-semibold mb-2 font-serif">Saved per week</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Automated the entire message performance tracking process
                   </p>
                 </div>
@@ -251,9 +245,9 @@ const MessageIntelligence = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <CheckCircle2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">100%</div>
-                  <div className="font-semibold mb-2">Team alignment</div>
-                  <p className="text-sm text-muted-foreground">
+                  <div className="text-3xl font-medium text-foreground mb-1">100%</div>
+                  <div className="font-semibold mb-2 font-serif">Team alignment</div>
+                  <p className="text-sm text-muted-foreground font-serif">
                     Created continuous alignment between marketing and sales
                   </p>
                 </div>
@@ -262,7 +256,8 @@ const MessageIntelligence = () => {
           </section>
 
         </div>
-      </main>
+        </main>
+      </section>
 
       <Footer />
     </div>

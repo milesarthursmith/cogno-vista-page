@@ -219,7 +219,7 @@ const ReEngagement = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Target className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Multiple</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Multiple</div>
                   <div className="font-semibold mb-2 font-serif">SQLs and Closed Won deals</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Drove multiple qualified leads and closed won opportunities
@@ -229,7 +229,7 @@ const ReEngagement = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <TrendingDown className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">~42%</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">~42%</div>
                   <div className="font-semibold mb-2 font-serif">Reduced cost per SQL</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Lower cost per SQL vs traditional outbound
@@ -239,7 +239,7 @@ const ReEngagement = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <CheckCircle2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Safe</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Safe</div>
                   <div className="font-semibold mb-2 font-serif">AI-human partnership</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Demonstrated AI can safely partner with sales when ownership rules are engineered correctly
@@ -249,7 +249,7 @@ const ReEngagement = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Users className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">20k+</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">20k+</div>
                   <div className="font-semibold mb-2 font-serif">Dormant accounts engaged</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Systematically re-engaged thousands of closed lost opportunities

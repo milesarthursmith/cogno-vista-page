@@ -233,7 +233,7 @@ const ContentSummarization = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">3–5 hrs</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">3–5 hrs</div>
                   <div className="font-semibold mb-2 font-serif">Saved per week</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Time previously spent manually reading newsletters and videos
@@ -243,7 +243,7 @@ const ContentSummarization = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Database className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Searchable</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Searchable</div>
                   <div className="font-semibold mb-2 font-serif">Research archive created</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Built a knowledge repository of industry insights
@@ -253,7 +253,7 @@ const ContentSummarization = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Zap className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Actionable</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Actionable</div>
                   <div className="font-semibold mb-2 font-serif">Long-form content made usable</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Transformed lengthy content into skimmable summaries
@@ -263,7 +263,7 @@ const ContentSummarization = () => {
               <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
                 <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
                 <div>
-                  <div className="text-3xl font-bold text-foreground mb-1">Background</div>
+                  <div className="text-3xl font-medium text-foreground mb-1">Background</div>
                   <div className="font-semibold mb-2 font-serif">AI-powered research</div>
                   <p className="text-sm text-muted-foreground font-serif">
                     Demonstrated how AI agents can handle continuous background research
