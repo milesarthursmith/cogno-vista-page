@@ -136,7 +136,7 @@ const caseStudies = [
     description: "Scaled from pilot to hundreds of AI emails/day, generating SQLs and Closed Won pipeline safely",
     tags: ["Multi-agent system", "CRM automation", "Safety guardrails"],
     impact: [
-      { metric: "Multiple", label: "SQLs generated" },
+      { metric: "$250k", label: "Pipeline generated" },
       { metric: "42%", label: "Lower cost per SQL" },
       { metric: "20k+", label: "Accounts engaged" }
     ]
@@ -149,9 +149,9 @@ const caseStudies = [
     description: "Unified messaging performance across channels and created a feedback loop between marketing and sales",
     tags: ["Semantic matching", "Cross-channel analytics", "Content generation"],
     impact: [
-      { metric: "3", label: "Data sources unified" },
-      { metric: "35%", label: "Performance boost" },
-      { metric: "100%", label: "Team alignment" }
+      { metric: "10hrs", label: "Saved per week" },
+      { metric: "35%", label: "Performance improvement" },
+      { metric: "2x", label: "Message conversion" }
     ]
   },
   {
@@ -162,9 +162,9 @@ const caseStudies = [
     description: "Converted an overwhelming content feed into a curated intelligence stream, saving hours per week",
     tags: ["Content ingestion", "AI summarization", "Knowledge archive"],
     impact: [
-      { metric: "3-5hrs", label: "Saved per week" },
-      { metric: "500+", label: "Items archived" },
-      { metric: "24/7", label: "Automated" }
+      { metric: "8hrs", label: "Saved per week" },
+      { metric: "90%", label: "Content coverage" },
+      { metric: "100+", label: "Sources tracked" }
     ]
   }
 ];
