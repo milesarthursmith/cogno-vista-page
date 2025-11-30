@@ -25,9 +25,9 @@ const AiStrategyCallPage = () => {
       <AbstractBackground />
       <Header />
 
-      <section className="py-24 pt-32 relative z-10">
-        <div className="container mx-auto px-6 max-w-3xl">
-          <div className="text-center mb-8">
+      <section className="py-16 pt-28 relative z-10 pb-0">
+        <div className="container mx-auto px-4 md:px-6 max-w-4xl">
+          <div className="text-center mb-10">
             <h1 className="text-3xl md:text-4xl font-serif font-normal mb-3">
               AI Strategy Call
             </h1>
@@ -37,17 +37,35 @@ const AiStrategyCallPage = () => {
             </p>
           </div>
 
-          <Card className="border border-border p-4 md:p-6">
+          <div className="bg-card border border-border rounded-lg overflow-hidden shadow-sm">
             <div
               className="calendly-inline-widget"
               data-url={CALENDLY_URL}
-              style={{ minWidth: 320, height: 700 }}
+              style={{ minWidth: '320px', height: '700px', width: '100%' }}
             />
-          </Card>
+          </div>
         </div>
       </section>
 
       <Footer />
+      
+      <style>{`
+        .calendly-inline-widget,
+        .calendly-inline-widget iframe {
+          width: 100% !important;
+          border: none !important;
+        }
+        
+        .calendly-inline-widget iframe {
+          overflow: hidden !important;
+        }
+        
+        @media (max-width: 768px) {
+          .calendly-inline-widget {
+            height: 800px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
