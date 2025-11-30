@@ -60,19 +60,19 @@ const WinLossInsights = () => {
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="border-l-4 border-destructive pl-6">
+              <div className="border-l-2 border-primary pl-6">
                 <h3 className="font-semibold text-lg mb-2">Data scattered everywhere</h3>
                 <p className="text-muted-foreground font-serif">
                   Tens of thousands of sales calls in Gong, CRM notes and emails in Salesforce, support tickets in Zendesk—no single source of truth
                 </p>
               </div>
-              <div className="border-l-4 border-destructive pl-6">
+              <div className="border-l-2 border-primary pl-6">
                 <h3 className="font-semibold text-lg mb-2">Manual analysis at scale</h3>
                 <p className="text-muted-foreground font-serif">
                   Product Marketing and Product teams spent 100–120 hours/month manually pasting transcripts into NotebookLM for ad-hoc, non-repeatable analysis
                 </p>
               </div>
-              <div className="border-l-4 border-destructive pl-6">
+              <div className="border-l-2 border-primary pl-6">
                 <h3 className="font-semibold text-lg mb-2">No trend visibility</h3>
                 <p className="text-muted-foreground font-serif">
                   No way to answer "Why do we win or lose?" or see how decision drivers changed over time

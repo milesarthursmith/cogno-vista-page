@@ -51,22 +51,22 @@ const MessageIntelligence = () => {
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="border-l-4 border-destructive pl-6">
-                <h3 className="font-semibold text-lg mb-2">Siloed data</h3>
+              <div className="border-l-2 border-primary pl-6">
+                <h3 className="font-semibold text-lg mb-2">Data scattered everywhere</h3>
                 <p className="text-muted-foreground font-serif">
-                  Google Ads, call transcripts, and message libraries scattered across different tools
+                  Sales using one message framework, marketing another—with no visibility into what actually converts
                 </p>
               </div>
-              <div className="border-l-4 border-destructive pl-6">
-                <h3 className="font-semibold text-lg mb-2">No alignment</h3>
+              <div className="border-l-2 border-primary pl-6">
+                <h3 className="font-semibold text-lg mb-2">No feedback loop</h3>
                 <p className="text-muted-foreground font-serif">
-                  Marketing and sales couldn't tell if they were using consistent messaging
+                  Marketing teams creating content blind, unable to learn from what sales hears in real conversations
                 </p>
               </div>
-              <div className="border-l-4 border-destructive pl-6">
-                <h3 className="font-semibold text-lg mb-2">Guesswork</h3>
+              <div className="border-l-2 border-primary pl-6">
+                <h3 className="font-semibold text-lg mb-2">Manual guesswork</h3>
                 <p className="text-muted-foreground font-serif">
-                  No systematic way to track which messages actually drive results
+                  Teams spending hours trying to reverse-engineer which messages work across channels
                 </p>
               </div>
             </div>
