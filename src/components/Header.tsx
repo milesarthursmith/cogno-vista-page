@@ -8,7 +8,6 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           <a href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <img src={logo} alt="humanstuff.ai logo" className="h-8 w-8" />
-            <span className="font-medium text-xl font-mono">humanstuff.ai</span>
           </a>
           
           <nav className="hidden md:flex items-center gap-8">
