@@ -26,14 +26,38 @@ const Hero = () => {
               <Button 
                 size="lg" 
                 onClick={() => (window.location.href = "/ai-strategy-call")}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg px-8 h-12 font-mono"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 h-12 font-mono"
               >
                 Book a call
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-              <Button size="lg" variant="outline" className="rounded-lg px-8 h-12 border-border hover:bg-secondary font-mono">
-                See examples
+              <Button 
+                size="lg" 
+                variant="outline" 
+                onClick={() => (window.location.href = "/quiz")}
+                className="rounded-full px-8 h-12 border-primary/40 text-primary hover:border-primary/70 hover:bg-primary/5 font-mono"
+              >
+                Free AI Readiness Audit
               </Button>
+            </div>
+            
+            <div className="mt-6 space-y-2 text-xs md:text-sm text-muted-foreground font-serif max-w-xl">
+              <p>
+                2 minutes. Instant score and recommendations. No credit card required.
+              </p>
+              <p>
+                Not sure where to start?{" "}
+                <a
+                  href="/quiz"
+                  className="underline underline-offset-2 decoration-primary/60 hover:decoration-primary"
+                >
+                  Take the Free AI Readiness Audit
+                </a>{" "}
+                to see where automation will have the biggest impact.
+              </p>
+              <p className="text-[11px] md:text-xs text-muted-foreground/80">
+                Trusted by founders, marketers and ops teams using AI to remove manual work.
+              </p>
             </div>
           </div>
 
