@@ -14,26 +14,25 @@ export const RadarChart = ({ cultural, technical, useCase }: RadarChartProps) =>
   ];
 
   return (
-    <div className="w-full h-[450px] flex items-center justify-center">
+    <div className="w-full h-[300px] flex items-center justify-center">
       <ResponsiveContainer width="100%" height="100%">
-        <RechartsRadar data={data} margin={{ top: 40, right: 60, bottom: 40, left: 60 }}>
-          <PolarGrid stroke="hsl(var(--border))" strokeWidth={1.5} />
+        <RechartsRadar data={data}>
+          <PolarGrid stroke="hsl(var(--border))" strokeWidth={1} />
           <PolarAngleAxis 
             dataKey="dimension" 
-            tick={{ fill: "hsl(var(--foreground))", fontSize: 16, fontFamily: "var(--font-serif)", fontWeight: 500 }}
+            tick={{ fill: "hsl(var(--foreground))", fontSize: 14, fontFamily: "var(--font-serif)" }}
           />
           <PolarRadiusAxis 
             angle={90} 
             domain={[0, 100]} 
-            tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 14 }}
-            tickCount={6}
+            tick={{ fill: "hsl(var(--muted-foreground))", fontSize: 12 }}
           />
           <Radar
             dataKey="score"
             stroke="hsl(var(--primary))"
             fill="hsl(var(--primary))"
-            fillOpacity={0.25}
-            strokeWidth={3}
+            fillOpacity={0.3}
+            strokeWidth={2}
           />
         </RechartsRadar>
       </ResponsiveContainer>
