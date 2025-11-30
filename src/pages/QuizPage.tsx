@@ -677,7 +677,6 @@ const QuizPage = () => {
                         <Checkbox
                           checked={isChecked}
                           id={option.value}
-                          onCheckedChange={() => handleAnswer(option.value)}
                         />
                         <Label
                           htmlFor={option.value}
