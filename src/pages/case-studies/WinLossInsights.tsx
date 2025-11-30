@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AbstractBackground from "@/components/AbstractBackground";
-import { ArrowRight, Building2 } from "lucide-react";
+import { ArrowRight, Building2, Clock, TrendingUp, Filter, Database } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const WinLossInsights = () => {
@@ -40,7 +40,7 @@ const WinLossInsights = () => {
               <div>
                 <h2 className="text-3xl font-serif font-medium mb-4">About the company</h2>
                 <p className="text-muted-foreground text-lg leading-relaxed font-serif">
-                  A global B2B SaaS company with tens of thousands of sales opportunities per year. Their sales data—call recordings, CRM notes, and support tickets—was scattered across multiple tools with no scalable way to understand why they win or lose deals, or how those patterns change over time.
+                  A global B2B SaaS company processing 50,000–60,000 opportunities per year struggled with fragmented insight. Sales calls stored in Gong, CRM notes and emails in Salesforce, support tickets in Zendesk—all living in separate systems with no way to answer: "Why do we win or lose, and how is that trending?" Product Marketing and Product teams were spending ~100–120 hours/month manually pasting transcripts into NotebookLM for ad-hoc, non-repeatable analysis.
                 </p>
               </div>
             </div>
@@ -51,21 +51,21 @@ const WinLossInsights = () => {
             <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="border-l-4 border-destructive pl-6">
-                <h3 className="font-semibold text-lg mb-2">Scattered data</h3>
-                <p className="text-muted-foreground">
-                  Call recordings, CRM notes and support tickets lived in separate tools with no unified view
-                </p>
-              </div>
-              <div className="border-l-4 border-destructive pl-6">
-                <h3 className="font-semibold text-lg mb-2">Manual analysis</h3>
-                <p className="text-muted-foreground">
-                  ~100 hours/month spent manually pasting transcripts into AI tools and spreadsheets
-                </p>
-              </div>
-              <div className="border-l-4 border-destructive pl-6">
-                <h3 className="font-semibold text-lg mb-2">No visibility</h3>
+                <h3 className="font-semibold text-lg mb-2">Data scattered everywhere</h3>
                 <p className="text-muted-foreground font-serif">
-                  No scalable way to track how win/loss reasons shift over time or across segments
+                  Tens of thousands of sales calls in Gong, CRM notes and emails in Salesforce, support tickets in Zendesk—no single source of truth
+                </p>
+              </div>
+              <div className="border-l-4 border-destructive pl-6">
+                <h3 className="font-semibold text-lg mb-2">Manual analysis at scale</h3>
+                <p className="text-muted-foreground font-serif">
+                  Product Marketing and Product teams spent 100–120 hours/month manually pasting transcripts into NotebookLM for ad-hoc, non-repeatable analysis
+                </p>
+              </div>
+              <div className="border-l-4 border-destructive pl-6">
+                <h3 className="font-semibold text-lg mb-2">No trend visibility</h3>
+                <p className="text-muted-foreground font-serif">
+                  No way to answer "Why do we win or lose?" or see how decision drivers changed over time
                 </p>
               </div>
             </div>
@@ -74,6 +74,18 @@ const WinLossInsights = () => {
           {/* What We Built */}
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">What we built</h2>
+            
+            {/* Tech Stack Logos */}
+            <div className="mb-12">
+              <div className="text-xs font-mono text-muted-foreground mb-4">TECH STACK</div>
+              <div className="flex flex-wrap items-center gap-8">
+                <img src="/src/assets/salesforce.png" alt="Salesforce" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <img src="/src/assets/google_cloud.png" alt="Google Cloud" className="h-8 opacity-60 hover:opacity-100 transition-opacity" />
+                <div className="text-sm text-muted-foreground font-mono">+ Gong</div>
+                <div className="text-sm text-muted-foreground font-mono">+ Zendesk</div>
+                <div className="text-sm text-muted-foreground font-mono">+ Looker Studio</div>
+              </div>
+            </div>
             
             <div className="space-y-8">
               <div className="border rounded-xl p-8 bg-card">
@@ -86,15 +98,19 @@ const WinLossInsights = () => {
                     <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Consolidated sales calls, CRM notes, emails and support interactions</span>
+                        <span>Ingested Gong calls, Salesforce opportunity data, emails, notes, and Zendesk tickets into BigQuery</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Merged everything at the opportunity level, not the call level</span>
+                        <span>Built an opportunity-level dataset (rather than individual call analysis)</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Created a clean, analytics-ready structure that didn't previously exist</span>
+                        <span>Normalised thousands of disparate text sources into analytics-ready tables</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Added metadata (segments, regions, products, deal stages) to allow slicing</span>
                       </li>
                     </ul>
                   </div>
@@ -108,18 +124,24 @@ const WinLossInsights = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3 font-serif">AI Extraction & Taxonomy</h3>
-                    <p className="text-muted-foreground mb-3 font-serif">Used LLMs to extract structured insight from unstructured text:</p>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="text-sm border rounded-lg p-3 bg-background">Customer needs</div>
-                      <div className="text-sm border rounded-lg p-3 bg-background">Decision drivers</div>
-                      <div className="text-sm border rounded-lg p-3 bg-background">Objections</div>
-                      <div className="text-sm border rounded-lg p-3 bg-background">Solution feedback</div>
-                      <div className="text-sm border rounded-lg p-3 bg-background">Competitors mentioned</div>
-                      <div className="text-sm border rounded-lg p-3 bg-background">Key quotes</div>
-                    </div>
-                    <p className="text-muted-foreground mt-3 text-sm font-serif">
-                      Created the taxonomy + prompts and iterated with GTM leaders to ensure reliability.
-                    </p>
+                    <ul className="space-y-2 text-muted-foreground font-serif">
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Using Gemini 2.5 Pro + a custom taxonomy to extract customer needs, decision drivers, and objections</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Identified win/loss reasons, competitor mentions, feature gaps, and representative customer quotes</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Developed a 40+ item taxonomy, iterated with PMM & product teams across 6 validation rounds</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="text-primary mt-1">•</span>
+                        <span>Used inter-rater reliability scoring to calibrate accuracy and reduce hallucination</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -131,23 +153,22 @@ const WinLossInsights = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-xl font-semibold mb-3 font-serif">Insights Dashboard</h3>
-                    <p className="text-muted-foreground mb-3 font-serif">Built a BI layer that:</p>
                     <ul className="space-y-2 text-muted-foreground font-serif">
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Shows how win/loss reasons shift over time</span>
+                        <span>Built in Looker Studio + BigQuery with time-series view of win/loss drivers by quarter</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Lets users filter by segment, region, product, motion</span>
+                        <span>Filters for segment, region, product, sales motion, deal size</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Supports "drill into the quote" exploration</span>
+                        <span>"Click-into-the-quote" drilldown from a metric → exact transcript snippet</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <span className="text-primary mt-1">•</span>
-                        <span>Includes natural-language query (conversational analytics)</span>
+                        <span>Conversational analytics via natural-language query layer for non-technical users</span>
                       </li>
                     </ul>
                   </div>
@@ -196,33 +217,45 @@ const WinLossInsights = () => {
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">100+</div>
-                <div className="font-semibold mb-2 font-serif">Hours saved monthly</div>
-                <p className="text-sm text-muted-foreground font-serif">
-                  Eliminated manual win/loss analysis work
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">100+</div>
+                  <div className="font-semibold mb-2 font-serif">Hours eliminated monthly</div>
+                  <p className="text-sm text-muted-foreground font-serif">
+                    Eliminated manual PMM analysis and transcript copy-pasting
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">First</div>
-                <div className="font-semibold mb-2 font-serif">Time-series view</div>
-                <p className="text-sm text-muted-foreground font-serif">
-                  Enabled tracking of decision drivers over time
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <TrendingUp className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">First-ever</div>
+                  <div className="font-semibold mb-2 font-serif">Time-series visibility</div>
+                  <p className="text-sm text-muted-foreground font-serif">
+                    Delivered first-ever visibility of how decision drivers change over time
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Deep</div>
-                <div className="font-semibold mb-2 font-serif">Contextual drill-down</div>
-                <p className="text-sm text-muted-foreground font-serif">
-                  Added exploration capabilities that were impossible before
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Hard data</div>
+                  <div className="font-semibold mb-2 font-serif">Hypothesis validation</div>
+                  <p className="text-sm text-muted-foreground font-serif">
+                    Enabled product & revenue teams to validate hypotheses with data
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Reusable</div>
-                <div className="font-semibold mb-2 font-serif">Decision layer</div>
-                <p className="text-sm text-muted-foreground font-serif">
-                  Created foundation for future GTM analysis
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Database className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">Reusable</div>
+                  <div className="font-semibold mb-2 font-serif">Decision layer created</div>
+                  <p className="text-sm text-muted-foreground font-serif">
+                    Built foundation for future GTM analytics (NPS, product feedback, churn)
+                  </p>
+                </div>
               </div>
             </div>
           </section>
