@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Examples from "./pages/Examples";
+import About from "./pages/About";
 import ROICalculatorPage from "./pages/ROICalculatorPage";
 import QuizPage from "./pages/QuizPage";
 import AiStrategyCallPage from "./pages/AiStrategyCall";
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/examples" element={<Examples />} />
           <Route path="/agents" element={<Examples />} />
           <Route path="/case-studies" element={<Examples />} />
+          <Route path="/about" element={<About />} />
           <Route path="/roi-calculator" element={<ROICalculatorPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/ai-strategy-call" element={<AiStrategyCallPage />} />
