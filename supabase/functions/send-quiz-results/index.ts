@@ -89,7 +89,7 @@ const handler = async (req: Request): Promise<Response> => {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "AI Readiness Assessment <onboarding@resend.dev>",
+        from: "humanstuff.ai Assessments <results@humanstuff.ai>",
         reply_to: "hello@humanstuff.ai",
         to: [email],
         subject: `Your ${businessTypeLabel} AI Readiness Score: ${score}%`,
@@ -501,6 +501,8 @@ function generatePlainTextEmail(data: {
 ${data.businessType} AI READINESS ASSESSMENT RESULTS
 ====================================================
 
+You're receiving this because you completed the AI Readiness Assessment on humanstuff.ai and chose to have your results emailed to you.
+
 Your Readiness Score: ${data.score}%
 Stage: ${data.stage.name}
 ${data.stage.description}
@@ -547,16 +549,17 @@ ${data.stageRecommendations.next30Days.map(r => `• ${r}`).join('\n')}
 Next 90 Days:
 ${data.stageRecommendations.next90Days.map(r => `• ${r}`).join('\n')}
 
-BOOK YOUR STRATEGY SESSION
----------------------------
-Ready to get started? Book a consultation at:
-https://humanstuff.ai/#contact
+---
+
+Want help implementing your first automation pilot?
+→ Talk to Miles (https://humanstuff.ai/#contact)
+(Optional – no obligation)
 
 ---
 humanstuff.ai
 Automate the boring stuff so you can focus on the human stuff
 
-Questions? Reply to this email or visit https://humanstuff.ai
+Questions? Reply to this email.
   `.trim();
 }
 
@@ -875,6 +878,9 @@ function generateEmailHTML(data: {
     <div class="header">
       <div class="logo">humanstuff.ai</div>
       <h1 class="stage-description">${data.businessType} AI Readiness Assessment</h1>
+      <p style="font-size: 13px; color: #666; margin: 16px auto 0; max-width: 500px;">
+        You're receiving this because you completed the AI Readiness Assessment on humanstuff.ai and chose to have your results emailed to you.
+      </p>
       <div class="score-container">
         <div class="score-badge">${data.score}%</div>
         <div class="stage-name">${data.stage.name}</div>
@@ -967,23 +973,17 @@ function generateEmailHTML(data: {
     </div>
 
     <div class="cta-section">
-      <p style="margin-bottom: 20px; font-size: 15px; color: #666;">Ready to implement these recommendations?</p>
-      <a href="https://humanstuff.ai/#contact" class="cta-button">Book Your Strategy Session</a>
-      <p style="margin-top: 16px; font-size: 13px; color: #999;">
-        <a href="https://humanstuff.ai" style="color: #999; text-decoration: underline;">Visit our website</a> to learn more about our services
+      <p style="margin-bottom: 16px; font-size: 15px; color: #666;">Want help implementing your first automation pilot?</p>
+      <p style="margin-bottom: 8px; font-size: 14px; color: #666;">
+        → <a href="https://humanstuff.ai/#contact" style="color: ${data.stage.color}; text-decoration: none;">Talk to Miles</a>
       </p>
+      <p style="font-size: 13px; color: #999;">(Optional – no obligation)</p>
     </div>
 
     <div class="footer">
       <p style="margin-bottom: 12px;"><strong>humanstuff.ai</strong></p>
       <p style="margin-bottom: 8px;">Automate the boring stuff so you can focus on the human stuff</p>
-      <p style="margin-bottom: 16px;">
-        Questions? Reply to this email or visit <a href="https://humanstuff.ai">humanstuff.ai</a>
-      </p>
-      <p style="font-size: 11px; color: #bbb; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e5e5e5;">
-        You received this email because you completed the AI Readiness Assessment at humanstuff.ai. 
-        This is a transactional email containing your requested assessment results.
-      </p>
+      <p>Questions? Reply to this email.</p>
     </div>
   </div>
 </body>
