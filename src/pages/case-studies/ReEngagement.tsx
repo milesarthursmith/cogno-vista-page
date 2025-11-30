@@ -55,19 +55,19 @@ const ReEngagement = () => {
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-l border-muted-foreground/30 pl-6">
                 <h3 className="font-semibold text-lg mb-2">Massive opportunity</h3>
                 <p className="text-muted-foreground font-serif">
                   Roughly 20,000 dormant opportunities—huge untapped pipeline, but unclear which were worth pursuing
                 </p>
               </div>
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-l border-muted-foreground/30 pl-6">
                 <h3 className="font-semibold text-lg mb-2">Data quality risk</h3>
                 <p className="text-muted-foreground font-serif">
                   Inconsistent CRM hygiene, missing context, and unreliable data made it hard to confidently target the right accounts
                 </p>
               </div>
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-l border-muted-foreground/30 pl-6">
                 <h3 className="font-semibold text-lg mb-2">Capacity limits</h3>
                 <p className="text-muted-foreground font-serif">
                   BDRs couldn't manually review that volume—needed automation with human oversight and safety guardrails

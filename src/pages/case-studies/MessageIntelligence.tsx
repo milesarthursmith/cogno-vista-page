@@ -51,19 +51,19 @@ const MessageIntelligence = () => {
           <section>
             <h2 className="text-3xl font-serif font-medium mb-8">The problem statement</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-l border-muted-foreground/30 pl-6">
                 <h3 className="font-semibold text-lg mb-2">Data scattered everywhere</h3>
                 <p className="text-muted-foreground font-serif">
                   Sales using one message framework, marketing another—with no visibility into what actually converts
                 </p>
               </div>
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-l border-muted-foreground/30 pl-6">
                 <h3 className="font-semibold text-lg mb-2">No feedback loop</h3>
                 <p className="text-muted-foreground font-serif">
                   Marketing teams creating content blind, unable to learn from what sales hears in real conversations
                 </p>
               </div>
-              <div className="border-l-2 border-primary pl-6">
+              <div className="border-l border-muted-foreground/30 pl-6">
                 <h3 className="font-semibold text-lg mb-2">Manual guesswork</h3>
                 <p className="text-muted-foreground font-serif">
                   Teams spending hours trying to reverse-engineer which messages work across channels
