@@ -19,10 +19,7 @@ const ContentSummarization = () => {
         
         <main className="container relative z-10 mx-auto px-6 py-32">
           <div className="max-w-4xl mx-auto">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                <span className="text-lg font-mono font-semibold">CS</span>
-              </div>
+            <div className="mb-6">
               <span className="font-mono text-sm text-muted-foreground">GTM Leadership Team</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-serif font-medium leading-[1.1] mb-6">
