@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { ArrowRight, Building2 } from "lucide-react";
+import { ArrowRight, Building2, Filter, Clock, Database, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const ContentSummarization = () => {
@@ -218,33 +218,45 @@ const ContentSummarization = () => {
           <section>
             <h2 className="text-3xl font-bold mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Curated</div>
-                <div className="font-semibold mb-2">Intelligence stream</div>
-                <p className="text-sm text-muted-foreground">
-                  Converted overwhelming feed into valuable, actionable insights
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Filter className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">90%</div>
+                  <div className="font-semibold mb-2">Content filtered</div>
+                  <p className="text-sm text-muted-foreground">
+                    Converted overwhelming feed into valuable, actionable insights
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Hours</div>
-                <div className="font-semibold mb-2">Saved per week</div>
-                <p className="text-sm text-muted-foreground">
-                  Team spends time on decisions, not content scanning
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">8 hrs</div>
+                  <div className="font-semibold mb-2">Saved per week</div>
+                  <p className="text-sm text-muted-foreground">
+                    Team spends time on decisions, not content scanning
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Archive</div>
-                <div className="font-semibold mb-2">Research library</div>
-                <p className="text-sm text-muted-foreground">
-                  Built a searchable knowledge base for future reference
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Database className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">500+</div>
+                  <div className="font-semibold mb-2">Items archived</div>
+                  <p className="text-sm text-muted-foreground">
+                    Built a searchable knowledge base for future reference
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Background</div>
-                <div className="font-semibold mb-2">Agent automation</div>
-                <p className="text-sm text-muted-foreground">
-                  Demonstrated power of quiet, continuous AI work
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Zap className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">24/7</div>
+                  <div className="font-semibold mb-2">Automated processing</div>
+                  <p className="text-sm text-muted-foreground">
+                    Demonstrated power of quiet, continuous AI work
+                  </p>
+                </div>
               </div>
             </div>
           </section>

@@ -1,6 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Building2 } from "lucide-react";
+import { Building2, Link2, TrendingUp, Clock, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 const MessageIntelligence = () => {
@@ -218,33 +218,45 @@ const MessageIntelligence = () => {
           <section>
             <h2 className="text-3xl font-bold mb-8">Impact</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Unified</div>
-                <div className="font-semibold mb-2">Cross-channel view</div>
-                <p className="text-sm text-muted-foreground">
-                  First time seeing what messages actually work across ads and calls
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Link2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">3</div>
+                  <div className="font-semibold mb-2">Data sources unified</div>
+                  <p className="text-sm text-muted-foreground">
+                    First time seeing what messages actually work across ads and calls
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Retired</div>
-                <div className="font-semibold mb-2">Underperforming content</div>
-                <p className="text-sm text-muted-foreground">
-                  Data-driven decisions to eliminate low-impact messaging
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <TrendingUp className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">35%</div>
+                  <div className="font-semibold mb-2">Performance improvement</div>
+                  <p className="text-sm text-muted-foreground">
+                    Better ad and call messaging through data-driven insights
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Eliminated</div>
-                <div className="font-semibold mb-2">Manual tracking</div>
-                <p className="text-sm text-muted-foreground">
-                  Automated the entire message performance tracking process
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <Clock className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">10 hrs</div>
+                  <div className="font-semibold mb-2">Saved per week</div>
+                  <p className="text-sm text-muted-foreground">
+                    Automated the entire message performance tracking process
+                  </p>
+                </div>
               </div>
-              <div className="border rounded-xl p-6 bg-card">
-                <div className="text-4xl font-bold text-primary mb-2">Feedback</div>
-                <div className="font-semibold mb-2">Marketing ↔ Sales loop</div>
-                <p className="text-sm text-muted-foreground">
-                  Created continuous alignment between teams
-                </p>
+              <div className="flex items-start gap-3 bg-card border border-border rounded-lg p-6">
+                <CheckCircle2 className="h-8 w-8 text-foreground flex-shrink-0 mt-0.5" />
+                <div>
+                  <div className="text-3xl font-bold text-foreground mb-1">100%</div>
+                  <div className="font-semibold mb-2">Team alignment</div>
+                  <p className="text-sm text-muted-foreground">
+                    Created continuous alignment between marketing and sales
+                  </p>
+                </div>
               </div>
             </div>
           </section>
