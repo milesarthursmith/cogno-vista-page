@@ -35,7 +35,7 @@ const Hero = () => {
                 size="lg" 
                 variant="outline" 
                 onClick={() => (window.location.href = "/quiz")}
-                className="rounded-full px-8 h-12 border-primary/40 text-primary hover:border-primary/70 hover:bg-primary/5 font-mono"
+                className="rounded-full px-8 h-12 border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground hover:border-primary font-mono transition-colors"
               >
                 Free AI Readiness Audit
               </Button>
