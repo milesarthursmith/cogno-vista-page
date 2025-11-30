@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import AbstractBackground from "@/components/AbstractBackground";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Users, Shield, Boxes, Target } from "lucide-react";
 
 const About = () => {
   return (
@@ -89,42 +89,61 @@ const About = () => {
       </section>
 
       {/* How We Think About AI */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-5xl font-serif font-medium mb-12">
+      <section className="py-24 bg-background relative overflow-hidden">
+        <AbstractBackground variant="services" />
+        <div className="container relative z-10 mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-serif font-medium mb-4 text-center">
               How We Think About AI
             </h2>
-            <div className="space-y-10">
-              <div>
-                <h3 className="text-xl md:text-2xl font-serif font-medium mb-3 text-foreground">
-                  1. Augment, not replace
+            <p className="text-lg text-muted-foreground font-serif mb-16 text-center max-w-2xl mx-auto">
+              Our principles guide every system we build
+            </p>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="group bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <Users className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif font-medium mb-4 text-foreground">
+                  Augment, not replace
                 </h3>
-                <p className="text-base md:text-lg font-serif text-muted-foreground">
+                <p className="text-base font-serif text-muted-foreground leading-relaxed">
                   AI should make people more effective. We design systems that take care of repetitive, predictable work so that humans stay in control where judgement and context matter.
                 </p>
               </div>
-              <div>
-                <h3 className="text-xl md:text-2xl font-serif font-medium mb-3 text-foreground">
-                  2. Ethical and responsible by default
+              
+              <div className="group bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <Shield className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif font-medium mb-4 text-foreground">
+                  Ethical and responsible by default
                 </h3>
-                <p className="text-base md:text-lg font-serif text-muted-foreground">
+                <p className="text-base font-serif text-muted-foreground leading-relaxed">
                   We build systems we would be comfortable using ourselves. Privacy, appropriate data handling and clear guardrails are part of every project. Trust is a requirement, not an extra.
                 </p>
               </div>
-              <div>
-                <h3 className="text-xl md:text-2xl font-serif font-medium mb-3 text-foreground">
-                  3. Built for production, not demos
+              
+              <div className="group bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <Boxes className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif font-medium mb-4 text-foreground">
+                  Built for production, not demos
                 </h3>
-                <p className="text-base md:text-lg font-serif text-muted-foreground">
+                <p className="text-base font-serif text-muted-foreground leading-relaxed">
                   Everything we deliver connects directly into your existing stack. Salesforce, HubSpot, Gong, BigQuery, Relevance AI, n8n, Clay, and more. If it does not work where the real work happens, we do not ship it.
                 </p>
               </div>
-              <div>
-                <h3 className="text-xl md:text-2xl font-serif font-medium mb-3 text-foreground">
-                  4. Start where the pain is
+              
+              <div className="group bg-card border border-border rounded-xl p-8 hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <div className="mb-6 inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 text-primary">
+                  <Target className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl md:text-2xl font-serif font-medium mb-4 text-foreground">
+                  Start where the pain is
                 </h3>
-                <p className="text-base md:text-lg font-serif text-muted-foreground">
+                <p className="text-base font-serif text-muted-foreground leading-relaxed">
                   The best AI systems begin with the parts of your workflow that slow your team down. Meeting notes. Enrichment. Reporting. Outreach. Analysis. If it is repetitive and steals time, we automate it.
                 </p>
               </div>
