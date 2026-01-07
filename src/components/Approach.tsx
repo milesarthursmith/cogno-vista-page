@@ -3,11 +3,11 @@ import { Building2, Rocket } from "lucide-react";
 
 const Approach = () => {
   return (
-    <section className="py-24 bg-secondary/30">
+    <section className="py-12 md:py-24 bg-secondary/30">
       
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-8 md:mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">
               Tailored to Your Scale
             </h2>

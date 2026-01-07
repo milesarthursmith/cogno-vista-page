@@ -2,11 +2,11 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 
 const ProblemFraming = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-12 md:py-24 bg-background">
       
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-serif font-medium mb-6">
                 Your team's problem isn't effort. It's how much of that effort is stuck in manual, repeatable work.

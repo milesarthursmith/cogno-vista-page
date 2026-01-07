@@ -1,10 +1,10 @@
 import { CheckCircle2 } from "lucide-react";
 const experience = ["10+ years in B2B & B2C marketing (Red Bull, Universal Music, Lightspeed Commerce)", "We work with SMB, mid-market and selected enterprise teams", "We focus on practical AI systems that ship, not slideware", "Melbourne based, global remote-first approach"];
 const About = () => {
-  return <section id="about" className="py-24">
+  return <section id="about" className="py-12 md:py-24">
       
       <div className="container mx-auto px-6">
-        <div className="grid gap-16 lg:grid-cols-2 items-start max-w-7xl mx-auto">
+        <div className="grid gap-8 md:gap-16 lg:grid-cols-2 items-start max-w-7xl mx-auto">
           <div>
             <h2 className="mb-6 text-4xl md:text-5xl font-serif font-medium">
               Our Team

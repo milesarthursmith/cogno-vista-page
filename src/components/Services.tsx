@@ -21,11 +21,11 @@ const services = [{
   stack: "All built with clear guardrails so outputs stay on-brand and fact-checked, not generic AI fluff"
 }];
 const Services = () => {
-  return <section id="services" className="py-24 bg-secondary/30 relative overflow-hidden">
+  return <section id="services" className="py-12 md:py-24 bg-secondary/30 relative overflow-hidden">
       <AbstractBackground variant="services" />
       
       <div className="container mx-auto px-6 relative z-10">
-        <div className="mb-16 max-w-3xl">
+        <div className="mb-8 md:mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">What We Build</h2>
           <p className="text-lg text-muted-foreground font-serif">
             Production-ready AI systems that integrate with your existing stack

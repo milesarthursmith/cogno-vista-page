@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AuditCta = () => {
   return (
-    <section className="relative py-32 overflow-hidden bg-background">
+    <section className="relative py-16 md:py-32 overflow-hidden bg-background">
       <div className="container relative z-10 mx-auto px-6">
         <div className="max-w-4xl mx-auto text-center">
           {/* Eyebrow */}
