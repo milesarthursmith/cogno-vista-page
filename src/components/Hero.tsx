@@ -13,7 +13,7 @@ const Hero = () => {
   return <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 bg-background">
       <AbstractBackground variant="hero" />
       
-      <div className="container relative z-10 mx-auto px-6 py-32">
+      <div className="container relative z-10 mx-auto px-6 py-16 md:py-32">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="max-w-2xl">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] mb-6">
@@ -107,7 +107,7 @@ const Hero = () => {
         </div>
 
         {/* Logo section */}
-        <div className="mt-32 pt-12 border-t border-border">
+        <div className="mt-16 md:mt-32 pt-8 md:pt-12 border-t border-border">
           <p className="text-center text-sm text-muted-foreground mb-8 font-serif">Tools & platforms we work with</p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-60">
             <img src={relevanceAiLogo} alt="Relevance AI" className="h-8 object-contain" />
