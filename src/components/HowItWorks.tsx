@@ -21,11 +21,11 @@ const steps = [{
   description: "Once the first use-case is working, we extend into adjacent parts of your GTM engine (additional agents, new teams, more data sources)."
 }];
 const HowItWorks = () => {
-  return <section className="py-24 bg-background">
+  return <section className="py-12 md:py-24 bg-background">
       
       <div className="container mx-auto px-6">
         <div className="max-w-5xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-8 md:mb-16">
             <h2 className="text-4xl md:text-5xl font-serif font-medium mb-6">How We Do It</h2>
             <p className="text-lg text-muted-foreground font-serif">
               A structured approach from discovery to scale
